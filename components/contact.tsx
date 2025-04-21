@@ -26,8 +26,10 @@ export default function Contact() {
     message: "",
   })
 
+  // Додайте новий стан isSubmitted після інших станів
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -36,6 +38,7 @@ export default function Contact() {
     if (formError) setFormError(null)
   }
 
+  // Оновіть функцію handleSubmit, додавши встановлення isSubmitted в true при успіху
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -60,6 +63,9 @@ export default function Contact() {
         title: "Повідомлення надіслано!",
         description: "Дякуємо за ваше звернення. Ми зв'яжемося з вами найближчим часом.",
       })
+
+      // Встановлюємо стан успішної відправки
+      setIsSubmitted(true)
 
       // Очищаємо форму після успішного відправлення
       setFormData({
@@ -111,7 +117,9 @@ export default function Contact() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          <motion.div
+          {/* Замініть рендеринг форми на умовний рендеринг форми або повідомлення про успіх */}
+          {/* Знайдіть цей блок: */}
+          {/* <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6 }}
@@ -119,64 +127,108 @@ export default function Contact() {
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <h3 className="text-xl font-semibold mb-6">Заповніть форму</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
-                    Ваше ім'я *
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Введіть ваше ім'я"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">
-                    Email *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="Введіть ваш email"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-1">
-                    Телефон *
-                  </label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    placeholder="Введіть ваш телефон"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1">
-                    Повідомлення
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Опишіть ваш запит або задайте питання"
-                    rows={4}
-                  />
-                </div>
-                {formError && <p className="text-red-500 text-sm">{formError}</p>}
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? "Надсилання..." : "Надіслати"}
-                </Button>
-              </form>
+                {/* ... форма ... */}
+          {/*    </form>
+            </div>
+          </motion.div> */}
+
+          {/* І замініть його на: */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="bg-white rounded-xl p-6 shadow-lg">
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex flex-col items-center justify-center py-8 text-center"
+                >
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-8 w-8 text-green-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-semibold text-green-600 mb-2">Дякуємо за ваше звернення!</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Ми отримали ваше повідомлення та зв'яжемося з вами найближчим часом.
+                  </p>
+                  <Button onClick={() => setIsSubmitted(false)} variant="outline">
+                    Надіслати ще одне повідомлення
+                  </Button>
+                </motion.div>
+              ) : (
+                <>
+                  <h3 className="text-xl font-semibold mb-6">Заповніть форму</h3>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-1">
+                        Ваше ім'я *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Введіть ваше ім'я"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-1">
+                        Email *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="Введіть ваш email"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium mb-1">
+                        Телефон *
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        placeholder="Введіть ваш телефон"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-1">
+                        Повідомлення
+                      </label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Опишіть ваш запит або задайте питання"
+                        rows={4}
+                      />
+                    </div>
+                    {formError && <p className="text-red-500 text-sm">{formError}</p>}
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? "Надсилання..." : "Надіслати"}
+                    </Button>
+                  </form>
+                </>
+              )}
             </div>
           </motion.div>
 
