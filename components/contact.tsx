@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { Phone, Mail, Clock } from "lucide-react"
 
 export default function Contact() {
   const { toast } = useToast()
@@ -27,32 +27,58 @@ export default function Contact() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formError, setFormError] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+    // Очищаємо помилку при зміні даних
+    if (formError) setFormError(null)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setFormError(null)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-    toast({
-      title: "Повідомлення надіслано!",
-      description: "Дякуємо за ваше звернення. Ми зв'яжемося з вами найближчим часом.",
-    })
+      const data = await response.json()
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    })
+      if (!response.ok) {
+        throw new Error(data.error || "Щось пішло не так. Спробуйте ще раз.")
+      }
 
-    setIsSubmitting(false)
+      toast({
+        title: "Повідомлення надіслано!",
+        description: "Дякуємо за ваше звернення. Ми зв'яжемося з вами найближчим часом.",
+      })
+
+      // Очищаємо форму після успішного відправлення
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error("Помилка відправки форми:", error)
+      setFormError(error instanceof Error ? error.message : "Виникла помилка при відправці форми")
+      toast({
+        variant: "destructive",
+        title: "Помилка!",
+        description: error instanceof Error ? error.message : "Виникла помилка при відправці форми",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -68,7 +94,6 @@ export default function Contact() {
       details: "265840@gmail.com",
       link: "mailto:265840@gmail.com",
     },
-   
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
       title: "Години роботи",
@@ -147,6 +172,7 @@ export default function Contact() {
                     rows={4}
                   />
                 </div>
+                {formError && <p className="text-red-500 text-sm">{formError}</p>}
                 <Button type="submit" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? "Надсилання..." : "Надіслати"}
                 </Button>

@@ -25,12 +25,7 @@ export default function Header() {
 
   const navLinks = [
     { name: "Про метод", href: "#about" },
-    { name: "Результати", href: "#results" },
-    { name: "Приклади", href: "#examples" },
-    { name: "Вимоги", href: "#requirements" },
-    { name: "Питання", href: "#faq" },
     { name: "Послуги", href: "#services" },
-    { name: "Контакти", href: "#contact" },
   ]
 
   return (
