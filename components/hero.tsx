@@ -53,8 +53,8 @@ export default function Hero() {
           >
             <div className="relative aspect-square max-w-md mx-auto">
               <Image
-                src="/serene-blue-meditation.png"
-                alt="Сеанс регресивної терапії"
+                src="/og-image.jpg"
+                alt="Раїса Оберемчук - практикуючий регресолог, проводить сеанс регресивного гіпнозу"
                 width={600}
                 height={600}
                 className="rounded-2xl object-cover shadow-xl"
