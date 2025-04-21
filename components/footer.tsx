@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link href="/" className="text-2xl font-bold text-primary">
-              РегресТерапія
+              RaisaRegress
             </Link>
             <p className="mt-4 text-muted-foreground max-w-md">
               Професійні сеанси регресивної терапії для зцілення минулого, трансформації теперішнього та створення
@@ -90,7 +90,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-            <p className="text-sm text-muted-foreground">© {currentYear} РегресТерапія. Усі права захищені.</p>
+            <p className="text-sm text-muted-foreground">© {currentYear} RaisaRegress. Усі права захищені.</p>
             <div className="flex items-center gap-1">
               <span className="text-sm text-muted-foreground">Сайт створено:</span>
               <a

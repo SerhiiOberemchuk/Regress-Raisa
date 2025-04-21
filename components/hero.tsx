@@ -23,11 +23,17 @@ export default function Hero() {
             className="flex flex-col space-y-6"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Регресивна терапія для <span className="text-primary">зцілення</span> вашого минулого
+              Регресивний <br />
+              гіпноз <br />
+              <span className="text-primary">онлайн</span>
             </h1>
+            <div className="space-y-2">
+              <h2 className="text-2xl md:text-3xl font-semibold">Раїса Оберемчук</h2>
+              <p className="text-lg font-medium text-primary">ПРАКТИКУЮЧИЙ РЕГРЕСОЛОГ</p>
+            </div>
             <p className="text-lg text-muted-foreground">
-              Відкрийте шлях до глибинного самопізнання та зцілення через повернення до минулого досвіду. Професійні
-              сеанси регресивної терапії допоможуть вам знайти відповіді та звільнитися від обмежень.
+              Ваш провідник до глибин підсвідомості. Допомагаю зцілити минуле для гармонійного життя сьогодні! Моя мета
+              — допомогти людині знайти глибинні причини проблем і звільнитися від їхнього впливу.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
