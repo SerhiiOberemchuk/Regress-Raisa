@@ -7,8 +7,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-muted py-12">
-      <div className="container mx-auto px-4">
+    <footer className="relative py-12 overflow-hidden">
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: 'url("/footer-background.jpg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.15,
+        }}
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link href="/" className="text-2xl font-bold text-primary">
