@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "RaisaRegress | Регресивний гіпноз онлайн з Раїсою Оберемчук",
     description:
       "Професійні сеанси регресивного гіпнозу онлайн. Зцілення минулого для гармонійного життя сьогодні. Ваш провідник до глибин підсвідомості.",
-    url: "https://raisaregress.com",
+    url: "https://raisaregress.online",
     siteName: "RaisaRegress",
     locale: "uk_UA",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://raisaregress.com",
+    canonical: "https://raisaregress.online",
   },
 }
 
@@ -52,7 +52,6 @@ export default function Home() {
       <Header />
       <Hero />
       <AboutMethod />
-    
       <Results />
       <Examples />
       <Requirements />
