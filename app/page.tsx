@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import AboutMethod from "@/components/about-method"
-import ImageGallery from "@/components/image-gallery"
+
 import Results from "@/components/results"
 import Examples from "@/components/examples"
 import Requirements from "@/components/requirements"
@@ -52,7 +52,7 @@ export default function Home() {
       <Header />
       <Hero />
       <AboutMethod />
-      <ImageGallery />
+    
       <Results />
       <Examples />
       <Requirements />
