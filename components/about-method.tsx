@@ -73,9 +73,7 @@ export default function AboutMethod() {
         />
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
+     
           className="bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto mb-12"
         >
           <p className="text-muted-foreground mb-4">
