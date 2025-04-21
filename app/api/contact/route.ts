@@ -59,7 +59,7 @@ export async function POST(request: Request) {
     // Відправляємо лист власнику сайту
     await transporter.sendMail({
       from: `"Форма зворотного зв'язку" <${process.env.EMAIL_USER}>`,
-      to: "serhiioberemchuk@gmail.com",
+      to: "265840@gmail.com",
       subject: "Нове звернення з сайту РегресТерапія",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
