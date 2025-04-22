@@ -269,12 +269,12 @@ export default function Contact() {
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="flex-1">
-                  <a href="viber://chat?number=%2B380971768196" target="_blank" rel="noopener noreferrer">
+                  <a href="viber://add?number=380971768196" target="_blank" rel="noopener noreferrer">
                     Viber
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="flex-1">
-                  <a href="https://wa.me/380971768196" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/393515179190" target="_blank" rel="noopener noreferrer">
                     WhatsApp
                   </a>
                 </Button>
