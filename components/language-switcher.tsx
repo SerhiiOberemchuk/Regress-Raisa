@@ -58,7 +58,7 @@ export default function LanguageSwitcher() {
           <Link
             href="it"
             className={`w-full text-left px-4 py-2 text-sm ${
-              currentLanguage === "en"
+              currentLanguage === "it"
                 ? "bg-primary/10 text-primary font-medium"
                 : "hover:bg-muted/50"
             }`}
