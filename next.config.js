@@ -20,7 +20,8 @@ const nextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ["nodemailer"],
-    optimizeCss: true,
+    // Вимикаємо оптимізацію CSS, яка використовує critters
+    optimizeCss: false,
   },
   async headers() {
     return [
