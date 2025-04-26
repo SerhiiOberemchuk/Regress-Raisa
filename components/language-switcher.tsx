@@ -1,8 +1,6 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -15,17 +13,42 @@ export default function LanguageSwitcher() {
   const [currentLanguage, setCurrentLanguage] = useState(language);
   const [isOpen, setIsOpen] = useState(false);
 
+  const dropdownRef = useRef<HTMLDivElement>(null); // 🔥 додаємо реф на контейнер
+
   const toggleLanguage = (lang: Language) => {
     setCurrentLanguage(lang);
     setIsOpen(false);
   };
 
+  // 🔥 Хук для обробки кліків за межами меню
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    // Чистимо слухача при анмаунті
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors p-1.5 rounded-md"
-        aria-label="Змінити мову"
+        aria-label="Change language"
       >
         <Globe className="h-4 w-4" />
         <span className="uppercase">{currentLanguage}</span>

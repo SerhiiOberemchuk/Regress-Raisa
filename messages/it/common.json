@@ -1,4 +1,25 @@
 {
   "language": "Italiano",
-  "languageCode": "it"
+  "languageCode": "it",
+  "form": {
+    "fillAllFields": "Si prega di compilare tutti i campi obbligatori",
+    "invalidEmail": "Inserisci un indirizzo email valido",
+    "inputTooLong": "Uno o più campi inseriti superano la lunghezza consentita",
+    "sendSuccess": "Messaggio inviato con successo",
+    "sendError": "Si è verificato un errore durante l'invio del messaggio",
+    "userEmailSubject": "Grazie per averci contattato | Raisa Regress",
+    "adminEmailSubject": "Nuova richiesta dal sito Raisa Regress",
+    "userGreeting": "Gentile",
+    "userThankYou": "Abbiamo ricevuto il tuo messaggio e ti contatteremo al più presto.",
+    "userContacts": "I tuoi dati di contatto:",
+    "userRespectfully": "Cordiali saluti, il Team di Raisa Regress",
+    "autoMessage": "Questo è un messaggio automatico, si prega di non rispondere.",
+    "noMessageProvided": "Messaggio non fornito",
+    "dateAndTime": "Data e Ora",
+    "clientInfo": "Informazioni sul cliente",
+    "name": "Nome",
+    "phone": "Telefono",
+    "email": "Email",
+    "message": "Messaggio"
+  }
 }
