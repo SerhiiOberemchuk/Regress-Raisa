@@ -12,9 +12,6 @@ import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
 
-// Імпортуємо конфігурацію з i18n.config.js
-const i18nConfig = require("@/i18n.config.js")
-
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale
   const t = await getTranslations({ locale, namespace: "metadata" })

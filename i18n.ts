@@ -1,30 +1,19 @@
+import { notFound } from "next/navigation"
 import { getRequestConfig } from "next-intl/server"
 
-// Імпортуємо конфігурацію з i18n.config.js
-const i18nConfig = require("./i18n.config.js")
-const { locales } = i18nConfig
-
-// Кеш для перекладів
-const messagesCache: Record<string, any> = {}
+// Визначаємо доступні локалі
+export const locales = ["uk", "en", "it"]
+export const defaultLocale = "uk"
 
 export default getRequestConfig(async ({ locale }) => {
   // Перевіряємо, чи підтримується локаль
-  if (!locales.includes(locale as any)) {
-    return { messages: {} }
-  }
+  if (!locales.includes(locale as any)) notFound()
 
-  // Перевіряємо, чи є переклади в кеші
-  if (!messagesCache[locale]) {
-    try {
-      messagesCache[locale] = (await import(`./messages/${locale}/index.ts`)).default
-    } catch (error) {
-      console.error(`Failed to load messages for locale ${locale}:`, error)
-      messagesCache[locale] = {}
-    }
-  }
+  // Завантажуємо повідомлення для поточної локалі
+  const messages = (await import(`./messages/${locale}/index.ts`)).default
 
   return {
-    messages: messagesCache[locale],
+    messages,
     timeZone: "Europe/Kiev",
     now: new Date(),
   }

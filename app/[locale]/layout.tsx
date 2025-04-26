@@ -7,10 +7,7 @@ import { Suspense } from "react"
 import CookieConsent from "@/components/cookie-consent"
 import { NextIntlClientProvider } from "next-intl"
 import { notFound } from "next/navigation"
-
-// Імпортуємо конфігурацію з i18n.config.js
-const i18nConfig = require("@/i18n.config.js")
-const { locales } = i18nConfig
+import { locales } from "@/i18n"
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -34,14 +31,11 @@ function LoadingFallback() {
 
 export default async function RootLayout({
   children,
-  params,
+  params: { locale },
 }: {
   children: React.ReactNode
   params: { locale: string }
 }) {
-  // Отримуємо локаль з параметрів
-  const locale = params.locale
-
   // Перевіряємо, чи підтримується локаль
   if (!locales.includes(locale as any)) {
     notFound()
