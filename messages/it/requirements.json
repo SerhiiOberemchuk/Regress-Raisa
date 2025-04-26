@@ -1,0 +1,31 @@
+{
+  "title": "COSA SERVE PER UNA SESSIONE DI REGRESSIONE?",
+  "subtitle": "Per una sessione efficace di terapia regressiva, è importante garantire condizioni confortevoli e prepararsi adeguatamente",
+  "requirements": {
+    "0": {
+      "title": "Tempo",
+      "description": "Riserva 2-3 ore per una sessione completa. Questo ti permette di non avere fretta e lavorare a fondo sulla tua richiesta."
+    },
+    "1": {
+      "title": "Cuffie",
+      "description": "Per le sessioni online, prepara cuffie comode con microfono per un suono di qualità e una buona comunicazione."
+    },
+    "2": {
+      "title": "Luogo Confortevole",
+      "description": "Trova un posto tranquillo dove nessuno ti disturberà. Prepara una sedia comoda o un letto per il rilassamento."
+    },
+    "3": {
+      "title": "Internet Stabile",
+      "description": "Per le sessioni online, assicurati di avere una connessione internet stabile per evitare interruzioni durante la sessione."
+    }
+  },
+  "additionalRecommendations": {
+    "title": "Raccomandazioni Aggiuntive",
+    "items": {
+      "0": "Astieniti dal consumare alcol, caffeina e cibi pesanti 2-3 ore prima della sessione",
+      "1": "Indossa abiti comodi che non limitino il movimento e la respirazione",
+      "2": "Prima della sessione, formula la tua richiesta o domanda a cui vuoi ottenere una risposta",
+      "3": "Sii aperto al processo e fidati della tua esperienza interiore"
+    }
+  }
+}

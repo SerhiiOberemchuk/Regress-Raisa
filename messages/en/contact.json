@@ -1,0 +1,43 @@
+{
+  "title": "BOOK A SESSION",
+  "subtitle": "Leave your contact details, and I will contact you to coordinate the details",
+  "form": {
+    "title": "Fill out the form",
+    "name": "Your name *",
+    "email": "Email *",
+    "phone": "Phone *",
+    "message": "Message",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "phonePlaceholder": "Enter your phone",
+    "messagePlaceholder": "Describe your request or ask a question",
+    "submitButton": "Submit",
+    "submitting": "Submitting..."
+  },
+  "success": {
+    "title": "Thank you for your inquiry!",
+    "message": "We have received your message and will contact you soon.",
+    "button": "Send another message"
+  },
+  "contactInfo": {
+    "title": "Contact Information",
+    "phone": {
+      "title": "Phone",
+      "value": "+380 97 176 81 96"
+    },
+    "email": {
+      "title": "Email",
+      "value": "265840@gmail.com"
+    },
+    "workingHours": {
+      "title": "Working Hours",
+      "value": "Mon-Fri: 10:00 - 19:00"
+    }
+  },
+  "messengers": {
+    "title": "Or contact via messengers",
+    "telegram": "Telegram",
+    "viber": "Viber",
+    "whatsapp": "WhatsApp"
+  }
+}

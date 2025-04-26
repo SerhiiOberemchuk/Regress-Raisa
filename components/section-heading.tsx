@@ -2,14 +2,18 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { memo } from "react"
+import { useTranslations } from "next-intl"
 
 interface SectionHeadingProps {
-  title: string
-  subtitle?: string
+  titleKey: string
+  subtitleKey?: string
+  namespace: string
   centered?: boolean
 }
 
-export default function SectionHeading({ title, subtitle, centered = true }: SectionHeadingProps) {
+function SectionHeading({ titleKey, subtitleKey, namespace, centered = true }: SectionHeadingProps) {
+  const t = useTranslations(namespace)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -23,8 +27,10 @@ export default function SectionHeading({ title, subtitle, centered = true }: Sec
       transition={{ duration: 0.5 }}
       className={`space-y-4 max-w-3xl ${centered ? "mx-auto text-center" : ""} mb-12`}
     >
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{title}</h2>
-      {subtitle && <p className="text-lg text-muted-foreground">{subtitle}</p>}
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{t(titleKey)}</h2>
+      {subtitleKey && <p className="text-lg text-muted-foreground">{t(subtitleKey)}</p>}
     </motion.div>
   )
 }
+
+export default memo(SectionHeading)

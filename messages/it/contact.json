@@ -1,0 +1,43 @@
+{
+  "title": "PRENOTA UNA SESSIONE",
+  "subtitle": "Lascia i tuoi dati di contatto e ti contatterò per coordinare i dettagli",
+  "form": {
+    "title": "Compila il modulo",
+    "name": "Il tuo nome *",
+    "email": "Email *",
+    "phone": "Telefono *",
+    "message": "Messaggio",
+    "namePlaceholder": "Inserisci il tuo nome",
+    "emailPlaceholder": "Inserisci la tua email",
+    "phonePlaceholder": "Inserisci il tuo telefono",
+    "messagePlaceholder": "Descrivi la tua richiesta o fai una domanda",
+    "submitButton": "Invia",
+    "submitting": "Invio in corso..."
+  },
+  "success": {
+    "title": "Grazie per la tua richiesta!",
+    "message": "Abbiamo ricevuto il tuo messaggio e ti contatteremo presto.",
+    "button": "Invia un altro messaggio"
+  },
+  "contactInfo": {
+    "title": "Informazioni di Contatto",
+    "phone": {
+      "title": "Telefono",
+      "value": "+380 97 176 81 96"
+    },
+    "email": {
+      "title": "Email",
+      "value": "265840@gmail.com"
+    },
+    "workingHours": {
+      "title": "Orari di Lavoro",
+      "value": "Lun-Ven: 10:00 - 19:00"
+    }
+  },
+  "messengers": {
+    "title": "O contatta tramite messaggistica",
+    "telegram": "Telegram",
+    "viber": "Viber",
+    "whatsapp": "WhatsApp"
+  }
+}

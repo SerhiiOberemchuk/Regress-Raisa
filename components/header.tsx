@@ -5,8 +5,12 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import LanguageSwitcher from "./language-switcher"
+import { useLocale, useTranslations } from "next-intl"
 
 export default function Header() {
+  const locale = useLocale()
+  const t = useTranslations("header")
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -24,8 +28,8 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-    { name: "Про метод", href: "#about" },
-    { name: "Послуги", href: "#services" },
+    { name: t("about"), href: "#about" },
+    { name: t("services"), href: "#services" },
   ]
 
   return (
@@ -36,7 +40,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-primary">
+          <Link href="/" locale={locale} className="text-2xl font-bold text-primary">
             RaisaRegress
           </Link>
 
@@ -46,13 +50,17 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
+                locale={locale}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.name}
               </Link>
             ))}
+            <LanguageSwitcher />
             <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="#contact">Записатися</Link>
+              <Link href="#contact" locale={locale}>
+                {t("book")}
+              </Link>
             </Button>
           </nav>
 
@@ -81,15 +89,19 @@ export default function Header() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  locale={locale}
                   className="text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
+              <div className="py-2">
+                <LanguageSwitcher />
+              </div>
               <Button asChild className="bg-primary hover:bg-primary/90 w-full">
-                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                  Записатися
+                <Link href="#contact" locale={locale} onClick={() => setMobileMenuOpen(false)}>
+                  {t("book")}
                 </Link>
               </Button>
             </div>

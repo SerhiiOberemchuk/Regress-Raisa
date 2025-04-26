@@ -1,0 +1,75 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: April 21, 2024",
+  "backToHome": "Back to Home",
+  "intro": "This Privacy Policy describes how information you provide is collected, used, and protected when using our website and regression therapy services.",
+  "sections": {
+    "collection": {
+      "title": "1. Information Collection",
+      "intro": "We collect information that you voluntarily provide to us when:",
+      "items": [
+        "Filling out the contact form on our website",
+        "Booking a regression therapy session",
+        "Subscribing to our newsletter",
+        "Communicating with us via email or messengers"
+      ],
+      "outro": "The information we collect may include your name, email address, phone number, and the content of messages you send to us."
+    },
+    "usage": {
+      "title": "2. Information Usage",
+      "intro": "We use the collected information for:",
+      "items": [
+        "Providing regression therapy services",
+        "Responding to your requests and questions",
+        "Improving our website and services",
+        "Sending informational materials if you have consented to this",
+        "Administrative purposes related to our services"
+      ]
+    },
+    "protection": {
+      "title": "3. Information Protection",
+      "intro": "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. We commit to:",
+      "items": [
+        "Storing your information in a secure environment",
+        "Limiting access to your personal information",
+        "Regularly reviewing and improving our methods of collecting, storing, and processing data"
+      ]
+    },
+    "confidentiality": {
+      "title": "4. Session Confidentiality",
+      "content": "All information discussed during regression therapy sessions is strictly confidential. We do not disclose the content of sessions to third parties without your explicit consent, except in cases provided for by the laws of Ukraine."
+    },
+    "cookies": {
+      "title": "5. Cookies",
+      "content": "Our website may use cookies to enhance your user experience. Cookies are small files stored on your device. You can configure your browser to refuse all or some cookies, or to alert you when websites set or access cookies."
+    },
+    "thirdParty": {
+      "title": "6. Third-Party Links",
+      "content": "Our website may contain links to other websites. We are not responsible for the privacy practices or content of these third-party sites."
+    },
+    "changes": {
+      "title": "7. Changes to Privacy Policy",
+      "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We recommend periodically reviewing this Privacy Policy."
+    },
+    "rights": {
+      "title": "8. Your Rights",
+      "intro": "You have the right to:",
+      "items": [
+        "Access your personal data",
+        "Correct inaccuracies in your personal data",
+        "Delete your personal data",
+        "Object to the processing of your personal data",
+        "Restrict the processing of your personal data",
+        "Receive your personal data in a structured, commonly used format"
+      ]
+    },
+    "contact": {
+      "title": "9. Contact Information",
+      "intro": "If you have any questions about this Privacy Policy, please contact us:",
+      "email": "Email:",
+      "emailValue": "265840@gmail.com",
+      "phone": "Phone:",
+      "phoneValue": "+380 97 176 81 96"
+    }
+  }
+}

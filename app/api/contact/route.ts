@@ -4,6 +4,12 @@ import nodemailer from "nodemailer"
 // Вказуємо, що цей маршрут повинен використовувати Node.js runtime, а не Edge
 export const runtime = "nodejs"
 
+// Функція для валідації email
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
 // Налаштування транспорту для Nodemailer
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -12,7 +18,8 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD, // Це має бути пароль додатку, а не звичайний пароль Gmail
-  }, tls: {
+  },
+  tls: {
     rejectUnauthorized: false,
   },
 })
@@ -26,6 +33,19 @@ export async function POST(request: Request) {
     // Перевіряємо обов'язкові поля
     if (!name || !email || !phone) {
       return NextResponse.json({ error: "Будь ласка, заповніть всі обов'язкові поля" }, { status: 400 })
+    }
+
+    // Валідація email
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Будь ласка, введіть коректний email" }, { status: 400 })
+    }
+
+    // Перевірка довжини полів
+    if (name.length > 100 || email.length > 100 || phone.length > 20 || (message && message.length > 1000)) {
+      return NextResponse.json(
+        { error: "Один або кілька введених параметрів перевищують допустиму довжину" },
+        { status: 400 },
+      )
     }
 
     // Формуємо дату та час для листа

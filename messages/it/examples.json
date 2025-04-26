@@ -1,0 +1,55 @@
+{
+  "title": "ESEMPI DI RICHIESTE CON CUI I CLIENTI SI PRESENTANO",
+  "subtitle": "La terapia regressiva aiuta a trovare risposte a varie domande di vita e risolvere problemi radicati",
+  "categories": {
+    "0": {
+      "title": "Relazioni",
+      "items": {
+        "0": "Perché attiro costantemente relazioni tossiche?",
+        "1": "Come superare la paura dell'intimità e della fiducia?",
+        "2": "Perché non riesco a trovare un partner per una relazione seria?"
+      }
+    },
+    "1": {
+      "title": "Stato Emotivo",
+      "items": {
+        "0": "Da dove vengono i miei attacchi di panico?",
+        "1": "Come liberarsi dall'ansia cronica?",
+        "2": "Perché sento costante stanchezza ed esaurimento?"
+      }
+    },
+    "2": {
+      "title": "Conoscenza di Sé",
+      "items": {
+        "0": "Qual è il mio vero scopo?",
+        "1": "Perché non riesco a realizzare il mio potenziale?",
+        "2": "Quali sono i miei talenti e abilità nascosti?"
+      }
+    },
+    "3": {
+      "title": "Carriera",
+      "items": {
+        "0": "Perché non riesco a trovare un lavoro che mi dia soddisfazione?",
+        "1": "Da dove viene la mia paura del successo?",
+        "2": "Come superare la sindrome dell'impostore?"
+      }
+    },
+    "4": {
+      "title": "Percorso di Vita",
+      "items": {
+        "0": "Perché continuo a commettere gli stessi errori?",
+        "1": "Come trovare il mio percorso nella vita?",
+        "2": "Perché mi sento bloccato in un posto?"
+      }
+    },
+    "5": {
+      "title": "Salute",
+      "items": {
+        "0": "Qual è la causa psicologica delle mie malattie croniche?",
+        "1": "Come guarire i sintomi psicosomatici?",
+        "2": "Perché il mio corpo reagisce con stress a certe situazioni?"
+      }
+    }
+  },
+  "footer": "Questi sono solo alcuni esempi di richieste. La terapia regressiva può aiutare con molte altre domande e problemi."
+}

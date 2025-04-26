@@ -4,12 +4,16 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import SectionHeading from "./section-heading"
 import { CheckCircle } from "lucide-react"
+import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 export default function Results() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  const t = useTranslations("results")
 
   const results = [
     "Звільнення від тривоги, страхів та фобій",
@@ -60,10 +64,13 @@ export default function Results() {
           >
             <div className="absolute inset-0 bg-primary/10 rounded-full -z-10 transform -translate-x-4 translate-y-4" />
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
-              <img
+              <Image
                 src="/serene-meditation.png"
-                alt="Результати регресивної терапії"
-                className="object-cover w-full h-full"
+                alt={t("imageAlt")}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                priority={false}
               />
             </div>
           </motion.div>

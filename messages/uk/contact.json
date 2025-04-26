@@ -1,0 +1,43 @@
+{
+  "title": "ЗАПИСАТИСЯ НА СЕАНС",
+  "subtitle": "Залиште свої контактні дані, і я зв'яжуся з вами для узгодження деталей",
+  "form": {
+    "title": "Заповніть форму",
+    "name": "Ваше ім'я *",
+    "email": "Email *",
+    "phone": "Телефон *",
+    "message": "Повідомлення",
+    "namePlaceholder": "Введіть ваше ім'я",
+    "emailPlaceholder": "Введіть ваш email",
+    "phonePlaceholder": "Введіть ваш телефон",
+    "messagePlaceholder": "Опишіть ваш запит або задайте питання",
+    "submitButton": "Надіслати",
+    "submitting": "Надсилання..."
+  },
+  "success": {
+    "title": "Дякуємо за ваше звернення!",
+    "message": "Ми отримали ваше повідомлення та зв'яжемося з вами найближчим часом.",
+    "button": "Надіслати ще одне повідомлення"
+  },
+  "contactInfo": {
+    "title": "Контактна інформація",
+    "phone": {
+      "title": "Телефон",
+      "value": "+380 97 176 81 96"
+    },
+    "email": {
+      "title": "Email",
+      "value": "265840@gmail.com"
+    },
+    "workingHours": {
+      "title": "Години роботи",
+      "value": "Пн-Пт: 10:00 - 19:00"
+    }
+  },
+  "messengers": {
+    "title": "Або зв'яжіться через месенджери",
+    "telegram": "Telegram",
+    "viber": "Viber",
+    "whatsapp": "WhatsApp"
+  }
+}

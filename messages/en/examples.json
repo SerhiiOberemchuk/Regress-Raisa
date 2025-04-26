@@ -1,0 +1,55 @@
+{
+  "title": "EXAMPLES OF REQUESTS CLIENTS COME WITH",
+  "subtitle": "Regression therapy helps find answers to various life questions and solve deep-rooted problems",
+  "categories": {
+    "0": {
+      "title": "Relationships",
+      "items": {
+        "0": "Why do I constantly attract toxic relationships?",
+        "1": "How to overcome fear of intimacy and trust?",
+        "2": "Why can't I find a partner for a serious relationship?"
+      }
+    },
+    "1": {
+      "title": "Emotional State",
+      "items": {
+        "0": "Where do my panic attacks come from?",
+        "1": "How to get rid of chronic anxiety?",
+        "2": "Why do I feel constant fatigue and exhaustion?"
+      }
+    },
+    "2": {
+      "title": "Self-Knowledge",
+      "items": {
+        "0": "What is my true purpose?",
+        "1": "Why can't I realize my potential?",
+        "2": "What are my hidden talents and abilities?"
+      }
+    },
+    "3": {
+      "title": "Career",
+      "items": {
+        "0": "Why can't I find a job that brings satisfaction?",
+        "1": "Where does my fear of success come from?",
+        "2": "How to overcome impostor syndrome?"
+      }
+    },
+    "4": {
+      "title": "Life Path",
+      "items": {
+        "0": "Why do I keep making the same mistakes?",
+        "1": "How to find my path in life?",
+        "2": "Why do I feel stuck in one place?"
+      }
+    },
+    "5": {
+      "title": "Health",
+      "items": {
+        "0": "What is the psychological cause of my chronic diseases?",
+        "1": "How to heal psychosomatic symptoms?",
+        "2": "Why does my body react with stress to certain situations?"
+      }
+    }
+  },
+  "footer": "These are just some examples of requests. Regression therapy can help with many other questions and problems."
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Informativa sulla Privacy",
+  "lastUpdated": "Ultimo aggiornamento: 21 aprile 2024",
+  "backToHome": "Torna alla Home",
+  "intro": "Questa Informativa sulla Privacy descrive come le informazioni che fornisci vengono raccolte, utilizzate e protette quando utilizzi il nostro sito web e i servizi di terapia regressiva.",
+  "sections": {
+    "collection": {
+      "title": "1. Raccolta delle Informazioni",
+      "intro": "Raccogliamo le informazioni che ci fornisci volontariamente quando:",
+      "items": [
+        "Compili il modulo di contatto sul nostro sito web",
+        "Prenoti una sessione di terapia regressiva",
+        "Ti iscrivi alla nostra newsletter",
+        "Comunichi con noi via email o messaggistica"
+      ],
+      "outro": "Le informazioni che raccogliamo possono includere il tuo nome, indirizzo email, numero di telefono e il contenuto dei messaggi che ci invii."
+    },
+    "usage": {
+      "title": "2. Utilizzo delle Informazioni",
+      "intro": "Utilizziamo le informazioni raccolte per:",
+      "items": [
+        "Fornire servizi di terapia regressiva",
+        "Rispondere alle tue richieste e domande",
+        "Migliorare il nostro sito web e i servizi",
+        "Inviare materiale informativo se hai dato il consenso",
+        "Scopi amministrativi relativi ai nostri servizi"
+      ]
+    },
+    "protection": {
+      "title": "3. Protezione delle Informazioni",
+      "intro": "Implementiamo misure di sicurezza appropriate per proteggere le tue informazioni personali da accessi non autorizzati, alterazioni, divulgazioni o distruzioni. Ci impegniamo a:",
+      "items": [
+        "Conservare le tue informazioni in un ambiente sicuro",
+        "Limitare l'accesso alle tue informazioni personali",
+        "Rivedere e migliorare regolarmente i nostri metodi di raccolta, conservazione ed elaborazione dei dati"
+      ]
+    },
+    "confidentiality": {
+      "title": "4. Riservatezza delle Sessioni",
+      "content": "Tutte le informazioni discusse durante le sessioni di terapia regressiva sono strettamente confidenziali. Non divulghiamo il contenuto delle sessioni a terzi senza il tuo esplicito consenso, tranne nei casi previsti dalla legge."
+    },
+    "cookies": {
+      "title": "5. Cookie",
+      "content": "Il nostro sito web può utilizzare cookie per migliorare la tua esperienza utente. I cookie sono piccoli file memorizzati sul tuo dispositivo. Puoi configurare il tuo browser per rifiutare tutti o alcuni cookie, o per avvisarti quando i siti web impostano o accedono ai cookie."
+    },
+    "thirdParty": {
+      "title": "6. Link a Terze Parti",
+      "content": "Il nostro sito web può contenere link ad altri siti web. Non siamo responsabili per le pratiche sulla privacy o il contenuto di questi siti di terze parti."
+    },
+    "changes": {
+      "title": "7. Modifiche all'Informativa sulla Privacy",
+      "content": "Potremmo aggiornare la nostra Informativa sulla Privacy di tanto in tanto. Ti informeremo di eventuali modifiche pubblicando la nuova Informativa sulla Privacy su questa pagina. Ti consigliamo di rivedere periodicamente questa Informativa sulla Privacy."
+    },
+    "rights": {
+      "title": "8. I Tuoi Diritti",
+      "intro": "Hai il diritto di:",
+      "items": [
+        "Accedere ai tuoi dati personali",
+        "Correggere imprecisioni nei tuoi dati personali",
+        "Cancellare i tuoi dati personali",
+        "Opporti al trattamento dei tuoi dati personali",
+        "Limitare il trattamento dei tuoi dati personali",
+        "Ricevere i tuoi dati personali in un formato strutturato e di uso comune"
+      ]
+    },
+    "contact": {
+      "title": "9. Informazioni di Contatto",
+      "intro": "Se hai domande su questa Informativa sulla Privacy, contattaci:",
+      "email": "Email:",
+      "emailValue": "265840@gmail.com",
+      "phone": "Telefono:",
+      "phoneValue": "+380 97 176 81 96"
+    }
+  }
+}

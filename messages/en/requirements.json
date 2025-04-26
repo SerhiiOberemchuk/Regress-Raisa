@@ -1,0 +1,31 @@
+{
+  "title": "WHAT IS NEEDED FOR A REGRESSION SESSION?",
+  "subtitle": "For an effective regression therapy session, it is important to ensure comfortable conditions and prepare properly",
+  "requirements": {
+    "0": {
+      "title": "Time",
+      "description": "Set aside 2-3 hours for a full session. This allows you not to rush and deeply work through your request."
+    },
+    "1": {
+      "title": "Headphones",
+      "description": "For online sessions, prepare comfortable headphones with a microphone for quality sound and communication."
+    },
+    "2": {
+      "title": "Comfortable Place",
+      "description": "Find a quiet place where no one will disturb you. Prepare a comfortable chair or bed for relaxation."
+    },
+    "3": {
+      "title": "Stable Internet",
+      "description": "For online sessions, ensure a stable internet connection to avoid interruptions during the session."
+    }
+  },
+  "additionalRecommendations": {
+    "title": "Additional Recommendations",
+    "items": {
+      "0": "Refrain from consuming alcohol, caffeine, and heavy food 2-3 hours before the session",
+      "1": "Wear comfortable clothing that does not restrict movement and breathing",
+      "2": "Before the session, formulate your request or question you want to get an answer to",
+      "3": "Be open to the process and trust your inner experience"
+    }
+  }
+}
