@@ -1,59 +1,61 @@
 {
-  "title": "SERVIZI E PREZZI",
-  "subtitle": "Scegli l'opzione ottimale per risolvere le tue richieste",
+  "title": "Servizi e Prezzi",
+  "subtitle": "Scegli l’opzione più adatta per affrontare le tue esigenze",
   "services": {
-    "0": {
-      "title": "SESSIONE COMPLETA DI REGRESSIONE",
-      "price": "€90",
+    "regression": {
+      "name": "Sessione completa di regressione",
+      "price": "3600 UAH",
       "features": {
-        "0": "Sessione completa di regressione della durata da 1,5 a 3,5 ore",
-        "1": "Visualizzazione e viaggio attraverso gli spazi di cui hai bisogno per risolvere la tua richiesta (vita passata, infanzia, mondo delle anime, vita tra le vite, mondo degli angeli, antenati, ecc.)",
-        "2": "Elaborazione completa e profonda di 1 richiesta",
-        "3": "Pulizia da blocchi ed entità",
-        "4": "Pulizia del problema radice",
-        "5": "Pulizia di problemi indiretti (numero illimitato)",
-        "6": "Lingua della sessione: italiano"
+        "f1": "Sessione completa di regressione della durata da 1,5 a 3,5 ore",
+        "f2": "Esplorazione degli spazi necessari per risolvere il tuo tema (vite passate, infanzia, mondo delle anime, vita tra le vite, regno angelico, lignaggio familiare, ecc.)",
+        "f3": "Lavoro completo e profondo su un tema specifico",
+        "f4": "Pulizia da blocchi ed entità",
+        "f5": "Pulizia del problema alla radice",
+        "f6": "Pulizia dei problemi indiretti (illimitata)",
+        "f7": "Lingua della sessione: ucraino, russo"
       }
     },
-    "1": {
-      "title": "PROGRESSIONE",
-      "price": "€90",
+    "progression": {
+      "name": "Progressione",
+      "price": "3600 UAH",
       "features": {
-        "0": "Sessione completa di progressione della durata da 1,5 a 3,5 ore",
-        "1": "Lavoro con segmenti futuri della vita, aiuta a scoprire scenari potenziali e opportunità per il tuo sviluppo nel futuro",
-        "2": "Ricerca di opzioni alternative per lo sviluppo umano",
-        "3": "Elaborazione di problemi passati nella regressione (se necessario) per migliorare il futuro",
-        "4": "Lingua della sessione: italiano"
+        "f1": "Sessione completa di progressione della durata da 1,5 a 3,5 ore",
+        "f2": "Lavoro con futuri potenziali per chiarire scenari e opportunità di sviluppo personale",
+        "f3": "Esplorazione di percorsi alternativi di vita",
+        "f4": "Lavoro su temi del passato attraverso la regressione (se necessario) per migliorare il futuro",
+        "f5": "Lingua della sessione: ucraino, russo"
       }
     },
-    "2": {
-      "title": "TERAPIA DELLA COSCIENZA",
-      "price": "€250",
+    "consciousness": {
+      "name": "Terapia della coscienza",
+      "price": "9800 UAH",
       "features": {
-        "0": "3 sessioni complete che offrono l'opportunità di elaborare più a fondo diversi momenti chiave della tua vita della durata da 1,5 a 3,5 ore",
-        "1": "Discussione individuale e pianificazione delle sessioni e dei loro argomenti secondo i desideri del cliente, la mia consulenza, risposte alle domande",
-        "2": "3 mesi di lavoro - immersione 1 volta al mese + supporto al cliente tra le sessioni",
-        "3": "Elaborazione completa e profonda di 3 richieste",
-        "4": "Pulizia da blocchi ed entità",
-        "5": "Pulizia del problema radice",
-        "6": "Pulizia di problemi indiretti (numero illimitato)",
-        "7": "Lingua della sessione: italiano"
+        "f1": "3 sessioni complete per un lavoro più profondo su temi chiave della vita, da 1,5 a 3,5 ore ciascuna",
+        "f2": "Pianificazione e discussione individuale dei temi, consulenza e risposte alle domande",
+        "f3": "3 mesi di lavoro – una sessione al mese + supporto tra le sessioni",
+        "f4": "Lavoro approfondito su 3 richieste",
+        "f5": "Pulizia da blocchi ed entità",
+        "f6": "Pulizia del problema alla radice",
+        "f7": "Pulizia dei problemi indiretti (illimitata)",
+        "f8": "Lingua della sessione: ucraino, russo"
       }
     },
-    "3": {
-      "title": "CONSULENZA",
-      "price": "€20",
+    "consultation": {
+      "name": "Consulenza",
+      "price": "800 UAH",
       "features": {
-        "0": "Pre-sessione della durata di 30 minuti",
-        "1": "Verifica dell'ipnotizzabilità",
-        "2": "Discussione e analisi della richiesta per l'elaborazione",
-        "3": "Definizione degli obiettivi per la sessione",
-        "4": "Risposte alle domande"
+        "f1": "Pre-sessione della durata di 30 minuti",
+        "f2": "Test di ipnotizzabilità",
+        "f3": "Discussione e analisi del tuo tema",
+        "f4": "Definizione degli obiettivi della sessione",
+        "f5": "Risposte alle tue domande"
       }
     }
   },
+  "button": "Prenota ora",
   "individualApproach": {
-    "title": "Approccio Individuale",
-    "description": "Ogni cliente è unico, quindi offro un approccio individuale per risolvere le tue richieste. Se hai bisogno di un programma speciale o hai esigenze particolari, contattami per discutere termini individuali di collaborazione."
-  }
+    "title": "Approccio individuale",
+    "text": "Ogni cliente è unico, per questo offro un approccio personalizzato alle tue esigenze. Se hai bisogni particolari o desideri un programma su misura, contattami per discutere una proposta adatta a te."
+  },
+  "includes": "Comprende"
 }

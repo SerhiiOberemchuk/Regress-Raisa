@@ -1,15 +1,16 @@
 {
-  "title": "Ipnosi Regressiva Online",
-  "name": "Raisa Oberemchuk",
-  "profession": "TERAPISTA DI REGRESSIONE",
-  "description": "La tua guida nelle profondità del subconscio. Aiuto a guarire il passato per una vita armoniosa oggi! Il mio obiettivo è aiutare le persone a trovare le cause profonde dei loro problemi e liberarsi dalla loro influenza.",
-  "bookButton": "Prenota una Sessione",
-  "learnMoreButton": "Scopri di Più",
-  "imageAlt": "Raisa Oberemchuk - terapista di regressione, conduce una sessione di ipnosi regressiva",
-  "stats": {
-    "clients": "95% dei clienti",
-    "clientsDescription": "notano cambiamenti positivi",
-    "experience": "10+ anni",
-    "experienceDescription": "di esperienza in terapia regressiva"
-  }
+  "title": {
+    "part1": "Ipnosi",
+    "part2": "regressiva",
+    "part3": "online"
+  },
+  "heroname": "Raisa Oberemchuk",
+  "position": "PRATICANTE REGRESSOLOGA",
+  "description": "La tua guida alle profondità del subconscio. Ti aiuto a guarire il passato per una vita armoniosa oggi! Il mio obiettivo è aiutare una persona a trovare le cause profonde dei problemi e liberarsi dalla loro influenza",
+  "buttonsbs": "Prenota una sessione",
+  "btnmore": "Scopri di più",
+  "clients": "clienti",
+  "changes": "notano cambiamenti positivi",
+  "years": "anni",
+  "exsp": "di esperienza nella terapia regressiva"
 }

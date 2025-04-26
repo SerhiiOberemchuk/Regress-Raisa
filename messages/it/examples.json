@@ -1,55 +1,56 @@
 {
-  "title": "ESEMPI DI RICHIESTE CON CUI I CLIENTI SI PRESENTANO",
-  "subtitle": "La terapia regressiva aiuta a trovare risposte a varie domande di vita e risolvere problemi radicati",
+  "title": "Esempi di richieste dei clienti",
+  "subtitle": "La terapia regressiva aiuta a trovare risposte a molte domande della vita e a risolvere problemi profondi.",
+
   "categories": {
-    "0": {
+    "relationships": {
       "title": "Relazioni",
-      "items": {
-        "0": "Perché attiro costantemente relazioni tossiche?",
-        "1": "Come superare la paura dell'intimità e della fiducia?",
-        "2": "Perché non riesco a trovare un partner per una relazione seria?"
+      "questions": {
+        "q1": "Perché attraggo sempre relazioni tossiche?",
+        "q2": "Come posso superare la paura dell’intimità e della fiducia?",
+        "q3": "Perché non riesco a trovare un partner per una relazione seria?"
       }
     },
-    "1": {
-      "title": "Stato Emotivo",
-      "items": {
-        "0": "Da dove vengono i miei attacchi di panico?",
-        "1": "Come liberarsi dall'ansia cronica?",
-        "2": "Perché sento costante stanchezza ed esaurimento?"
+    "emotions": {
+      "title": "Stato emotivo",
+      "questions": {
+        "q1": "Da dove vengono i miei attacchi di panico?",
+        "q2": "Come posso liberarmi dell’ansia cronica?",
+        "q3": "Perché mi sento sempre stanco ed esausto?"
       }
     },
-    "2": {
-      "title": "Conoscenza di Sé",
-      "items": {
-        "0": "Qual è il mio vero scopo?",
-        "1": "Perché non riesco a realizzare il mio potenziale?",
-        "2": "Quali sono i miei talenti e abilità nascosti?"
+    "self": {
+      "title": "Conoscenza di sé",
+      "questions": {
+        "q1": "Qual è il mio vero scopo?",
+        "q2": "Perché non riesco a realizzare il mio potenziale?",
+        "q3": "Quali sono i miei talenti e capacità nascosti?"
       }
     },
-    "3": {
+    "career": {
       "title": "Carriera",
-      "items": {
-        "0": "Perché non riesco a trovare un lavoro che mi dia soddisfazione?",
-        "1": "Da dove viene la mia paura del successo?",
-        "2": "Come superare la sindrome dell'impostore?"
+      "questions": {
+        "q1": "Perché non riesco a trovare un lavoro che mi soddisfi?",
+        "q2": "Da dove viene la mia paura del successo?",
+        "q3": "Come posso superare la sindrome dell’impostore?"
       }
     },
-    "4": {
-      "title": "Percorso di Vita",
-      "items": {
-        "0": "Perché continuo a commettere gli stessi errori?",
-        "1": "Come trovare il mio percorso nella vita?",
-        "2": "Perché mi sento bloccato in un posto?"
+    "lifePath": {
+      "title": "Percorso di vita",
+      "questions": {
+        "q1": "Perché continuo a ripetere gli stessi errori?",
+        "q2": "Come posso trovare il mio percorso nella vita?",
+        "q3": "Perché mi sento bloccato sempre nello stesso punto?"
       }
     },
-    "5": {
+    "health": {
       "title": "Salute",
-      "items": {
-        "0": "Qual è la causa psicologica delle mie malattie croniche?",
-        "1": "Come guarire i sintomi psicosomatici?",
-        "2": "Perché il mio corpo reagisce con stress a certe situazioni?"
+      "questions": {
+        "q1": "Qual è la causa psicologica delle mie malattie croniche?",
+        "q2": "Come posso guarire i sintomi psicosomatici?",
+        "q3": "Perché il mio corpo reagisce con stress a certe situazioni?"
       }
     }
   },
-  "footer": "Questi sono solo alcuni esempi di richieste. La terapia regressiva può aiutare con molte altre domande e problemi."
+  "disclaimer": "Questi sono solo alcuni esempi. La terapia regressiva può aiutare anche con molti altri problemi e difficoltà."
 }

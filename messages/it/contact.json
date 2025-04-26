@@ -1,43 +1,37 @@
 {
-  "title": "PRENOTA UNA SESSIONE",
-  "subtitle": "Lascia i tuoi dati di contatto e ti contatterò per coordinare i dettagli",
-  "form": {
-    "title": "Compila il modulo",
-    "name": "Il tuo nome *",
-    "email": "Email *",
-    "phone": "Telefono *",
-    "message": "Messaggio",
-    "namePlaceholder": "Inserisci il tuo nome",
-    "emailPlaceholder": "Inserisci la tua email",
-    "phonePlaceholder": "Inserisci il tuo telefono",
-    "messagePlaceholder": "Descrivi la tua richiesta o fai una domanda",
-    "submitButton": "Invia",
-    "submitting": "Invio in corso..."
-  },
-  "success": {
-    "title": "Grazie per la tua richiesta!",
-    "message": "Abbiamo ricevuto il tuo messaggio e ti contatteremo presto.",
-    "button": "Invia un altro messaggio"
-  },
-  "contactInfo": {
-    "title": "Informazioni di Contatto",
-    "phone": {
-      "title": "Telefono",
-      "value": "+380 97 176 81 96"
+  "title": "Prenota una sessione",
+  "subtitle": "Lascia i tuoi dati di contatto e ti contatterò per concordare i dettagli",
+  "formTitle": "Compila il modulo",
+  "name": "Il tuo nome *",
+  "namePlaceholder": "Inserisci il tuo nome",
+  "email": "Email *",
+  "emailPlaceholder": "Inserisci la tua email",
+  "phone": "Telefono *",
+  "phonePlaceholder": "Inserisci il tuo numero di telefono",
+  "message": "Messaggio",
+  "messagePlaceholder": "Descrivi la tua richiesta o poni una domanda",
+  "submit": "Invia",
+  "submitting": "Invio in corso...",
+  "successTitle": "Grazie per il tuo messaggio!",
+  "successText": "Abbiamo ricevuto il tuo messaggio e ti contatteremo al più presto.",
+  "submitAnother": "Invia un altro messaggio",
+  "errorTitle": "Errore!",
+  "errorDefault": "Si è verificato un errore durante l'invio del modulo",
+  "errorCustom": "Qualcosa è andato storto. Riprova.",
+  "contactInfoTitle": "Informazioni di contatto",
+  "workingHoursLabel": "Orari di lavoro",
+  "phoneLabel": "Telefono",
+  "emailLabel": "Email",
+  "workHoursText": "Lun-Ven: 10:00 - 19:00",
+  "messengersTitle": "Oppure contatta tramite messaggistica",
+  "toast": {
+    "success": {
+      "title": "Messaggio inviato!",
+      "description": "Grazie per il tuo messaggio. Ti contatteremo al più presto."
     },
-    "email": {
-      "title": "Email",
-      "value": "265840@gmail.com"
-    },
-    "workingHours": {
-      "title": "Orari di Lavoro",
-      "value": "Lun-Ven: 10:00 - 19:00"
+    "error": {
+      "title": "Errore!",
+      "description": "Si è verificato un errore durante l'invio del modulo"
     }
-  },
-  "messengers": {
-    "title": "O contatta tramite messaggistica",
-    "telegram": "Telegram",
-    "viber": "Viber",
-    "whatsapp": "WhatsApp"
   }
 }

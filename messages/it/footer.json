@@ -1,24 +1,9 @@
 {
-  "description": "Sessioni professionali di terapia regressiva per guarire il passato, trasformare il presente e creare un futuro migliore.",
-  "navigation": {
-    "title": "Navigazione",
-    "about": "Sul Metodo",
-    "results": "Risultati",
-    "examples": "Richieste di Esempio",
-    "requirements": "Requisiti della Sessione",
-    "faq": "FAQ",
-    "services": "Servizi e Prezzi",
-    "contact": "Contatti"
-  },
-  "contacts": {
-    "title": "Contatti",
-    "phone": "Telefono:",
-    "email": "Email:",
-    "workingHours": "Orari di Lavoro:"
-  },
-  "copyright": "© {year} RaisaRegress. Tutti i diritti riservati.",
-  "createdBy": "Sito web creato da:",
-  "creatorName": "Serhii Oberemchuk",
-  "privacy": "Informativa sulla Privacy",
-  "terms": "Termini di Utilizzo"
+  "tagline": "Sessioni professionali di terapia regressiva per guarire il passato, trasformare il presente e creare un futuro migliore.",
+  "navigation": "Navigazione",
+  "contact": "Contatti",
+  "rights": "Tutti i diritti riservati.",
+  "createdBy": "Sito creato da",
+  "privacyPolicy": "Politica sulla privacy",
+  "termsOfUse": "Termini di utilizzo"
 }

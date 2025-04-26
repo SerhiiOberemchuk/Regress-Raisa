@@ -1,20 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import SectionHeading from "./section-heading"
-import { CheckCircle } from "lucide-react"
-import Image from "next/image"
-import { useTranslations } from "next-intl"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
+import { CheckCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Results() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
-  const t = useTranslations("results")
-  const results = Object.values(t.raw("results"))
+  });
+  const t = useTranslations("results");
+  const results = Object.values(t.raw("benefits")) as string[];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,7 +22,7 @@ export default function Results() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { x: -20, opacity: 0 },
@@ -33,12 +31,12 @@ export default function Results() {
       opacity: 1,
       transition: { duration: 0.4 },
     },
-  }
+  };
 
   return (
     <section id="results" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading titleKey="title" subtitleKey="subtitle" namespace="results" />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
           <motion.div
@@ -49,13 +47,10 @@ export default function Results() {
           >
             <div className="absolute inset-0 bg-primary/10 rounded-full -z-10 transform -translate-x-4 translate-y-4" />
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
-              <Image
+              <img
                 src="/serene-meditation.png"
                 alt={t("imageAlt")}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-                priority={false}
+                className="object-cover w-full h-full"
               />
             </div>
           </motion.div>
@@ -68,7 +63,11 @@ export default function Results() {
             className="space-y-4"
           >
             {results.map((result, index) => (
-              <motion.li key={index} variants={itemVariants} className="flex items-start gap-3">
+              <motion.li
+                key={index}
+                variants={itemVariants}
+                className="flex items-start gap-3"
+              >
                 <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-lg">{result}</span>
               </motion.li>
@@ -82,9 +81,11 @@ export default function Results() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto"
         >
-          <p className="text-lg md:text-xl font-medium text-center italic">"{t("quote")}"</p>
+          <p className="text-lg md:text-xl font-medium text-center italic">
+            {t("quote")}
+          </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

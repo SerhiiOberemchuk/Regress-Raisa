@@ -1,35 +1,35 @@
 {
-  "title": "FREQUENTLY ASKED QUESTIONS AND ANSWERS",
+  "title": "Frequently Asked Questions",
   "subtitle": "Answers to the most common questions about regression therapy",
   "questions": {
-    "0": {
+    "q1": {
       "question": "Is regression therapy safe?",
-      "answer": "Yes, regression therapy is a safe method when working with a qualified specialist. During the session, you always maintain control over the process and can return to a normal state of consciousness at any moment."
+      "answer": "Yes, regression therapy is a safe method when guided by a qualified professional. During the session, you always remain in control and can return to your normal state of consciousness at any time."
     },
-    "1": {
-      "question": "What if I don't remember anything during the session?",
-      "answer": "This happens, but it doesn't mean the session was ineffective. Sometimes information may manifest later in the form of insights, dreams, or sudden understandings. Additionally, healing can occur at a subconscious level, even if you don't receive clear memories."
+    "q2": {
+      "question": "What if I don’t recall anything during the session?",
+      "answer": "This can happen, but it doesn’t mean the session was ineffective. Sometimes the information emerges later as insights, dreams, or sudden realizations. Healing can occur on a subconscious level even without clear memories."
     },
-    "2": {
-      "question": "How many sessions are needed to solve my problem?",
-      "answer": "The number of necessary sessions is individual and depends on the nature of the problem and your readiness for change. Some requests can be resolved in 1-2 sessions, others require more prolonged work. After the first session, we will be able to assess how many sessions may be needed in your case."
+    "q3": {
+      "question": "How many sessions are needed to resolve my issue?",
+      "answer": "The number of sessions depends on the nature of the issue and your readiness for change. Some problems can be resolved in 1–2 sessions, others may require longer work. After the first session, we can better evaluate your needs."
     },
-    "3": {
-      "question": "Can sessions be conducted online?",
-      "answer": "Yes, regression therapy sessions are effectively conducted online. It is important to ensure quality sound, a stable internet connection, and a comfortable place where no one will disturb you during the session."
+    "q4": {
+      "question": "Can regression sessions be done online?",
+      "answer": "Yes, regression therapy sessions are effectively conducted online. It’s important to ensure good sound quality, a stable internet connection, and a comfortable, undisturbed space."
     },
-    "4": {
-      "question": "Can all people enter a state of regression?",
-      "answer": "Most people are capable of entering a state of regression, but the depth of this state may differ. Some people easily enter a deep trance, others remain in a lighter state. It's important to understand that even a light trance can be sufficient for effective therapy."
+    "q5": {
+      "question": "Can everyone enter a regression state?",
+      "answer": "Most people can enter a regression state, though the depth may vary. Some enter deep trance easily, others stay in a lighter state — which is still enough for effective therapy."
     },
-    "5": {
-      "question": "Can I \"make up\" memories during regression?",
-      "answer": "This is a common question. During regression, your subconscious provides information in a form that is most accessible to you — these can be memories, symbols, metaphors, or sensations. It's important not to analyze the experience during the session, but simply observe it. The therapist will help you distinguish real memories from imagination."
+    "q6": {
+      "question": "Can I ‘make up’ memories during regression?",
+      "answer": "This is a common concern. During regression, your subconscious presents information in the most accessible form — memories, symbols, metaphors, or sensations. It’s important not to analyze during the session, just observe. The therapist will help you distinguish imagination from real memory."
     },
-    "6": {
-      "question": "Are there contraindications for regression therapy?",
-      "answer": "Regression therapy is not recommended for people with severe mental disorders such as schizophrenia, bipolar disorder in an acute phase, as well as people with epilepsy. Also, sessions are not conducted in a state of alcohol or drug intoxication."
+    "q7": {
+      "question": "Are there any contraindications for regression therapy?",
+      "answer": "Regression therapy is not recommended for people with severe mental disorders such as schizophrenia, acute bipolar disorder, or epilepsy. Sessions should also not be conducted under the influence of alcohol or drugs."
     }
   },
-  "footer": "Have other questions? Don't hesitate to contact me for additional information."
+  "contactNote": "Have other questions? Feel free to contact me for more information."
 }

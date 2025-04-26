@@ -1,32 +1,51 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import SectionHeading from "./section-heading"
-import { Card, CardContent } from "@/components/ui/card"
-import { Users, Heart, Brain, Lightbulb, Compass, Zap } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Users, Heart, Brain, Lightbulb, Compass, Zap } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { arrayKeys } from "@/lib/array-keys-nextintl";
 
 export default function Examples() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
-  const t = useTranslations("examples")
-
-  const categories = Object.values(t.raw("categories")).map((category: any, index) => ({
-    icon: [
-      <Users key={0} className="h-8 w-8 text-primary" />,
-      <Heart key={1} className="h-8 w-8 text-primary" />,
-      <Brain key={2} className="h-8 w-8 text-primary" />,
-      <Lightbulb key={3} className="h-8 w-8 text-primary" />,
-      <Compass key={4} className="h-8 w-8 text-primary" />,
-      <Zap key={5} className="h-8 w-8 text-primary" />,
-    ][index],
-    title: category.title,
-    items: Object.values(category.items),
-  }))
+  });
+  const t = useTranslations("examples");
+  const examples = [
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: t("categories.relationships.title"),
+      items: arrayKeys(t.raw("categories.relationships.questions")),
+    },
+    {
+      icon: <Heart className="h-8 w-8 text-primary" />,
+      title: t("categories.emotions.title"),
+      items: arrayKeys(t.raw("categories.emotions.questions")),
+    },
+    {
+      icon: <Brain className="h-8 w-8 text-primary" />,
+      title: t("categories.self.title"),
+      items: arrayKeys(t.raw("categories.self.questions")),
+    },
+    {
+      icon: <Lightbulb className="h-8 w-8 text-primary" />,
+      title: t("categories.career.title"),
+      items: arrayKeys(t.raw("categories.career.questions")),
+    },
+    {
+      icon: <Compass className="h-8 w-8 text-primary" />,
+      title: t("categories.lifePath.title"),
+      items: arrayKeys(t.raw("categories.lifePath.questions")),
+    },
+    {
+      icon: <Zap className="h-8 w-8 text-primary" />,
+      title: t("categories.health.title"),
+      items: arrayKeys(t.raw("categories.health.questions")),
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,7 +55,7 @@ export default function Examples() {
         staggerChildren: 0.15,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -45,12 +64,12 @@ export default function Examples() {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <section id="examples" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <SectionHeading titleKey="title" subtitleKey="subtitle" namespace="examples" />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <motion.div
           ref={ref}
@@ -64,8 +83,10 @@ export default function Examples() {
               <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-full bg-primary/10">{category.icon}</div>
-                    <h3 className="text-xl font-semibold">{category.title}</h3>
+                    <div className="p-2 rounded-full bg-primary/10">
+                      {example.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold">{example.title}</h3>
                   </div>
                   <ul className="space-y-2">
                     {category.items.map((item, idx) => (
@@ -86,9 +107,11 @@ export default function Examples() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t("footer")}</p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {t("disclaimer")}
+          </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

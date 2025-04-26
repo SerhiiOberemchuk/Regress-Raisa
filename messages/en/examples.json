@@ -1,55 +1,56 @@
 {
-  "title": "EXAMPLES OF REQUESTS CLIENTS COME WITH",
-  "subtitle": "Regression therapy helps find answers to various life questions and solve deep-rooted problems",
+  "title": "Examples of questions clients come with",
+  "subtitle": "Regression therapy helps find answers to various life questions and resolve deep-rooted problems.",
+
   "categories": {
-    "0": {
+    "relationships": {
       "title": "Relationships",
-      "items": {
-        "0": "Why do I constantly attract toxic relationships?",
-        "1": "How to overcome fear of intimacy and trust?",
-        "2": "Why can't I find a partner for a serious relationship?"
+      "questions": {
+        "q1": "Why do I keep attracting toxic relationships?",
+        "q2": "How can I overcome the fear of intimacy and trust?",
+        "q3": "Why can’t I find a partner for a serious relationship?"
       }
     },
-    "1": {
-      "title": "Emotional State",
-      "items": {
-        "0": "Where do my panic attacks come from?",
-        "1": "How to get rid of chronic anxiety?",
-        "2": "Why do I feel constant fatigue and exhaustion?"
+    "emotions": {
+      "title": "Emotional state",
+      "questions": {
+        "q1": "Where do my panic attacks come from?",
+        "q2": "How can I get rid of chronic anxiety?",
+        "q3": "Why do I constantly feel tired and exhausted?"
       }
     },
-    "2": {
-      "title": "Self-Knowledge",
-      "items": {
-        "0": "What is my true purpose?",
-        "1": "Why can't I realize my potential?",
-        "2": "What are my hidden talents and abilities?"
+    "self": {
+      "title": "Self-awareness",
+      "questions": {
+        "q1": "What is my true purpose?",
+        "q2": "Why can’t I realize my potential?",
+        "q3": "What are my hidden talents and abilities?"
       }
     },
-    "3": {
+    "career": {
       "title": "Career",
-      "items": {
-        "0": "Why can't I find a job that brings satisfaction?",
-        "1": "Where does my fear of success come from?",
-        "2": "How to overcome impostor syndrome?"
+      "questions": {
+        "q1": "Why can’t I find a job that brings me satisfaction?",
+        "q2": "Where does my fear of success come from?",
+        "q3": "How can I overcome impostor syndrome?"
       }
     },
-    "4": {
-      "title": "Life Path",
-      "items": {
-        "0": "Why do I keep making the same mistakes?",
-        "1": "How to find my path in life?",
-        "2": "Why do I feel stuck in one place?"
+    "lifePath": {
+      "title": "Life path",
+      "questions": {
+        "q1": "Why do I keep repeating the same mistakes?",
+        "q2": "How can I find my path in life?",
+        "q3": "Why do I feel stuck in one place?"
       }
     },
-    "5": {
+    "health": {
       "title": "Health",
-      "items": {
-        "0": "What is the psychological cause of my chronic diseases?",
-        "1": "How to heal psychosomatic symptoms?",
-        "2": "Why does my body react with stress to certain situations?"
+      "questions": {
+        "q1": "What is the psychological cause of my chronic illnesses?",
+        "q2": "How can I heal psychosomatic symptoms?",
+        "q3": "Why does my body react with stress to certain situations?"
       }
     }
   },
-  "footer": "These are just some examples of requests. Regression therapy can help with many other questions and problems."
+  "disclaimer": "These are just a few examples. Regression therapy can help with many other issues and challenges."
 }

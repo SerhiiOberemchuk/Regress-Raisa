@@ -1,24 +1,9 @@
 {
-  "description": "Professional regression therapy sessions for healing the past, transforming the present, and creating a better future.",
-  "navigation": {
-    "title": "Navigation",
-    "about": "About Method",
-    "results": "Results",
-    "examples": "Example Requests",
-    "requirements": "Session Requirements",
-    "faq": "FAQ",
-    "services": "Services & Prices",
-    "contact": "Contact"
-  },
-  "contacts": {
-    "title": "Contacts",
-    "phone": "Phone:",
-    "email": "Email:",
-    "workingHours": "Working Hours:"
-  },
-  "copyright": "© {year} RaisaRegress. All rights reserved.",
-  "createdBy": "Website created by:",
-  "creatorName": "Serhii Oberemchuk",
-  "privacy": "Privacy Policy",
-  "terms": "Terms of Use"
+  "tagline": "Professional regression therapy sessions for healing the past, transforming the present, and creating a better future.",
+  "navigation": "Navigation",
+  "contact": "Contact",
+  "rights": "All rights reserved.",
+  "createdBy": "Website created by",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfUse": "Terms of Use"
 }

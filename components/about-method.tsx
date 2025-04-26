@@ -1,42 +1,40 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import SectionHeading from "./section-heading"
-import { Card, CardContent } from "@/components/ui/card"
-import { Brain, Heart, Compass, Sparkles } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Brain, Heart, Compass, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function AboutMethod() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
-  const t = useTranslations("about")
-
+  });
+  const t = useTranslations("about");
   const features = [
     {
       icon: <Brain className="h-10 w-10 text-primary" />,
-      title: t("features.0.title"),
-      description: t("features.0.description"),
+      title: t("benefits.access.title"),
+      description: t("benefits.access.description"),
     },
     {
       icon: <Heart className="h-10 w-10 text-primary" />,
-      title: t("features.1.title"),
-      description: t("features.1.description"),
+      title: t("benefits.healing.title"),
+      description: t("benefits.healing.description"),
     },
     {
       icon: <Compass className="h-10 w-10 text-primary" />,
-      title: t("features.2.title"),
-      description: t("features.2.description"),
+      title: t("benefits.awareness.title"),
+      description: t("benefits.awareness.description"),
     },
     {
       icon: <Sparkles className="h-10 w-10 text-primary" />,
-      title: t("features.3.title"),
-      description: t("features.3.description"),
+      title: t("benefits.potential.title"),
+      description: t("benefits.potential.description"),
     },
-  ]
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -46,7 +44,7 @@ export default function AboutMethod() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -55,17 +53,17 @@ export default function AboutMethod() {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
-  const explorationAreas = Object.values(t.raw("explorationAreas"))
+  const explorationAreas = Object.values(t.raw("list")) as string[];
 
   return (
     <section id="about" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <SectionHeading titleKey="title" subtitleKey="subtitle" namespace="about" />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <motion.div className="bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto mb-12">
-          <p className="text-muted-foreground mb-4">{t("description")}</p>
+          <p className="text-muted-foreground mb-4">{t("intro")}</p>
 
           <ul className="space-y-2 mb-6">
             {explorationAreas.map((area, index) => (
@@ -76,11 +74,9 @@ export default function AboutMethod() {
             ))}
           </ul>
 
-          <p className="text-muted-foreground mb-4">{t("paragraphs.0")}</p>
-
-          <p className="text-muted-foreground mb-4">{t("paragraphs.1")}</p>
-
-          <p className="text-muted-foreground font-medium">{t("paragraphs.2")}</p>
+          <p className="text-muted-foreground mb-4">{t("deepWork")}</p>
+          <p className="text-muted-foreground mb-4">{t("suitableFor")}</p>
+          <p className="text-muted-foreground font-medium">{t("conclusion")}</p>
         </motion.div>
 
         <motion.div
@@ -94,8 +90,12 @@ export default function AboutMethod() {
             <motion.div key={index} variants={itemVariants}>
               <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 flex flex-col items-center text-center">
-                  <div className="mb-4 p-3 rounded-full bg-primary/10">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <div className="mb-4 p-3 rounded-full bg-primary/10">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
@@ -109,11 +109,13 @@ export default function AboutMethod() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16 bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto"
         >
-          <h3 className="text-xl md:text-2xl font-semibold mb-4">{t("howItWorks.title")}</h3>
-          <p className="text-muted-foreground mb-4">{t("howItWorks.paragraphs.0")}</p>
-          <p className="text-muted-foreground">{t("howItWorks.paragraphs.1")}</p>
+          <h3 className="text-xl md:text-2xl font-semibold mb-4">
+            {t("questionTitle")}
+          </h3>
+          <p className="text-muted-foreground mb-4">{t("questionAnswer1")}</p>
+          <p className="text-muted-foreground">{t("questionAnswer2")}</p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

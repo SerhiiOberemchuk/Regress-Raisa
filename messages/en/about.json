@@ -1,44 +1,39 @@
 {
-  "title": "ABOUT REGRESSION THERAPY METHOD",
-  "subtitle": "Regression therapy is a therapeutic approach that allows you to return to past life events to heal psychological traumas and solve current problems.",
-  "description": "Regression hypnosis is a therapy method that allows the subject to enter a deep state of relaxation and subconscious perception. In this state, the regression therapist helps the person recall and process events from the past that may have an impact on their current state or behavior.",
-  "explorationAreas": {
-    "0": "childhood memories",
-    "1": "traumatic situations or even moments from past lives (used to solve all requests, universally)",
-    "2": "life between lives (you can see contracts with kindred souls who incarnate as your loved ones or even enemies, often finding understanding in relationships with people)",
-    "3": "the world of angels (a space of complete processing, raising vibrations, awareness)",
-    "4": "ancestral space (for complex requests, working through ancestral scenarios that negatively affect you)",
-    "5": "extraterrestrial incarnations (where, on which planets and when your soul lived before coming to Earth, most often in these spaces everything falls into place – purpose, soul tasks and other important requests)",
-    "6": "the future – your or the next life of the soul"
+  "title": "About Regression Therapy",
+  "subtitle": "Regression therapy is a therapeutic approach that allows returning to past life events to heal psychological trauma and resolve current problems.",
+
+  "intro": "Regression hypnosis is a therapeutic method that allows the client to enter a deep state of relaxation and subconscious perception. In this state, the regression therapist helps the person recall and process past events that may affect their current condition or behavior. These may include:",
+  "list": {
+    "item1": "childhood memories",
+    "item2": "traumatic events or even moments from past lives (used universally to resolve all types of issues)",
+    "item3": "life between lives (used to explore soul contracts with loved ones or even enemies — often revealing understanding in relationships)",
+    "item4": "angelic realms (space of complete forgiveness, raising vibrations, and awareness)",
+    "item5": "ancestral space (for complex issues, working through inherited patterns that negatively affect you)",
+    "item6": "extraterrestrial incarnations (on which planets and when your soul lived before coming to Earth — often everything becomes clear here: purpose, soul’s tasks, and major questions)",
+    "item7": "the future — your next soul incarnation"
   },
-  "paragraphs": {
-    "0": "The goal of regression hypnosis is to identify and resolve hidden psychological blocks that prevent a person from achieving harmony in life. During the session, the regression therapist helps the patient not only review these events but also rethink them, which allows for emotional healing and stress reduction.",
-    "1": "This technique is suitable for people who seek to better understand themselves, free themselves from negative experiences, and improve their quality of life. Regression hypnosis is a safe and comfortable process during which the client always maintains control over their sensations.",
-    "2": "If you are interested in deeper self-knowledge and emotional healing, regression hypnosis can be the first step towards a new quality of life."
-  },
-  "features": {
-    "0": {
-      "title": "Access to the Subconscious",
-      "description": "Regression therapy allows access to hidden memories and subconscious blocks."
+  "deepWork": "The goal of regression hypnosis is to identify and resolve hidden psychological blocks that prevent a person from achieving harmony in life. During a session, the therapist helps the client not only revisit these events, but also reinterpret them, which leads to emotional healing and stress relief.",
+  "suitableFor": "This method is suitable for those who want to better understand themselves, release negative experiences, and improve the quality of their lives. Regression hypnosis is a safe and comfortable process where the client remains in contact with their body and sensations.",
+  "conclusion": "If you're looking for deeper self-awareness and emotional healing, regression hypnosis can be the first step toward a new quality of life.",
+  "benefits": {
+    "access": {
+      "title": "Access to the subconscious",
+      "description": "Regression therapy helps gain access to deep memories and subconscious blocks."
     },
-    "1": {
-      "title": "Emotional Healing",
-      "description": "Release from emotional traumas of the past and transformation of negative behavior patterns."
+    "healing": {
+      "title": "Emotional healing",
+      "description": "Releasing emotional trauma and transforming negative behavior patterns."
     },
-    "2": {
-      "title": "Self-Knowledge",
-      "description": "Deep understanding of one's personality, motives, and life goals through exploring the past."
+    "awareness": {
+      "title": "Self-awareness",
+      "description": "Deep understanding of your personality, motivations, and life patterns."
     },
-    "3": {
-      "title": "Potential Revelation",
-      "description": "Identification and activation of hidden talents, abilities, and personal resources."
+    "potential": {
+      "title": "Unlocking potential",
+      "description": "Discover and activate hidden talents, abilities, and personal resources."
     }
   },
-  "howItWorks": {
-    "title": "How does regression therapy work?",
-    "paragraphs": {
-      "0": "During a regression therapy session, you enter an altered state of consciousness similar to deep relaxation. In this state, you can access memories and information that are usually unavailable in a normal state of consciousness.",
-      "1": "The therapist accompanies you on this journey, helping to explore significant events, understand their impact on your present life, and transform negative experiences into resourceful experiences."
-    }
-  }
+  "questionTitle": "How does regression therapy work?",
+  "questionAnswer1": "During a regression therapy session, you enter an altered state of consciousness similar to deep relaxation. In this state, you can access memories and information that are usually inaccessible in the ordinary waking state.",
+  "questionAnswer2": "The therapist guides you through this journey, helping you explore meaningful events, understand their impact on your current life, and transform negative experiences into valuable inner resources."
 }

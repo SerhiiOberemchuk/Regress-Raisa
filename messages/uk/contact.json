@@ -1,43 +1,37 @@
 {
-  "title": "ЗАПИСАТИСЯ НА СЕАНС",
+  "title": "Записатися на сеанс",
   "subtitle": "Залиште свої контактні дані, і я зв'яжуся з вами для узгодження деталей",
-  "form": {
-    "title": "Заповніть форму",
-    "name": "Ваше ім'я *",
-    "email": "Email *",
-    "phone": "Телефон *",
-    "message": "Повідомлення",
-    "namePlaceholder": "Введіть ваше ім'я",
-    "emailPlaceholder": "Введіть ваш email",
-    "phonePlaceholder": "Введіть ваш телефон",
-    "messagePlaceholder": "Опишіть ваш запит або задайте питання",
-    "submitButton": "Надіслати",
-    "submitting": "Надсилання..."
-  },
-  "success": {
-    "title": "Дякуємо за ваше звернення!",
-    "message": "Ми отримали ваше повідомлення та зв'яжемося з вами найближчим часом.",
-    "button": "Надіслати ще одне повідомлення"
-  },
-  "contactInfo": {
-    "title": "Контактна інформація",
-    "phone": {
-      "title": "Телефон",
-      "value": "+380 97 176 81 96"
+  "formTitle": "Заповніть форму",
+  "name": "Ваше ім'я *",
+  "namePlaceholder": "Введіть ваше ім'я",
+  "email": "Email *",
+  "emailPlaceholder": "Введіть ваш email",
+  "phone": "Телефон *",
+  "phonePlaceholder": "Введіть ваш телефон",
+  "message": "Повідомлення",
+  "messagePlaceholder": "Опишіть ваш запит або задайте питання",
+  "submit": "Надіслати",
+  "submitting": "Надсилання...",
+  "successTitle": "Дякуємо за ваше звернення!",
+  "successText": "Ми отримали ваше повідомлення та зв'яжемося з вами найближчим часом.",
+  "submitAnother": "Надіслати ще одне повідомлення",
+  "errorTitle": "Помилка!",
+  "errorDefault": "Виникла помилка при відправці форми",
+  "errorCustom": "Щось пішло не так. Спробуйте ще раз.",
+  "contactInfoTitle": "Контактна інформація",
+  "workingHoursLabel": "Години роботи",
+  "phoneLabel": "Телефон",
+  "emailLabel": "Email",
+  "workHoursText": "Пн-Пт: 10:00 - 19:00",
+  "messengersTitle": "Або зв'яжіться через месенджери",
+  "toast": {
+    "success": {
+      "title": "Повідомлення надіслано!",
+      "description": "Дякуємо за ваше звернення. Ми зв'яжемося з вами найближчим часом."
     },
-    "email": {
-      "title": "Email",
-      "value": "265840@gmail.com"
-    },
-    "workingHours": {
-      "title": "Години роботи",
-      "value": "Пн-Пт: 10:00 - 19:00"
+    "error": {
+      "title": "Помилка!",
+      "description": "Виникла помилка при відправці форми"
     }
-  },
-  "messengers": {
-    "title": "Або зв'яжіться через месенджери",
-    "telegram": "Telegram",
-    "viber": "Viber",
-    "whatsapp": "WhatsApp"
   }
 }

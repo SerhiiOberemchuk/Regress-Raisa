@@ -1,35 +1,35 @@
 {
-  "title": "DOMANDE FREQUENTI E RISPOSTE",
+  "title": "Domande frequenti",
   "subtitle": "Risposte alle domande più comuni sulla terapia regressiva",
   "questions": {
-    "0": {
+    "q1": {
       "question": "La terapia regressiva è sicura?",
-      "answer": "Sì, la terapia regressiva è un metodo sicuro quando si lavora con uno specialista qualificato. Durante la sessione, mantieni sempre il controllo sul processo e puoi tornare a uno stato normale di coscienza in qualsiasi momento."
+      "answer": "Sì, la terapia regressiva è un metodo sicuro se guidata da un professionista qualificato. Durante la sessione hai sempre il controllo e puoi tornare al tuo stato normale di coscienza in qualsiasi momento."
     },
-    "1": {
+    "q2": {
       "question": "E se non ricordo nulla durante la sessione?",
-      "answer": "Questo succede, ma non significa che la sessione sia stata inefficace. A volte le informazioni possono manifestarsi più tardi sotto forma di intuizioni, sogni o comprensioni improvvise. Inoltre, la guarigione può avvenire a livello subconscio, anche se non ricevi ricordi chiari."
+      "answer": "Può succedere, ma non significa che la sessione non sia stata efficace. A volte le informazioni emergono successivamente sotto forma di intuizioni, sogni o comprensioni improvvise. La guarigione può avvenire anche a livello subconscio."
     },
-    "2": {
-      "question": "Quante sessioni sono necessarie per risolvere il mio problema?",
-      "answer": "Il numero di sessioni necessarie è individuale e dipende dalla natura del problema e dalla tua disponibilità al cambiamento. Alcune richieste possono essere risolte in 1-2 sessioni, altre richiedono un lavoro più prolungato. Dopo la prima sessione, saremo in grado di valutare quante sessioni potrebbero essere necessarie nel tuo caso."
+    "q3": {
+      "question": "Quante sessioni servono per risolvere il mio problema?",
+      "answer": "Il numero di sessioni dipende dalla natura del problema e dalla tua disponibilità al cambiamento. Alcuni temi si risolvono in 1–2 sessioni, altri richiedono un percorso più lungo. Dopo la prima sessione valuteremo insieme."
     },
-    "3": {
-      "question": "Le sessioni possono essere condotte online?",
-      "answer": "Sì, le sessioni di terapia regressiva sono efficacemente condotte online. È importante garantire un suono di qualità, una connessione internet stabile e un luogo confortevole dove nessuno ti disturberà durante la sessione."
+    "q4": {
+      "question": "Si possono fare le sessioni online?",
+      "answer": "Sì, le sessioni di terapia regressiva sono efficaci anche online. È importante avere un buon audio, una connessione stabile e uno spazio tranquillo e confortevole."
     },
-    "4": {
-      "question": "Tutte le persone possono entrare in uno stato di regressione?",
-      "answer": "La maggior parte delle persone è in grado di entrare in uno stato di regressione, ma la profondità di questo stato può differire. Alcune persone entrano facilmente in una trance profonda, altre rimangono in uno stato più leggero. È importante capire che anche una trance leggera può essere sufficiente per una terapia efficace."
+    "q5": {
+      "question": "Tutti possono entrare in stato di regressione?",
+      "answer": "La maggior parte delle persone può entrare in uno stato di regressione, ma la profondità varia. Alcuni vanno in trance profonda facilmente, altri restano in uno stato più leggero — comunque sufficiente per una terapia efficace."
     },
-    "5": {
-      "question": "Posso \"inventare\" ricordi durante la regressione?",
-      "answer": "Questa è una domanda comune. Durante la regressione, il tuo subconscio fornisce informazioni in una forma che è più accessibile per te — possono essere ricordi, simboli, metafore o sensazioni. È importante non analizzare l'esperienza durante la sessione, ma semplicemente osservarla. Il terapeuta ti aiuterà a distinguere i ricordi reali dall'immaginazione."
+    "q6": {
+      "question": "Posso ‘inventare’ ricordi durante la regressione?",
+      "answer": "È una domanda frequente. Durante la regressione, il subconscio presenta l'informazione nella forma più accessibile — ricordi, simboli, metafore o sensazioni. È importante non analizzare durante la sessione, ma solo osservare. Il terapeuta ti aiuterà a distinguere ciò che è reale da ciò che è immaginato."
     },
-    "6": {
+    "q7": {
       "question": "Ci sono controindicazioni per la terapia regressiva?",
-      "answer": "La terapia regressiva non è raccomandata per persone con gravi disturbi mentali come schizofrenia, disturbo bipolare in fase acuta, così come per persone con epilessia. Inoltre, le sessioni non vengono condotte in stato di intossicazione da alcol o droghe."
+      "answer": "La terapia regressiva non è indicata per persone con gravi disturbi psichiatrici come schizofrenia, disturbo bipolare in fase acuta o epilessia. Inoltre, le sessioni non si svolgono sotto l'effetto di alcol o droghe."
     }
   },
-  "footer": "Hai altre domande? Non esitare a contattarmi per ulteriori informazioni."
+  "contactNote": "Hai altre domande? Non esitare a contattarmi per maggiori informazioni."
 }

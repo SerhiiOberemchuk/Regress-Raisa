@@ -1,75 +1,43 @@
 {
   "title": "Privacy Policy",
-  "lastUpdated": "Last updated: April 21, 2024",
-  "backToHome": "Back to Home",
+  "updated": "Last updated: April 21, 2024",
   "intro": "This Privacy Policy describes how information you provide is collected, used, and protected when using our website and regression therapy services.",
   "sections": {
-    "collection": {
+    "1": {
       "title": "1. Information Collection",
-      "intro": "We collect information that you voluntarily provide to us when:",
-      "items": [
-        "Filling out the contact form on our website",
-        "Booking a regression therapy session",
-        "Subscribing to our newsletter",
-        "Communicating with us via email or messengers"
-      ],
-      "outro": "The information we collect may include your name, email address, phone number, and the content of messages you send to us."
+      "text": "We collect information that you voluntarily provide when:\n- You fill out the contact form on our website\n- You book a regression therapy session\n- You subscribe to our newsletter\n- You communicate with us via email or messaging apps\nThe information we collect may include your name, email address, phone number, and the content of your messages."
     },
-    "usage": {
-      "title": "2. Information Usage",
-      "intro": "We use the collected information for:",
-      "items": [
-        "Providing regression therapy services",
-        "Responding to your requests and questions",
-        "Improving our website and services",
-        "Sending informational materials if you have consented to this",
-        "Administrative purposes related to our services"
-      ]
+    "2": {
+      "title": "2. Use of Information",
+      "text": "We use the collected information to:\n- Provide regression therapy services\n- Respond to your inquiries and questions\n- Improve our website and services\n- Send informational materials if you have given consent\n- For administrative purposes related to our services"
     },
-    "protection": {
-      "title": "3. Information Protection",
-      "intro": "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. We commit to:",
-      "items": [
-        "Storing your information in a secure environment",
-        "Limiting access to your personal information",
-        "Regularly reviewing and improving our methods of collecting, storing, and processing data"
-      ]
+    "3": {
+      "title": "3. Information Security",
+      "text": "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. We commit to:\n- Storing your data in a secure environment\n- Limiting access to your personal information\n- Regularly reviewing and improving our data collection, storage, and processing practices"
     },
-    "confidentiality": {
+    "4": {
       "title": "4. Session Confidentiality",
-      "content": "All information discussed during regression therapy sessions is strictly confidential. We do not disclose the content of sessions to third parties without your explicit consent, except in cases provided for by the laws of Ukraine."
+      "text": "All information discussed during regression therapy sessions is strictly confidential. We do not disclose session content to third parties without your explicit consent, except as required by Ukrainian law."
     },
-    "cookies": {
+    "5": {
       "title": "5. Cookies",
-      "content": "Our website may use cookies to enhance your user experience. Cookies are small files stored on your device. You can configure your browser to refuse all or some cookies, or to alert you when websites set or access cookies."
+      "text": "Our website may use cookies to enhance your browsing experience. Cookies are small files stored on your device. You can configure your browser to refuse all or some cookies or to alert you when websites set or access cookies."
     },
-    "thirdParty": {
+    "6": {
       "title": "6. Third-Party Links",
-      "content": "Our website may contain links to other websites. We are not responsible for the privacy practices or content of these third-party sites."
+      "text": "Our website may contain links to other websites. We are not responsible for the privacy practices or content of those third-party sites."
     },
-    "changes": {
-      "title": "7. Changes to Privacy Policy",
-      "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We recommend periodically reviewing this Privacy Policy."
+    "7": {
+      "title": "7. Changes to the Privacy Policy",
+      "text": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We recommend reviewing this Privacy Policy periodically."
     },
-    "rights": {
+    "8": {
       "title": "8. Your Rights",
-      "intro": "You have the right to:",
-      "items": [
-        "Access your personal data",
-        "Correct inaccuracies in your personal data",
-        "Delete your personal data",
-        "Object to the processing of your personal data",
-        "Restrict the processing of your personal data",
-        "Receive your personal data in a structured, commonly used format"
-      ]
+      "text": "You have the right to:\n- Access your personal data\n- Correct inaccuracies in your personal data\n- Delete your personal data\n- Object to the processing of your personal data\n- Restrict the processing of your personal data\n- Receive your data in a structured, commonly used format"
     },
-    "contact": {
+    "9": {
       "title": "9. Contact Information",
-      "intro": "If you have any questions about this Privacy Policy, please contact us:",
-      "email": "Email:",
-      "emailValue": "265840@gmail.com",
-      "phone": "Phone:",
-      "phoneValue": "+380 97 176 81 96"
+      "text": "If you have any questions about this Privacy Policy, please contact us:\nEmail: 265840@gmail.com\nPhone: +380 97 176 81 96"
     }
   }
 }
