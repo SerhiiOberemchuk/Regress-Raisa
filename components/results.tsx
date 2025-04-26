@@ -14,19 +14,7 @@ export default function Results() {
   })
 
   const t = useTranslations("results")
-
-  const results = [
-    "Звільнення від тривоги, страхів та фобій",
-    "Вирішення внутрішніх конфліктів та протиріч",
-    "Покращення стосунків з оточуючими",
-    "Підвищення самооцінки та впевненості в собі",
-    "Розуміння причин повторюваних життєвих сценаріїв",
-    "Звільнення від обмежуючих переконань",
-    "Відкриття нових можливостей та перспектив",
-    "Зцілення психосоматичних захворювань",
-    "Розкриття творчого потенціалу",
-    "Знаходження відповідей на важливі життєві питання",
-  ]
+  const results = Object.values(t.raw("results"))
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -50,10 +38,7 @@ export default function Results() {
   return (
     <section id="results" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          title="ЯКИЙ РЕЗУЛЬТАТ ВИ ОТРИМАЄТЕ ПІСЛЯ СЕАНСУ РЕГРЕСІЇ?"
-          subtitle="Регресивна терапія допомагає досягти глибинних трансформацій та покращити якість життя у різних сферах"
-        />
+        <SectionHeading titleKey="title" subtitleKey="subtitle" namespace="results" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
           <motion.div
@@ -97,10 +82,7 @@ export default function Results() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto"
         >
-          <p className="text-lg md:text-xl font-medium text-center italic">
-            "Регресивна терапія — це не просто подорож у минуле, це шлях до кращого майбутнього через зцілення
-            теперішнього."
-          </p>
+          <p className="text-lg md:text-xl font-medium text-center italic">"{t("quote")}"</p>
         </motion.div>
       </div>
     </section>

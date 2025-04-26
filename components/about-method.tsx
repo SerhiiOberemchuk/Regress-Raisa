@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer"
 import SectionHeading from "./section-heading"
 import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Heart, Compass, Sparkles } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function AboutMethod() {
   const [ref, inView] = useInView({
@@ -12,26 +13,28 @@ export default function AboutMethod() {
     threshold: 0.1,
   })
 
+  const t = useTranslations("about")
+
   const features = [
     {
       icon: <Brain className="h-10 w-10 text-primary" />,
-      title: "Доступ до підсвідомості",
-      description: "Регресивна терапія дозволяє отримати доступ до прихованих спогадів та підсвідомих блоків.",
+      title: t("features.0.title"),
+      description: t("features.0.description"),
     },
     {
       icon: <Heart className="h-10 w-10 text-primary" />,
-      title: "Емоційне зцілення",
-      description: "Звільнення від емоційних травм минулого та трансформація негативних патернів поведінки.",
+      title: t("features.1.title"),
+      description: t("features.1.description"),
     },
     {
       icon: <Compass className="h-10 w-10 text-primary" />,
-      title: "Самопізнання",
-      description: "Глибоке розуміння власної особистості, мотивів та життєвих цілей через дослідження минулого.",
+      title: t("features.2.title"),
+      description: t("features.2.description"),
     },
     {
       icon: <Sparkles className="h-10 w-10 text-primary" />,
-      title: "Розкриття потенціалу",
-      description: "Виявлення та активація прихованих талантів, здібностей та ресурсів особистості.",
+      title: t("features.3.title"),
+      description: t("features.3.description"),
     },
   ]
 
@@ -54,33 +57,15 @@ export default function AboutMethod() {
     },
   }
 
-  const explorationAreas = [
-    "дитячі спогади",
-    "травматичні ситуації або навіть моменти з минулих життів (використовується для вирішення всіх запитів, універсально)",
-    "життя між життями (можна дивитися контракти з спорідненими душами, які втілюються у ваших коханих або навіть ворогів, часто знаходиться розуміння у взаєминах з людьми)",
-    "світ ангелів (простір повного пропрацювання, підвищення вібрацій, усвідомленості)",
-    "простір роду (для складних запитів, пропрацювання родових сценаріїв, що на вас негативно впливають)",
-    "позаземні втілення (де, на яких планетах і коли жила ваша душа до того, як прийшла на Землю, найчастіше в цих просторах все стає на свої місця – призначення, завдання душі та інші важливі запити)",
-    "майбутнє – ваше чи наступне життя душі",
-  ]
+  const explorationAreas = Object.values(t.raw("explorationAreas"))
 
   return (
     <section id="about" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          title="ПРО МЕТОД РЕГРЕСИВНОЇ ТЕРАПІЇ"
-          subtitle="Регресивна терапія — це терапевтичний підхід, який дозволяє повернутися до минулих подій життя для зцілення психологічних травм та вирішення актуальних проблем."
-        />
+        <SectionHeading titleKey="title" subtitleKey="subtitle" namespace="about" />
 
-        <motion.div
-     
-          className="bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto mb-12"
-        >
-          <p className="text-muted-foreground mb-4">
-            Регресивний гіпноз — це метод терапії, який дозволяє занурити підопічного в глибокий стан розслаблення і
-            підсвідомого сприйняття. У цьому стані регресолог допомагає людині пригадати та опрацювати події з минулого,
-            які можуть мати вплив на її поточний стан або поведінку. Ці події можуть включати:
-          </p>
+        <motion.div className="bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto mb-12">
+          <p className="text-muted-foreground mb-4">{t("description")}</p>
 
           <ul className="space-y-2 mb-6">
             {explorationAreas.map((area, index) => (
@@ -91,22 +76,11 @@ export default function AboutMethod() {
             ))}
           </ul>
 
-          <p className="text-muted-foreground mb-4">
-            Метою регресивного гіпнозу є виявлення і розв'язання прихованих психологічних блоків, які заважають людині
-            досягати гармонії в житті. Під час сеансу регресолог допомагає пацієнту не тільки переглянути ці події, але
-            й переосмислити їх, що дозволяє досягти емоційного зцілення та зниження стресу.
-          </p>
+          <p className="text-muted-foreground mb-4">{t("paragraphs.0")}</p>
 
-          <p className="text-muted-foreground mb-4">
-            Ця методика підходить для людей, які прагнуть краще зрозуміти себе, звільнитися від негативних переживань і
-            поліпшити якість свого життя. Регресивний гіпноз є безпечним і комфортним процесом, під час якого клієнт
-            завжди зберігає контроль над своїми відчуттями.
-          </p>
+          <p className="text-muted-foreground mb-4">{t("paragraphs.1")}</p>
 
-          <p className="text-muted-foreground font-medium">
-            Якщо вас цікавить глибше самопізнання та емоційне зцілення, регресивний гіпноз може стати першим кроком до
-            нової якості життя.
-          </p>
+          <p className="text-muted-foreground font-medium">{t("paragraphs.2")}</p>
         </motion.div>
 
         <motion.div
@@ -135,16 +109,9 @@ export default function AboutMethod() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16 bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto"
         >
-          <h3 className="text-xl md:text-2xl font-semibold mb-4">Як працює регресивна терапія?</h3>
-          <p className="text-muted-foreground mb-4">
-            Під час сеансу регресивної терапії ви входите в змінений стан свідомості, подібний до глибокої релаксації. У
-            цьому стані ви можете отримати доступ до спогадів та інформації, які зазвичай недоступні у звичайному стані
-            свідомості.
-          </p>
-          <p className="text-muted-foreground">
-            Терапевт супроводжує вас у цій подорожі, допомагаючи дослідити значущі події, зрозуміти їх вплив на ваше
-            теперішнє життя та трансформувати негативні переживання в ресурсний досвід.
-          </p>
+          <h3 className="text-xl md:text-2xl font-semibold mb-4">{t("howItWorks.title")}</h3>
+          <p className="text-muted-foreground mb-4">{t("howItWorks.paragraphs.0")}</p>
+          <p className="text-muted-foreground">{t("howItWorks.paragraphs.1")}</p>
         </motion.div>
       </div>
     </section>

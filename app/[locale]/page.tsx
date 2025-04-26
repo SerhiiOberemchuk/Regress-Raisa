@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { getTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import AboutMethod from "@/components/about-method"
