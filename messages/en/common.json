@@ -1,4 +1,25 @@
 {
   "language": "English",
-  "languageCode": "en"
+  "languageCode": "en",
+  "form": {
+    "fillAllFields": "Please fill in all required fields",
+    "invalidEmail": "Please enter a valid email address",
+    "inputTooLong": "One or more input fields exceed the allowed length",
+    "sendSuccess": "Message sent successfully",
+    "sendError": "An error occurred while sending the message",
+    "userEmailSubject": "Thank you for contacting us | Raisa Regress",
+    "adminEmailSubject": "New inquiry from the Raisa Regress website",
+    "userGreeting": "Dear",
+    "userThankYou": "We have received your message and will contact you shortly.",
+    "userContacts": "Your contact details:",
+    "userRespectfully": "Sincerely, Raisa Regress Team",
+    "autoMessage": "This is an automatic message, please do not reply to it.",
+    "noMessageProvided": "No message provided",
+    "dateAndTime": "Date and Time",
+    "clientInfo": "Client Information",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Message"
+  }
 }
