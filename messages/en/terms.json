@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Terms of Use | Regression Therapy",
+    "description": "Terms of use for the regression therapy website. Learn about the rules and conditions for using our services."
+  },
+  "title": "Terms of Use",
+  "updated": "Last updated: April 21, 2024",
+  "backToHome": "Back to Home",
+  "intro": "Welcome to the regression therapy website. By using this website and services, you agree to these Terms of Use. Please read them carefully.",
+  "sections": {
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "text": "By using our website and services, you agree to these Terms of Use. If you do not agree with any part of these terms, please do not use our website or services."
+    },
+    "services": {
+      "title": "2. Description of Services",
+      "text1": "We provide regression therapy services, including but not limited to:",
+      "list": [
+        "Regression therapy sessions",
+        "Progression sessions",
+        "Consciousness therapy",
+        "Consultations"
+      ],
+      "text2": "Our services are not a substitute for professional medical care, psychiatric treatment, or psychotherapy. If you have serious mental or physical health issues, we recommend consulting a qualified medical professional."
+    },
+    "booking": {
+      "title": "3. Booking and Payment",
+      "text1": "Booking sessions can be done through the contact form on our website, by phone, or via the messengers listed on the site.",
+      "text2": "Service payments are made according to the rates listed on the website. We reserve the right to change rates by announcing it on our website.",
+      "text3": "In case of session cancellation, please notify us no later than 24 hours before the scheduled time. Otherwise, a cancellation fee may apply."
+    },
+    "privacy": {
+      "title": "4. Privacy",
+      "text": "We respect your privacy and are committed to protecting your personal data. For more information, please refer to our Privacy Policy."
+    },
+    "intellectual": {
+      "title": "5. Intellectual Property",
+      "text1": "All content on this website, including but not limited to text, graphics, logos, images, audio, and video clips, is the property of our company or our licensors and is protected by copyright laws.",
+      "text2": "You may view and download materials for personal, non-commercial use, provided you retain all copyright and proprietary notices."
+    },
+    "liability": {
+      "title": "6. Limitation of Liability",
+      "text1": "We strive to ensure the information on our website is accurate and up-to-date but do not guarantee its completeness or accuracy.",
+      "text2": "Regression therapy session results may vary from person to person. We do not guarantee specific outcomes from our services."
+    },
+    "contraindications": {
+      "title": "7. Contraindications",
+      "text1": "Regression therapy has certain contraindications. Our services are not recommended for individuals with:",
+      "list": [
+        "Severe mental disorders (e.g., schizophrenia, acute phase bipolar disorder)",
+        "Epilepsy",
+        "Alcohol or drug intoxication"
+      ],
+      "text2": "If you have doubts about undergoing regression therapy, please consult your doctor or contact us to discuss your situation."
+    },
+    "changes": {
+      "title": "8. Changes to the Terms of Use",
+      "text": "We reserve the right to modify these Terms of Use at any time. Changes become effective once posted on this page."
+    },
+    "contact": {
+      "title": "9. Contact Information",
+      "text": "If you have any questions about these Terms of Use, please contact us:",
+      "email": "265840@gmail.com",
+      "phone": "+380 97 176 81 96"
+    }
+  }
+}

@@ -1,28 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import SectionHeading from "./section-heading"
-import { CheckCircle } from "lucide-react"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
+import { CheckCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Results() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
-  const results = [
-    "Звільнення від тривоги, страхів та фобій",
-    "Вирішення внутрішніх конфліктів та протиріч",
-    "Покращення стосунків з оточуючими",
-    "Підвищення самооцінки та впевненості в собі",
-    "Розуміння причин повторюваних життєвих сценаріїв",
-    "Звільнення від обмежуючих переконань",
-    "Відкриття нових можливостей та перспектив",
-    "Зцілення психосоматичних захворювань",
-    "Розкриття творчого потенціалу",
-    "Знаходження відповідей на важливі життєві питання",
-  ]
+  });
+  const t = useTranslations("results");
+  const results = Object.values(t.raw("benefits")) as string[];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,7 +22,7 @@ export default function Results() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { x: -20, opacity: 0 },
@@ -41,15 +31,12 @@ export default function Results() {
       opacity: 1,
       transition: { duration: 0.4 },
     },
-  }
+  };
 
   return (
     <section id="results" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          title="ЯКИЙ РЕЗУЛЬТАТ ВИ ОТРИМАЄТЕ ПІСЛЯ СЕАНСУ РЕГРЕСІЇ?"
-          subtitle="Регресивна терапія допомагає досягти глибинних трансформацій та покращити якість життя у різних сферах"
-        />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
           <motion.div
@@ -62,7 +49,7 @@ export default function Results() {
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
               <img
                 src="/serene-meditation.png"
-                alt="Результати регресивної терапії"
+                alt={t("imageAlt")}
                 className="object-cover w-full h-full"
               />
             </div>
@@ -76,7 +63,11 @@ export default function Results() {
             className="space-y-4"
           >
             {results.map((result, index) => (
-              <motion.li key={index} variants={itemVariants} className="flex items-start gap-3">
+              <motion.li
+                key={index}
+                variants={itemVariants}
+                className="flex items-start gap-3"
+              >
                 <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-lg">{result}</span>
               </motion.li>
@@ -91,11 +82,10 @@ export default function Results() {
           className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto"
         >
           <p className="text-lg md:text-xl font-medium text-center italic">
-            "Регресивна терапія — це не просто подорож у минуле, це шлях до кращого майбутнього через зцілення
-            теперішнього."
+            {t("quote")}
           </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

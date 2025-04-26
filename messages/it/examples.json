@@ -1,0 +1,56 @@
+{
+  "title": "Esempi di richieste dei clienti",
+  "subtitle": "La terapia regressiva aiuta a trovare risposte a molte domande della vita e a risolvere problemi profondi.",
+
+  "categories": {
+    "relationships": {
+      "title": "Relazioni",
+      "questions": {
+        "q1": "Perché attraggo sempre relazioni tossiche?",
+        "q2": "Come posso superare la paura dell’intimità e della fiducia?",
+        "q3": "Perché non riesco a trovare un partner per una relazione seria?"
+      }
+    },
+    "emotions": {
+      "title": "Stato emotivo",
+      "questions": {
+        "q1": "Da dove vengono i miei attacchi di panico?",
+        "q2": "Come posso liberarmi dell’ansia cronica?",
+        "q3": "Perché mi sento sempre stanco ed esausto?"
+      }
+    },
+    "self": {
+      "title": "Conoscenza di sé",
+      "questions": {
+        "q1": "Qual è il mio vero scopo?",
+        "q2": "Perché non riesco a realizzare il mio potenziale?",
+        "q3": "Quali sono i miei talenti e capacità nascosti?"
+      }
+    },
+    "career": {
+      "title": "Carriera",
+      "questions": {
+        "q1": "Perché non riesco a trovare un lavoro che mi soddisfi?",
+        "q2": "Da dove viene la mia paura del successo?",
+        "q3": "Come posso superare la sindrome dell’impostore?"
+      }
+    },
+    "lifePath": {
+      "title": "Percorso di vita",
+      "questions": {
+        "q1": "Perché continuo a ripetere gli stessi errori?",
+        "q2": "Come posso trovare il mio percorso nella vita?",
+        "q3": "Perché mi sento bloccato sempre nello stesso punto?"
+      }
+    },
+    "health": {
+      "title": "Salute",
+      "questions": {
+        "q1": "Qual è la causa psicologica delle mie malattie croniche?",
+        "q2": "Come posso guarire i sintomi psicosomatici?",
+        "q3": "Perché il mio corpo reagisce con stress a certe situazioni?"
+      }
+    }
+  },
+  "disclaimer": "Questi sono solo alcuni esempi. La terapia regressiva può aiutare anche con molti altri problemi e difficoltà."
+}

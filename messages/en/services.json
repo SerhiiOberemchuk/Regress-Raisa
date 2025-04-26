@@ -1,0 +1,61 @@
+{
+  "title": "Services and Pricing",
+  "subtitle": "Choose the optimal option for addressing your requests",
+  "services": {
+    "regression": {
+      "name": "Full Regression Session",
+      "price": "3600 UAH",
+      "features": {
+        "f1": "A full regression session lasting from 1.5 to 3.5 hours",
+        "f2": "Exploration of the spaces needed to resolve your request (past lives, childhood, soul world, life between lives, angelic realm, ancestral line, etc.)",
+        "f3": "Full, in-depth work on one request",
+        "f4": "Clearing blocks and entities",
+        "f5": "Clearing the root issue",
+        "f6": "Clearing indirect issues (unlimited)",
+        "f7": "Session language: Ukrainian, Russian"
+      }
+    },
+    "progression": {
+      "name": "Progression",
+      "price": "3600 UAH",
+      "features": {
+        "f1": "A full progression session lasting from 1.5 to 3.5 hours",
+        "f2": "Work with future timelines to identify potential scenarios and personal development opportunities",
+        "f3": "Exploration of alternative life paths",
+        "f4": "Work on past issues via regression (if needed) to improve the future",
+        "f5": "Session language: Ukrainian, Russian"
+      }
+    },
+    "consciousness": {
+      "name": "Consciousness Therapy",
+      "price": "9800 UAH",
+      "features": {
+        "f1": "Three full sessions for in-depth work on key life themes, lasting from 1.5 to 3.5 hours each",
+        "f2": "Individual planning and discussion of session themes based on your needs, including consultation and Q&A",
+        "f3": "Three months of support – one session per month + guidance between sessions",
+        "f4": "In-depth work on three different requests",
+        "f5": "Clearing blocks and entities",
+        "f6": "Clearing the root issue",
+        "f7": "Clearing indirect issues (unlimited)",
+        "f8": "Session language: Ukrainian, Russian"
+      }
+    },
+    "consultation": {
+      "name": "Consultation",
+      "price": "800 UAH",
+      "features": {
+        "f1": "Pre-session lasting 30 minutes",
+        "f2": "Hypnotizability test",
+        "f3": "Discussion and clarification of your request",
+        "f4": "Setting intentions for the session",
+        "f5": "Answers to your questions"
+      }
+    }
+  },
+  "button": "Book now",
+  "individualApproach": {
+    "title": "Individual Approach",
+    "text": "Every client is unique, so I offer a personalized approach to working with your requests. If you need a custom program or have specific needs, feel free to contact me to discuss your individual options."
+  },
+  "includes": "Includes"
+}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Termini di Utilizzo | Terapia Regressiva",
+    "description": "Termini di utilizzo del sito di terapia regressiva. Scopri le regole e le condizioni per usufruire dei nostri servizi."
+  },
+  "title": "Termini di Utilizzo",
+  "updated": "Ultimo aggiornamento: 21 aprile 2024",
+  "backToHome": "Torna alla Home",
+  "intro": "Benvenuti nel sito della terapia regressiva. Utilizzando questo sito e i servizi offerti, accettate i presenti Termini di Utilizzo. Vi preghiamo di leggerli attentamente.",
+  "sections": {
+    "acceptance": {
+      "title": "1. Accettazione dei Termini",
+      "text": "Utilizzando il nostro sito web e i nostri servizi, accettate i presenti Termini di Utilizzo. Se non siete d'accordo con una qualsiasi parte di questi termini, vi preghiamo di non utilizzare il nostro sito o i nostri servizi."
+    },
+    "services": {
+      "title": "2. Descrizione dei Servizi",
+      "text1": "Forniamo servizi di terapia regressiva, inclusi ma non limitati a:",
+      "list": [
+        "Sessioni di terapia regressiva",
+        "Sessioni di progressione",
+        "Terapia della coscienza",
+        "Consulenze"
+      ],
+      "text2": "I nostri servizi non sostituiscono cure mediche professionali, trattamenti psichiatrici o psicoterapia. In caso di gravi problemi di salute mentale o fisica, si consiglia di consultare un medico qualificato."
+    },
+    "booking": {
+      "title": "3. Prenotazione e Pagamento",
+      "text1": "La prenotazione delle sessioni può essere effettuata tramite il modulo di contatto sul nostro sito, telefonicamente o attraverso i messaggi indicati sul sito.",
+      "text2": "Il pagamento dei servizi avviene secondo le tariffe indicate sul sito. Ci riserviamo il diritto di modificare le tariffe previa comunicazione sul sito.",
+      "text3": "In caso di cancellazione della sessione, vi preghiamo di avvisarci almeno 24 ore prima dell'orario previsto. In caso contrario potrebbe essere applicata una penale di cancellazione."
+    },
+    "privacy": {
+      "title": "4. Privacy",
+      "text": "Rispettiamo la vostra privacy e ci impegniamo a proteggere i vostri dati personali. Maggiori dettagli sono disponibili nella nostra Informativa sulla Privacy."
+    },
+    "intellectual": {
+      "title": "5. Proprietà Intellettuale",
+      "text1": "Tutti i contenuti di questo sito, inclusi testi, grafica, loghi, immagini, audio e video, sono di proprietà della nostra azienda o dei nostri licenziatari e sono protetti dalle leggi sul copyright.",
+      "text2": "È possibile visualizzare e scaricare materiali per uso personale e non commerciale, mantenendo tutte le indicazioni di copyright e proprietà."
+    },
+    "liability": {
+      "title": "6. Limitazione di Responsabilità",
+      "text1": "Facciamo del nostro meglio per garantire l'accuratezza delle informazioni presenti sul nostro sito, ma non garantiamo la loro completezza o correttezza.",
+      "text2": "I risultati delle sessioni di terapia regressiva possono variare da persona a persona. Non garantiamo risultati specifici."
+    },
+    "contraindications": {
+      "title": "7. Controindicazioni",
+      "text1": "La terapia regressiva ha alcune controindicazioni. I nostri servizi non sono raccomandati per persone con:",
+      "list": [
+        "Disturbi mentali gravi (es. schizofrenia, disturbo bipolare in fase acuta)",
+        "Epilessia",
+        "Intossicazione da alcol o droghe"
+      ],
+      "text2": "Se avete dubbi sulla possibilità di sottoporvi alla terapia regressiva, vi consigliamo di consultare il vostro medico o contattarci per discutere della vostra situazione."
+    },
+    "changes": {
+      "title": "8. Modifiche ai Termini di Utilizzo",
+      "text": "Ci riserviamo il diritto di modificare i presenti Termini di Utilizzo in qualsiasi momento. Le modifiche entreranno in vigore al momento della pubblicazione su questa pagina."
+    },
+    "contact": {
+      "title": "9. Informazioni di Contatto",
+      "text": "Se avete domande relative ai presenti Termini di Utilizzo, vi preghiamo di contattarci:",
+      "email": "265840@gmail.com",
+      "phone": "+380 97 176 81 96"
+    }
+  }
+}
