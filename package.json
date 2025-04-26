@@ -62,9 +62,9 @@
     "framer-motion": "latest",
     "react-intersection-observer": "latest",
     "next-intl": "latest",
+    "nodemailer": "latest",
     "@formatjs/intl-localematcher": "latest",
-    "negotiator": "latest",
-    "nodemailer": "latest"
+    "negotiator": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

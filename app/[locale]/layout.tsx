@@ -7,14 +7,17 @@ import { Suspense } from "react"
 import CookieConsent from "@/components/cookie-consent"
 import { NextIntlClientProvider } from "next-intl"
 import { notFound } from "next/navigation"
-import { locales } from "@/i18n"
+
+// Імпортуємо конфігурацію з i18n.config.js
+const i18nConfig = require("@/i18n.config.js")
+const { locales } = i18nConfig
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
   display: "swap",
   preload: true,
-  adjustFontFallback: false, // Нова опція для Next.js 15
-  variable: "--font-inter", // Додаємо змінну для використання в CSS
+  adjustFontFallback: false,
+  variable: "--font-inter",
 })
 
 // Компонент для відображення завантаження
@@ -31,11 +34,14 @@ function LoadingFallback() {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode
   params: { locale: string }
 }) {
+  // Отримуємо локаль з параметрів
+  const locale = params.locale
+
   // Перевіряємо, чи підтримується локаль
   if (!locales.includes(locale as any)) {
     notFound()

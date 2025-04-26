@@ -1,15 +1,12 @@
 import { getRequestConfig } from "next-intl/server"
-
-// Імпортуємо конфігурацію з i18n.config.js
-const i18nConfig = require("./i18n.config.js")
-const { locales } = i18nConfig
+import { locales } from "./i18n.config"
 
 // Кеш для перекладів
-const messagesCache: Record<string, any> = {}
+const messagesCache = {}
 
 export default getRequestConfig(async ({ locale }) => {
   // Перевіряємо, чи підтримується локаль
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(locale)) {
     return { messages: {} }
   }
 

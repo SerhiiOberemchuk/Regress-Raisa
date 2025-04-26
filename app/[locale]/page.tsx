@@ -12,7 +12,11 @@ import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+// Імпортуємо конфігурацію з i18n.config.js
+const i18nConfig = require("@/i18n.config.js")
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale
   const t = await getTranslations({ locale, namespace: "metadata" })
 
   // Використовуємо фіксоване значення для URL сайту
@@ -27,7 +31,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     title: t("title"),
     description: t("description"),
     keywords: t("keywords"),
-    metadataBase: new URL(baseUrl), // Додано metadataBase для Next.js 15
+    metadataBase: new URL(baseUrl),
     openGraph: {
       title: t("og.title"),
       description: t("og.description"),

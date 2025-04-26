@@ -1,7 +1,10 @@
 import createMiddleware from "next-intl/middleware"
-import { locales, defaultLocale } from "./i18n"
 import { match } from "@formatjs/intl-localematcher"
 import Negotiator from "negotiator"
+
+// Імпортуємо конфігурацію з i18n.config.js
+const i18nConfig = require("./i18n.config.js")
+const { locales, defaultLocale } = i18nConfig
 
 // Функція для визначення локалі на основі заголовків запиту
 function getLocale(request: Request): string {
