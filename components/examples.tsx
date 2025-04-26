@@ -78,15 +78,15 @@ export default function Examples() {
           animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
         >
-          {categories.map((category, index) => (
+          {examples.map((category, index) => (
             <motion.div key={index} variants={itemVariants}>
               <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 rounded-full bg-primary/10">
-                      {example.icon}
+                      {category.icon}
                     </div>
-                    <h3 className="text-xl font-semibold">{example.title}</h3>
+                    <h3 className="text-xl font-semibold">{category.title}</h3>
                   </div>
                   <ul className="space-y-2">
                     {category.items.map((item, idx) => (
