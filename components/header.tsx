@@ -1,33 +1,35 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import LanguageSwitcher from "./language-switcher";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const tlinks = useTranslations("links");
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: "Про метод", href: "#about" },
-    { name: "Послуги", href: "#services" },
-  ]
-
+    { name: tlinks("about"), href: "#about" },
+    { name: tlinks("services"), href: "#services" },
+  ];
+  const nameButton = tlinks("signup");
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -51,8 +53,9 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
+            <LanguageSwitcher />
             <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="#contact">Записатися</Link>
+              <Link href="#contact">{nameButton}</Link>
             </Button>
           </nav>
 
@@ -87,9 +90,12 @@ export default function Header() {
                   {link.name}
                 </Link>
               ))}
+              <div className="py-2">
+                <LanguageSwitcher />
+              </div>
               <Button asChild className="bg-primary hover:bg-primary/90 w-full">
                 <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                  Записатися
+                  {nameButton}
                 </Link>
               </Button>
             </div>
@@ -97,5 +103,5 @@ export default function Header() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

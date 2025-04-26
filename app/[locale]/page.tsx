@@ -1,16 +1,16 @@
-import type { Metadata } from "next"
-import Header from "@/components/header"
-import Hero from "@/components/hero"
-import AboutMethod from "@/components/about-method"
+import type { Metadata } from "next";
+import Header from "@/components/header";
+import Hero from "@/components/hero";
+import AboutMethod from "@/components/about-method";
 
-import Results from "@/components/results"
-import Examples from "@/components/examples"
-import Requirements from "@/components/requirements"
-import Faq from "@/components/faq"
-import Services from "@/components/services"
-import Contact from "@/components/contact"
-import Footer from "@/components/footer"
-import ScrollToTop from "@/components/scroll-to-top"
+import Results from "@/components/results";
+import Examples from "@/components/examples";
+import Requirements from "@/components/requirements";
+import Faq from "@/components/faq";
+import Services from "@/components/services";
+import Contact from "@/components/contact";
+import Footer from "@/components/footer";
+import ScrollToTop from "@/components/scroll-to-top";
 
 export const metadata: Metadata = {
   title: "RaisaRegress | Регресивний гіпноз онлайн з Раїсою Оберемчук",
@@ -38,13 +38,19 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "RaisaRegress | Регресивний гіпноз онлайн з Раїсою Оберемчук",
-    description: "Професійні сеанси регресивного гіпнозу онлайн. Зцілення минулого для гармонійного життя сьогодні.",
+    description:
+      "Професійні сеанси регресивного гіпнозу онлайн. Зцілення минулого для гармонійного життя сьогодні.",
     images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: "https://raisaregress.online",
+    languages: {
+      "en-US": "/en-US",
+      "it-IT": "/it-IT",
+      "uk-UA": "/uk-UA",
+    },
   },
-}
+};
 
 export default function Home() {
   return (
@@ -61,5 +67,5 @@ export default function Home() {
       <Footer />
       <ScrollToTop />
     </main>
-  )
+  );
 }

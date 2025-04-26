@@ -1,42 +1,41 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import SectionHeading from "./section-heading"
-import { Card, CardContent } from "@/components/ui/card"
-import { Clock, Headphones, Bed, Wifi } from "lucide-react"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Clock, Headphones, Bed, Wifi } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { arrayKeys } from "@/lib/array-keys-nextintl";
 
 export default function Requirements() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
+  });
+  const t = useTranslations("requirements");
   const requirements = [
     {
       icon: <Clock className="h-10 w-10 text-primary" />,
-      title: "Час",
-      description:
-        "Виділіть 2-3 години для повноцінного сеансу. Це дозволить не поспішати та глибоко опрацювати ваш запит.",
+      title: t("items.time.title"),
+      description: t("items.time.description"),
     },
     {
       icon: <Headphones className="h-10 w-10 text-primary" />,
-      title: "Навушники",
-      description: "Для онлайн-сеансів підготуйте зручні навушники з мікрофоном для якісного звуку та комунікації.",
+      title: t("items.headphones.title"),
+      description: t("items.headphones.description"),
     },
     {
       icon: <Bed className="h-10 w-10 text-primary" />,
-      title: "Комфортне місце",
-      description:
-        "Знайдіть тихе місце, де вас ніхто не потурбує. Підготуйте зручне крісло або ліжко для розслаблення.",
+      title: t("items.place.title"),
+      description: t("items.place.description"),
     },
     {
       icon: <Wifi className="h-10 w-10 text-primary" />,
-      title: "Стабільний інтернет",
-      description:
-        "Для онлайн-сеансів забезпечте стабільне інтернет-з'єднання, щоб уникнути переривань під час сеансу.",
+      title: t("items.internet.title"),
+      description: t("items.internet.description"),
     },
-  ]
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -46,7 +45,7 @@ export default function Requirements() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -55,15 +54,12 @@ export default function Requirements() {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
-
+  };
+  const additionalList = arrayKeys(t.raw("additional.list"));
   return (
     <section id="requirements" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          title="ЩО ПОТРІБНО ДЛЯ СЕАНСУ РЕГРЕСІЇ?"
-          subtitle="Для ефективного сеансу регресивної терапії важливо забезпечити комфортні умови та підготуватися належним чином"
-        />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <motion.div
           ref={ref}
@@ -76,10 +72,16 @@ export default function Requirements() {
             <motion.div key={index} variants={itemVariants}>
               <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 flex gap-4">
-                  <div className="p-3 rounded-full bg-primary/10 h-fit">{requirement.icon}</div>
+                  <div className="p-3 rounded-full bg-primary/10 h-fit">
+                    {requirement.icon}
+                  </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">{requirement.title}</h3>
-                    <p className="text-muted-foreground">{requirement.description}</p>
+                    <h3 className="text-xl font-semibold mb-2">
+                      {requirement.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {requirement.description}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -93,27 +95,19 @@ export default function Requirements() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto"
         >
-          <h3 className="text-xl font-semibold mb-4 text-center">Додаткові рекомендації</h3>
+          <h3 className="text-xl font-semibold mb-4 text-center">
+            {t("additional.title")}
+          </h3>
           <ul className="space-y-2">
-            <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>За 2-3 години до сеансу утримайтеся від вживання алкоголю, кофеїну та важкої їжі</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>Одягніть зручний одяг, який не обмежує рухи та дихання</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>Перед сеансом сформулюйте свій запит або питання, на яке хочете отримати відповідь</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>Будьте відкриті до процесу та довіряйте своєму внутрішньому досвіду</span>
-            </li>
+            {additionalList.map((item, index) => (
+              <li key={index} className="flex items-start gap-2">
+                <span className="text-primary font-bold">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

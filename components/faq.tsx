@@ -1,60 +1,32 @@
-"use client"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import SectionHeading from "./section-heading"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+"use client";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { useTranslations } from "next-intl";
+
+type FaqItem = {
+  question: string;
+  answer: string;
+};
 
 export default function Faq() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
-
-  const faqs = [
-    {
-      question: "Чи безпечна регресивна терапія?",
-      answer:
-        "Так, регресивна терапія є безпечним методом при роботі з кваліфікованим спеціалістом. Під час сеансу ви завжди зберігаєте контроль над процесом і можете в будь-який момент повернутися до звичайного стану свідомості.",
-    },
-    {
-      question: "Чи можу я не згадати нічого під час сеансу?",
-      answer:
-        "Таке трапляється, але це не означає, що сеанс був неефективним. Іноді інформація може проявитися пізніше у вигляді інсайтів, снів або раптових розумінь. Крім того, зцілення може відбуватися на підсвідомому рівні, навіть якщо ви не отримали чітких спогадів.",
-    },
-    {
-      question: "Скільки сеансів потрібно для вирішення моєї проблеми?",
-      answer:
-        "Кількість необхідних сеансів індивідуальна і залежить від характеру проблеми та вашої готовності до змін. Деякі запити можуть бути вирішені за 1-2 сеанси, інші потребують більш тривалої роботи. Після першого сеансу ми зможемо оцінити, скільки сеансів може знадобитися у вашому випадку.",
-    },
-    {
-      question: "Чи можна проводити сеанси онлайн?",
-      answer:
-        "Так, сеанси регресивної терапії ефективно проводяться онлайн. Важливо забезпечити якісний звук, стабільне інтернет-з'єднання та комфортне місце, де вас ніхто не потурбує протягом сеансу.",
-    },
-    {
-      question: "Чи всі люди можуть увійти в стан регресії?",
-      answer:
-        "Більшість людей здатні увійти в стан регресії, але глибина цього стану може відрізнятися. Деякі люди легко входять у глибокий транс, інші залишаються в більш легкому стані. Важливо розуміти, що навіть легкий транс може бути достатнім для ефективної терапії.",
-    },
-    {
-      question: 'Чи можу я "вигадати" спогади під час регресії?',
-      answer:
-        "Це поширене питання. Під час регресії ваша підсвідомість надає інформацію у формі, яка найбільш доступна для вас — це можуть бути спогади, символи, метафори або відчуття. Важливо не аналізувати досвід під час сеансу, а просто спостерігати за ним. Терапевт допоможе вам розрізнити реальні спогади від уяви.",
-    },
-    {
-      question: "Чи є протипоказання для регресивної терапії?",
-      answer:
-        "Регресивна терапія не рекомендується людям з важкими психічними розладами, такими як шизофренія, біполярний розлад у гострій фазі, а також людям з епілепсією. Також сеанси не проводяться в стані алкогольного або наркотичного сп'яніння.",
-    },
-  ]
+  });
+  const t = useTranslations("faq");
+  const faqs = Object.values(t.raw("questions")) as FaqItem[];
 
   return (
     <section id="faq" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          title="ПОШИРЕНІ ПИТАННЯ І ВІДПОВІДІ НА НИХ"
-          subtitle="Відповіді на найчастіші запитання про регресивну терапію"
-        />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <motion.div
           ref={ref}
@@ -66,7 +38,9 @@ export default function Faq() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                <AccordionTrigger className="text-left">
+                  {faq.question}
+                </AccordionTrigger>
                 <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
@@ -80,10 +54,10 @@ export default function Faq() {
           className="mt-12 text-center"
         >
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Маєте інші запитання? Не соромтеся зв'язатися зі мною для отримання додаткової інформації.
+            {t("contactNote")}
           </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
