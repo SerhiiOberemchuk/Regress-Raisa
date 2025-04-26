@@ -20,6 +20,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
     services: (await import(`../messages/${locale}/services.json`)).default,
     contact: (await import(`../messages/${locale}/contact.json`)).default,
     footer: (await import(`../messages/${locale}/footer.json`)).default,
+    privacy: (await import(`../messages/${locale}/privacy.json`)).default,
+    terms: (await import(`../messages/${locale}/terms.json`)).default,
+    home: (await import(`../messages/${locale}/home.json`)).default,
   };
 
   return {

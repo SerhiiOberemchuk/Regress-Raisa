@@ -1,8 +1,8 @@
+import { getTranslations, getLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import AboutMethod from "@/components/about-method";
-
 import Results from "@/components/results";
 import Examples from "@/components/examples";
 import Requirements from "@/components/requirements";
@@ -12,45 +12,48 @@ import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import ScrollToTop from "@/components/scroll-to-top";
 
-export const metadata: Metadata = {
-  title: "RaisaRegress | Регресивний гіпноз онлайн з Раїсою Оберемчук",
-  description:
-    "Професійні сеанси регресивного гіпнозу онлайн з Раїсою Оберемчук. Зцілення минулого для гармонійного життя сьогодні. Вирішення психологічних проблем через повернення до минулого досвіду.",
-  keywords:
-    "регресивний гіпноз, регресивна терапія, регресологія, Раїса Оберемчук, онлайн сеанси, регресія, психотерапія, гіпноз, минулі життя, психологічна допомога, підсвідомість",
-  openGraph: {
-    title: "RaisaRegress | Регресивний гіпноз онлайн з Раїсою Оберемчук",
-    description:
-      "Професійні сеанси регресивного гіпнозу онлайн. Зцілення минулого для гармонійного життя сьогодні. Ваш провідник до глибин підсвідомості.",
-    url: "https://raisaregress.online",
-    siteName: "RaisaRegress",
-    locale: "uk_UA",
-    type: "website",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Раїса Оберемчук - Регресивний гіпноз онлайн",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "RaisaRegress | Регресивний гіпноз онлайн з Раїсою Оберемчук",
-    description:
-      "Професійні сеанси регресивного гіпнозу онлайн. Зцілення минулого для гармонійного життя сьогодні.",
-    images: ["/og-image.jpg"],
-  },
-  alternates: {
-    canonical: "https://raisaregress.online",
-    languages: {
-      "en-US": "/en-US",
-      "it-IT": "/it-IT",
-      "uk-UA": "/uk-UA",
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "home" });
+
+  return {
+    metadataBase: new URL("https://raisaregress.online"),
+    applicationName: "RaisaRegress",
+    title: t("meta.title"),
+    description: t("meta.description"),
+    keywords: t("meta.keywords"),
+    openGraph: {
+      title: t("meta.openGraphTitle"),
+      description: t("meta.openGraphDescription"),
+      url: "https://raisaregress.online",
+      siteName: "RaisaRegress",
+      locale: locale === "uk" ? "uk_UA" : locale === "en" ? "en_US" : "it_IT",
+      type: "website",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Раїса Оберемчук - Регресивний гіпноз онлайн",
+        },
+      ],
     },
-  },
-};
+    twitter: {
+      card: "summary_large_image",
+      title: t("meta.twitterTitle"),
+      description: t("meta.twitterDescription"),
+      images: ["/og-image.jpg"],
+    },
+    alternates: {
+      canonical: "https://raisaregress.online",
+      languages: {
+        "uk-UA": "/uk",
+        "en-US": "/en",
+        "it-IT": "/it",
+      },
+    },
+  };
+}
 
 export default function Home() {
   return (
