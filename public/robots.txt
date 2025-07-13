@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.raisaregress.online
+
+# Sitemaps
+Sitemap: https://www.raisaregress.online/sitemap.xml
