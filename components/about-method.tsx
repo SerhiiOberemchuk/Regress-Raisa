@@ -60,7 +60,10 @@ export default function AboutMethod() {
   return (
     <section id="about" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading
+          title={t("title")}
+          //  subtitle={t("subtitle")}
+        />
 
         <motion.div className="bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto mb-12">
           <p className="text-muted-foreground mb-4">{t("intro")}</p>
