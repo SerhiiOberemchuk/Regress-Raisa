@@ -2,39 +2,75 @@
 module.exports = {
   siteUrl: "https://www.raisaregress.online",
   generateRobotsTxt: true,
-  changefreq: "weekly",
+  changefreq: "yearly",
   priority: 1,
   sitemapSize: 5000,
 
-  // не індексуємо сервісні роут-и
   exclude: ["/404", "/500", "/api/*", "/sitemap.xml", "/robots.txt"],
 
-  // hreflang для трьох мов
   alternateRefs: [
     { href: "https://www.raisaregress.online/uk", hreflang: "uk" },
     { href: "https://www.raisaregress.online/it", hreflang: "it" },
     { href: "https://www.raisaregress.online/en", hreflang: "en" },
   ],
 
-  // ЯВНО формуємо тільки потрібні 3 URL
-  additionalPaths: async (config) => [
-    {
-      loc: "/uk",
-      changefreq: "weekly",
-      priority: 1,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: "/it",
-      changefreq: "weekly",
-      priority: 1,
-      lastmod: new Date().toISOString(),
-    },
-    {
-      loc: "/en",
-      changefreq: "weekly",
-      priority: 1,
-      lastmod: new Date().toISOString(),
-    },
-  ],
+  additionalPaths: async (config) => {
+    const dateLastMod = new Date().toISOString();
+    return [
+      {
+        loc: "/uk",
+        changefreq: "yearly",
+        priority: 1,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/it",
+        changefreq: "yearly",
+        priority: 1,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/en",
+        changefreq: "yearly",
+        priority: 1,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/en/terms",
+        changefreq: "yearly",
+        priority: 0.5,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/it/terms",
+        changefreq: "yearly",
+        priority: 0.5,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/uk/terms",
+        changefreq: "yearly",
+        priority: 0.5,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/uk/privacy",
+        changefreq: "yearly",
+        priority: 0.5,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/it/privacy",
+        changefreq: "yearly",
+        priority: 0.5,
+        lastmod: dateLastMod,
+      },
+      {
+        loc: "/en/privacy",
+        changefreq: "yearly",
+        priority: 0.5,
+        lastmod: dateLastMod,
+      },
+    ];
+  },
 };
