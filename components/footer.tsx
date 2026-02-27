@@ -1,20 +1,23 @@
 "use client";
 
-import Link from "next/link";
+import NextLink from "next/link";
 import { Linkedin } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { useSiteContent } from "@/components/site-content-provider";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = "2026";
   const tcontact = useTranslations("contact");
   const tlinks = useTranslations("links");
   const tfooter = useTranslations("footer");
+  const siteContent = useSiteContent();
   return (
     <footer className="relative py-12 overflow-hidden">
       <div
         className="absolute inset-0 -z-10"
         style={{
-          backgroundImage: 'url("/footer-background.jpg")',
+          backgroundImage: `url("${siteContent.images.footerBackground}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -36,60 +39,60 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">{tfooter("navigation")}</h3>
             <ul className="space-y-2">
               <li>
-                <Link
+                <NextLink
                   href="#about"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("about")}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="#results"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("results")}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="#examples"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("examples")}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="#requirements"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("requirements")}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="#faq"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("faq")}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="#services"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("services")}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="#contact"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {tlinks("contact")}
-                </Link>
+                </NextLink>
               </li>
             </ul>
           </div>

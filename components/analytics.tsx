@@ -1,12 +1,15 @@
 "use client"
 
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next"
 import Script from "next/script"
 
 export function Analytics() {
   return (
     <>
-      {/* Google Analytics код */}
-      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+      <VercelAnalytics />
+
+      {/* Google Analytics script */}
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
@@ -21,7 +24,7 @@ export function Analytics() {
             `}
           </Script>
         </>
-      )}
+      ) : null}
     </>
   )
 }

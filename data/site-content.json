@@ -1,0 +1,30 @@
+{
+  "updatedAt": "2026-02-27T18:32:47.596Z",
+  "images": {
+    "hero": "/og-image.jpg",
+    "results": "/uploads/results-1772217167590-f18d39b2-9e2c-4a61-a673-e501e189e822.png",
+    "footerBackground": "/footer-background.jpg"
+  },
+  "prices": {
+    "regression": {
+      "uk": "4500 UAH",
+      "en": "3600 UAH",
+      "it": "3600 UAH"
+    },
+    "progression": {
+      "uk": "45000 UAH",
+      "en": "3600 UAH",
+      "it": "3600 UAH"
+    },
+    "consciousness": {
+      "uk": "9800 UAH",
+      "en": "9800 UAH",
+      "it": "9800 UAH"
+    },
+    "consultation": {
+      "uk": "800 UAH",
+      "en": "800 UAH",
+      "it": "800 UAH"
+    }
+  }
+}

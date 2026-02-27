@@ -1,15 +1,19 @@
 import type React from "react";
 import "../globals.css";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@/components/analytics";
-import { Suspense } from "react";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import CookieConsent from "@/components/cookie-consent";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default async function RootLayout({
   children,
@@ -22,8 +26,11 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
+  setRequestLocale(locale);
+
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
@@ -52,12 +59,11 @@ export default async function RootLayout({
         className={`${inter.className} min-h-screen bg-background antialiased`}
       >
         <NextIntlClientProvider>
-          <ThemeProvider attribute="class" defaultTheme="light">
-            <Suspense>{children}</Suspense>
-            <Analytics />
-            <CookieConsent />
-          </ThemeProvider>
+          {children}
+          <Analytics />
+          <CookieConsent />
         </NextIntlClientProvider>
+        <VercelAnalytics />
       </body>
     </html>
   );

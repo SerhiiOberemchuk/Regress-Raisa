@@ -9,12 +9,11 @@ import SectionHeading from "./section-heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
 import { Phone, Mail, Clock } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Contact() {
-  const { toast } = useToast();
+  const locale = useLocale();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -50,6 +49,7 @@ export default function Contact() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-locale": locale,
         },
         body: JSON.stringify(formData),
       });
@@ -59,11 +59,6 @@ export default function Contact() {
       if (!response.ok) {
         throw new Error(data.error || t("errorCustom"));
       }
-
-      toast({
-        title: t("toast.success.title"),
-        description: t("toast.success.description"),
-      });
 
       setIsSubmitted(true);
 
@@ -76,12 +71,6 @@ export default function Contact() {
     } catch (error) {
       console.error("Помилка відправки форми:", error);
       setFormError(error instanceof Error ? error.message : t("errorDefault"));
-      toast({
-        variant: "destructive",
-        title: t("toast.error.title"),
-        description:
-          error instanceof Error ? error.message : t("toast.error.description"),
-      });
     } finally {
       setIsSubmitting(false);
     }

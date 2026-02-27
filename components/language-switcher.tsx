@@ -1,26 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 
-export type Language = "uk" | "en" | "it";
+type Language = "uk" | "en" | "it";
 
 export default function LanguageSwitcher() {
-  const language = useLocale();
-  const [currentLanguage, setCurrentLanguage] = useState(language);
+  const currentLanguage = useLocale() as Language;
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const dropdownRef = useRef<HTMLDivElement>(null); // 🔥 додаємо реф на контейнер
-
-  const toggleLanguage = (lang: Language) => {
-    setCurrentLanguage(lang);
-    setIsOpen(false);
-  };
-
-  // 🔥 Хук для обробки кліків за межами меню
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -33,21 +26,20 @@ export default function LanguageSwitcher() {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
 
-    // Чистимо слухача при анмаунті
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
+  const closeDropdown = () => setIsOpen(false);
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors p-1.5 rounded-md"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="flex items-center gap-1.5 rounded-md p-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
         aria-label="Change language"
       >
         <Globe className="h-4 w-4" />
@@ -55,37 +47,40 @@ export default function LanguageSwitcher() {
       </button>
 
       <AnimatedDropdown isOpen={isOpen}>
-        <div className="absolute top-full flex flex-col right-0 mt-1 bg-white rounded-md shadow-md overflow-hidden min-w-[120px] z-50">
+        <div className="absolute right-0 top-full z-50 mt-1 flex min-w-[120px] flex-col overflow-hidden rounded-md bg-white shadow-md">
           <Link
-            href="uk"
-            className={`w-full text-left px-4 py-2 text-sm ${
+            href={pathname}
+            locale="uk"
+            className={`w-full px-4 py-2 text-left text-sm ${
               currentLanguage === "uk"
-                ? "bg-primary/10 text-primary font-medium"
+                ? "bg-primary/10 font-medium text-primary"
                 : "hover:bg-muted/50"
             }`}
-            onClick={() => toggleLanguage("uk")}
+            onClick={closeDropdown}
           >
             Українська
           </Link>
           <Link
-            href="en"
-            className={`w-full text-left px-4 py-2 text-sm ${
+            href={pathname}
+            locale="en"
+            className={`w-full px-4 py-2 text-left text-sm ${
               currentLanguage === "en"
-                ? "bg-primary/10 text-primary font-medium"
+                ? "bg-primary/10 font-medium text-primary"
                 : "hover:bg-muted/50"
             }`}
-            onClick={() => toggleLanguage("en")}
+            onClick={closeDropdown}
           >
             English
           </Link>
           <Link
-            href="it"
-            className={`w-full text-left px-4 py-2 text-sm ${
+            href={pathname}
+            locale="it"
+            className={`w-full px-4 py-2 text-left text-sm ${
               currentLanguage === "it"
-                ? "bg-primary/10 text-primary font-medium"
+                ? "bg-primary/10 font-medium text-primary"
                 : "hover:bg-muted/50"
             }`}
-            onClick={() => toggleLanguage("it")}
+            onClick={closeDropdown}
           >
             Italiano
           </Link>

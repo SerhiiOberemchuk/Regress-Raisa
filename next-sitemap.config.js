@@ -5,13 +5,30 @@ module.exports = {
   changefreq: "yearly",
   priority: 1,
   sitemapSize: 5000,
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/trpc/",
+          "/_next/",
+          "/uk/admin",
+          "/en/admin",
+          "/it/admin",
+        ],
+      },
+    ],
+  },
 
-  exclude: ["/404", "/500", "/api/*", "/sitemap.xml", "/robots.txt"],
-
-  alternateRefs: [
-    { href: "https://www.raisaregress.online/uk", hreflang: "uk" },
-    { href: "https://www.raisaregress.online/it", hreflang: "it" },
-    { href: "https://www.raisaregress.online/en", hreflang: "en" },
+  exclude: [
+    "/404",
+    "/500",
+    "/api/*",
+    "/sitemap.xml",
+    "/robots.txt",
+    "/**/admin",
   ],
 
   additionalPaths: async (config) => {
