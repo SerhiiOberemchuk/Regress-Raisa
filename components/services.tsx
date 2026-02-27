@@ -13,10 +13,17 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import {
+  SERVICE_KEYS,
+  SUPPORTED_LOCALES,
+  type ServiceKey,
+  type SupportedLocale,
+} from "@/lib/site-content-schema";
+import { useSiteContent } from "@/components/site-content-provider";
 
 type Service = {
-  title: string;
+  name: string;
   price: string;
   features: Record<string, string>;
 };
@@ -26,13 +33,29 @@ export default function Services() {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const siteContent = useSiteContent();
+  const locale = useLocale();
   const t = useTranslations("services");
-  const arr = Object.values(t.raw("services")) as Service[];
+  const serviceMap = t.raw("services") as Record<string, Service>;
+  const localeKey: SupportedLocale = SUPPORTED_LOCALES.includes(
+    locale as SupportedLocale
+  )
+    ? (locale as SupportedLocale)
+    : "uk";
 
-  const services = arr.map((service) => ({
-    ...service,
-    features: Object.values(service.features),
-  }));
+  const services = Object.entries(serviceMap).map(([key, service]) => {
+    const serviceKey = key as ServiceKey;
+    const configuredPrice = SERVICE_KEYS.includes(serviceKey)
+      ? siteContent.prices[serviceKey][localeKey]
+      : undefined;
+
+    return {
+      key,
+      name: service.name,
+      price: configuredPrice ?? service.price,
+      features: Object.values(service.features),
+    };
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -65,11 +88,11 @@ export default function Services() {
           animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12"
         >
-          {services.map((service, index) => (
-            <motion.div key={index} variants={itemVariants}>
+          {services.map((service) => (
+            <motion.div key={service.key} variants={itemVariants}>
               <Card className="h-full flex flex-col border-none shadow-md hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardTitle className="text-xl">{service.name}</CardTitle>
                   <div className="mt-2">
                     <span className="text-3xl font-bold text-primary">
                       {service.price}

@@ -2,15 +2,9 @@ import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
+  output: "standalone",
+  cacheComponents: true,
+  reactCompiler: true,
 };
 
 const withNextIntl = createNextIntlPlugin();

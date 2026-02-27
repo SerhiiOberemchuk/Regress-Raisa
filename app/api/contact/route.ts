@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
-
-export const runtime = "nodejs";
+import { routing } from "@/i18n/routing";
 
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,7 +24,10 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
-    const locale = request.headers.get("x-locale") || "uk";
+    const requestLocale = request.headers.get("x-locale");
+    const locale = hasLocale(routing.locales, requestLocale)
+      ? requestLocale
+      : routing.defaultLocale;
     const t = await getTranslations({ locale, namespace: "common" });
 
     const data = await request.json();
@@ -59,7 +62,7 @@ export async function POST(request: Request) {
     const currentDate = new Date().toLocaleString(
       locale === "uk" ? "uk-UA" : locale === "en" ? "en-US" : "it-IT",
       {
-        timeZone: "Europe/Kiev",
+        timeZone: "Europe/Kyiv",
       }
     );
 

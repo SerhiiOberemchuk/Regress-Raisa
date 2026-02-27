@@ -1,4 +1,4 @@
-import { getTranslations, getLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
@@ -11,13 +11,23 @@ import Services from "@/components/services";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import ScrollToTop from "@/components/scroll-to-top";
+import { SiteContentProvider } from "@/components/site-content-provider";
+import { readSiteContent } from "@/lib/site-content";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  "use cache";
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
+  const siteContent = await readSiteContent();
+  const heroImageUrl = siteContent.images.hero.startsWith("http")
+    ? siteContent.images.hero
+    : `https://raisaregress.online${siteContent.images.hero}`;
 
   return {
-    metadataBase: new URL("https://raisaregress.online"),
     applicationName: "RaisaRegress",
     title: t("meta.title"),
     description: t("meta.description"),
@@ -31,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/og-image.jpg",
+          url: heroImageUrl,
           width: 1200,
           height: 630,
           alt: "Раїса Оберемчук - Регресивний гіпноз онлайн",
@@ -42,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: t("meta.twitterTitle"),
       description: t("meta.twitterDescription"),
-      images: ["/og-image.jpg"],
+      images: [heroImageUrl],
     },
     alternates: {
       canonical: "https://raisaregress.online",
@@ -58,17 +68,19 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      <Header />
-      <Hero />
-      <AboutMethod />
-      <Results />
-      <Examples />
-      <Requirements />
-      <Faq />
-      <Services />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
+      <SiteContentProvider>
+        <Header />
+        <Hero />
+        <AboutMethod />
+        <Results />
+        <Examples />
+        <Requirements />
+        <Faq />
+        <Services />
+        <Contact />
+        <Footer />
+        <ScrollToTop />
+      </SiteContentProvider>
     </main>
   );
 }

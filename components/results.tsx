@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import SectionHeading from "./section-heading";
 import { CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useSiteContent } from "@/components/site-content-provider";
 
 export default function Results() {
   const [ref, inView] = useInView({
@@ -12,6 +13,7 @@ export default function Results() {
     threshold: 0.1,
   });
   const t = useTranslations("results");
+  const siteContent = useSiteContent();
   const results = Object.values(t.raw("benefits")) as string[];
 
   const containerVariants = {
@@ -48,7 +50,7 @@ export default function Results() {
             <div className="absolute inset-0 bg-primary/10 rounded-full -z-10 transform -translate-x-4 translate-y-4" />
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
               <img
-                src="/serene-meditation.png"
+                src={siteContent.images.results}
                 alt={t("imageAlt")}
                 className="object-cover w-full h-full"
               />

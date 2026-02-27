@@ -1,11 +1,14 @@
-import { useTranslations } from "next-intl";
-import { getTranslations, getLocale } from "next-intl/server";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-export async function generateMetadata() {
-  const locale = await getLocale();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "terms" });
 
   return {
@@ -14,8 +17,13 @@ export async function generateMetadata() {
   };
 }
 
-export default function TermsOfUsePage() {
-  const t = useTranslations("terms");
+export default async function TermsOfUsePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "terms" });
 
   const sections = [
     "acceptance",

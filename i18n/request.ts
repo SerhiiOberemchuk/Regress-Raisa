@@ -8,21 +8,53 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
+  const [
+    links,
+    hero,
+    about,
+    results,
+    examples,
+    requirements,
+    faq,
+    services,
+    contact,
+    footer,
+    privacy,
+    terms,
+    home,
+    common,
+  ] = await Promise.all([
+    import(`../messages/${locale}/links.json`).then((m) => m.default),
+    import(`../messages/${locale}/hero.json`).then((m) => m.default),
+    import(`../messages/${locale}/about.json`).then((m) => m.default),
+    import(`../messages/${locale}/results.json`).then((m) => m.default),
+    import(`../messages/${locale}/examples.json`).then((m) => m.default),
+    import(`../messages/${locale}/requirements.json`).then((m) => m.default),
+    import(`../messages/${locale}/faq.json`).then((m) => m.default),
+    import(`../messages/${locale}/services.json`).then((m) => m.default),
+    import(`../messages/${locale}/contact.json`).then((m) => m.default),
+    import(`../messages/${locale}/footer.json`).then((m) => m.default),
+    import(`../messages/${locale}/privacy.json`).then((m) => m.default),
+    import(`../messages/${locale}/terms.json`).then((m) => m.default),
+    import(`../messages/${locale}/home.json`).then((m) => m.default),
+    import(`../messages/${locale}/common.json`).then((m) => m.default),
+  ]);
+
   const messages = {
-    links: (await import(`../messages/${locale}/links.json`)).default,
-    hero: (await import(`../messages/${locale}/hero.json`)).default,
-    about: (await import(`../messages/${locale}/about.json`)).default,
-    results: (await import(`../messages/${locale}/results.json`)).default,
-    examples: (await import(`../messages/${locale}/examples.json`)).default,
-    requirements: (await import(`../messages/${locale}/requirements.json`))
-      .default,
-    faq: (await import(`../messages/${locale}/faq.json`)).default,
-    services: (await import(`../messages/${locale}/services.json`)).default,
-    contact: (await import(`../messages/${locale}/contact.json`)).default,
-    footer: (await import(`../messages/${locale}/footer.json`)).default,
-    privacy: (await import(`../messages/${locale}/privacy.json`)).default,
-    terms: (await import(`../messages/${locale}/terms.json`)).default,
-    home: (await import(`../messages/${locale}/home.json`)).default,
+    links,
+    hero,
+    about,
+    results,
+    examples,
+    requirements,
+    faq,
+    services,
+    contact,
+    footer,
+    privacy,
+    terms,
+    home,
+    common,
   };
 
   return {

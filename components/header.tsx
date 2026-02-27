@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LanguageSwitcher from "./language-switcher";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,17 +60,17 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link
+              <NextLink
                 key={link.name}
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.name}
-              </Link>
+              </NextLink>
             ))}
             <LanguageSwitcher />
             <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="#contact">{nameButton}</Link>
+              <NextLink href="#contact">{nameButton}</NextLink>
             </Button>
           </nav>
 
@@ -94,22 +95,25 @@ export default function Header() {
           >
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <Link
+                <NextLink
                   key={link.name}
                   href={link.href}
                   className="text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </Link>
+                </NextLink>
               ))}
               <div className="py-2">
                 <LanguageSwitcher />
               </div>
               <Button asChild className="bg-primary hover:bg-primary/90 w-full">
-                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                <NextLink
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   {nameButton}
-                </Link>
+                </NextLink>
               </Button>
             </div>
           </motion.div>
