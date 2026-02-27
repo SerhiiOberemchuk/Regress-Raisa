@@ -23,6 +23,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     terms,
     home,
     common,
+    cookie,
   ] = await Promise.all([
     import(`../messages/${locale}/links.json`).then((m) => m.default),
     import(`../messages/${locale}/hero.json`).then((m) => m.default),
@@ -38,6 +39,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`../messages/${locale}/terms.json`).then((m) => m.default),
     import(`../messages/${locale}/home.json`).then((m) => m.default),
     import(`../messages/${locale}/common.json`).then((m) => m.default),
+    import(`../messages/${locale}/cookie.json`).then((m) => m.default),
   ]);
 
   const messages = {
@@ -55,6 +57,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     terms,
     home,
     common,
+    cookie,
   };
 
   return {
