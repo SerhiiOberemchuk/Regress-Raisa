@@ -1,22 +1,18 @@
 # RaisaRegress
 
-Мультимовний вебсайт для приватної практики регресивної терапії з адміністративною панеллю для керування цінами та зображеннями.
+Multilingual website for a private regression therapy practice.
 
-## Про проєкт
+## Project Overview
 
-Сайт реалізований на Next.js (App Router) з локалізацією `uk/en/it`, SEO-оптимізацією та серверними діями для безпечного редагування контенту з адмінки.
+This project is built with Next.js App Router and contains:
 
-## Основні можливості
+- public marketing website in 3 locales: `uk`, `en`, `it`
+- admin authentication with `better-auth`
+- admin panel for service prices management
+- service prices stored in PostgreSQL (Neon) via `drizzle-orm`
+- SEO setup: metadata, hreflang/canonical, sitemap, robots
 
-- Публічний лендинг для трьох мов: `uk`, `en`, `it`
-- Адмін-панель з авторизацією через `better-auth`
-- Оновлення цін через серверні дії
-- Збереження цін у PostgreSQL (Neon) через `drizzle-orm`
-- Збереження зображень у `public/uploads`
-- Кешування контенту через Next.js cache components (`use cache`, `cacheTag`, `updateTag`)
-- Генерація `sitemap.xml` та `robots.txt` через `next-sitemap`
-
-## Технології
+## Tech Stack
 
 - Next.js 16
 - React 19
@@ -27,15 +23,14 @@
 - drizzle-orm
 - @neondatabase/serverless
 
-## Зберігання даних
+## Data Storage
 
-- `site_prices` (PostgreSQL): ціни послуг по мовах
-- `data/site-content.json`: тільки `updatedAt` та шляхи до зображень
-- `public/uploads`: завантажені файли з адмінки
+- `site_prices` (PostgreSQL): all service prices per locale
+- images are static defaults in code/public assets
 
-## Змінні середовища
+## Environment Variables
 
-Для локального запуску потрібні змінні в `.env.local`:
+Required in `.env.local`:
 
 - `ADMIN_LOGIN`
 - `ADMIN_PASSWORD`
@@ -43,37 +38,28 @@
 - `BETTER_AUTH_URL`
 - `DATABASE_URL`
 
-Додатково можуть бути присутні `POSTGRES_*` / `PG*` змінні від провайдера.
+Provider-specific `POSTGRES_*` / `PG*` variables can also be present.
 
-## Локальний запуск
+## Local Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Відкриття у браузері:
+Open:
 
-- Публічний сайт: `http://localhost:3000/uk` (або `/en`, `/it`)
-- Адмінка: `http://localhost:3000/uk/admin`
+- website: `http://localhost:3000/uk` (or `/en`, `/it`)
+- admin: `http://localhost:3000/uk/admin`
 
-## Скрипти
+## Scripts
 
-- `npm run dev` - локальний режим
+- `npm run dev` - development
 - `npm run build` - production build
-- `npm run start` - запуск production build
-- `npm run postbuild` - генерація sitemap/robots
+- `npm run start` - run production build
+- `npm run postbuild` - generate sitemap/robots
 
-## SEO
-
-Реалізовано:
-
-- canonical + hreflang для локалей
-- metadata для ключових сторінок
-- structured data (JSON-LD) на головній
-- sitemap і robots
-
-## Розробник
+## Developer
 
 **Serhii Oberemchuk**
 

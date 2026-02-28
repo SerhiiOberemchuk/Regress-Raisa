@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,25 +9,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   loginAdminAction,
   logoutAdminAction,
-  replaceImageAction,
   savePricesAction,
 } from "@/app/[locale]/admin/actions";
 import {
-  IMAGE_KEYS,
   SERVICE_KEYS,
   SUPPORTED_LOCALES,
-  type ImageKey,
   type ServiceKey,
   type SiteContent,
   type SupportedLocale,
 } from "@/lib/site-content-schema";
 
 type Status = {
-  type: "idle" | "success" | "error";
-  message: string;
-};
-
-type UploadStatus = {
   type: "idle" | "success" | "error";
   message: string;
 };
@@ -43,24 +35,6 @@ const localeLabels: Record<SupportedLocale, string> = {
   uk: "UK",
   en: "EN",
   it: "IT",
-};
-
-const imageLabels: Record<ImageKey, string> = {
-  hero: "Hero image",
-  results: "Results image",
-  footerBackground: "Footer background",
-};
-
-const defaultUploadState: Record<ImageKey, boolean> = {
-  hero: false,
-  results: false,
-  footerBackground: false,
-};
-
-const defaultUploadStatus: Record<ImageKey, UploadStatus> = {
-  hero: { type: "idle", message: "" },
-  results: { type: "idle", message: "" },
-  footerBackground: { type: "idle", message: "" },
 };
 
 type AdminPanelProps = {
@@ -80,17 +54,7 @@ export default function AdminPanel({
   const [showPassword, setShowPassword] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [uploading, setUploading] =
-    useState<Record<ImageKey, boolean>>(defaultUploadState);
-  const [uploadStatus, setUploadStatus] =
-    useState<Record<ImageKey, UploadStatus>>(defaultUploadStatus);
-  const [selectedFiles, setSelectedFiles] = useState<
-    Partial<Record<ImageKey, File>>
-  >({});
-  const [status, setStatus] = useState<Status>({
-    type: "idle",
-    message: "",
-  });
+  const [status, setStatus] = useState<Status>({ type: "idle", message: "" });
 
   useEffect(() => {
     setContent(initialContent);
@@ -114,21 +78,6 @@ export default function AdminPanel({
           [locale]: value,
         },
       },
-    }));
-  };
-
-  const onFileChange = (
-    slot: ImageKey,
-    event: ChangeEvent<HTMLInputElement>,
-  ) => {
-    const file = event.target.files?.[0];
-    setSelectedFiles((prev) => ({
-      ...prev,
-      [slot]: file,
-    }));
-    setUploadStatus((prev) => ({
-      ...prev,
-      [slot]: { type: "idle", message: "" },
     }));
   };
 
@@ -167,78 +116,13 @@ export default function AdminPanel({
 
       setAuthenticated(false);
       setPassword("");
-      setSelectedFiles({});
       setStatus({ type: "success", message: "Signed out" });
       router.refresh();
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Sign out failed";
+      const message = error instanceof Error ? error.message : "Sign out failed";
       setStatus({ type: "error", message });
     } finally {
       setAuthLoading(false);
-    }
-  };
-
-  const replaceImage = async (slot: ImageKey) => {
-    if (!authenticated) {
-      setStatus({ type: "error", message: "Sign in as admin first" });
-      setUploadStatus((prev) => ({
-        ...prev,
-        [slot]: { type: "error", message: "Sign in as admin first" },
-      }));
-      return;
-    }
-
-    const file = selectedFiles[slot];
-    if (!file) {
-      setStatus({ type: "error", message: "Select an image file first" });
-      setUploadStatus((prev) => ({
-        ...prev,
-        [slot]: { type: "error", message: "Select an image file first" },
-      }));
-      return;
-    }
-
-    setUploading((prev) => ({ ...prev, [slot]: true }));
-    setStatus({ type: "idle", message: "" });
-
-    try {
-      const result = await replaceImageAction({ slot, file });
-      if (!result.ok || !result.data) {
-        throw new Error(result.error ?? "Image upload failed");
-      }
-
-      setContent(result.data);
-      setSelectedFiles((prev) => {
-        const next = { ...prev };
-        delete next[slot];
-        return next;
-      });
-      setStatus({
-        type: "success",
-        message: `${imageLabels[slot]} replaced successfully`,
-      });
-      setUploadStatus((prev) => ({
-        ...prev,
-        [slot]: {
-          type: "success",
-          message: `${imageLabels[slot]} replaced successfully`,
-        },
-      }));
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Image upload failed";
-      if (message === "Unauthorized") {
-        setAuthenticated(false);
-        router.refresh();
-      }
-      setStatus({ type: "error", message });
-      setUploadStatus((prev) => ({
-        ...prev,
-        [slot]: { type: "error", message },
-      }));
-    } finally {
-      setUploading((prev) => ({ ...prev, [slot]: false }));
     }
   };
 
@@ -254,7 +138,7 @@ export default function AdminPanel({
     setStatus({ type: "idle", message: "" });
 
     try {
-      const result = await savePricesAction(content);
+      const result = await savePricesAction(content.prices);
       if (!result.ok || !result.data) {
         throw new Error(result.error ?? "Save failed");
       }
@@ -277,10 +161,9 @@ export default function AdminPanel({
     <div className="container mx-auto max-w-5xl px-4 py-10">
       <Card>
         <CardHeader>
-          <CardTitle>Admin: prices and photos</CardTitle>
+          <CardTitle>Admin: prices</CardTitle>
           <p className="text-sm text-muted-foreground">
-            Prices source: <code>site_prices</code> (PostgreSQL), images source:{" "}
-            <code>data/site-content.json</code>
+            Data source: <code>site_prices</code> (PostgreSQL)
           </p>
           <p className="text-sm text-muted-foreground">
             Last update:{" "}
@@ -326,9 +209,7 @@ export default function AdminPanel({
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
                     className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label={
-                      showPassword ? "Hide password" : "Show password"
-                    }
+                    aria-label={showPassword ? "Hide password" : "Show password"}
                     title={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? (
@@ -370,64 +251,6 @@ export default function AdminPanel({
               </div>
 
               <div className="space-y-4">
-                <h2 className="text-lg font-semibold">Images</h2>
-                <p className="text-sm text-muted-foreground">
-                  Upload new file and the previous image file will be removed
-                  automatically.
-                </p>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  {IMAGE_KEYS.map((slot) => (
-                    <div key={slot} className="space-y-3 rounded-md border p-4">
-                      <div>
-                        <p className="font-medium">{imageLabels[slot]}</p>
-                        <p className="text-xs text-muted-foreground">
-                          Current: {content.images[slot]}
-                        </p>
-                      </div>
-
-                      <img
-                        src={content.images[slot]}
-                        alt={imageLabels[slot]}
-                        className="h-40 w-full rounded-md border object-cover"
-                      />
-
-                      <Input
-                        key={`${slot}-${content.images[slot]}`}
-                        type="file"
-                        accept="image/*"
-                        onChange={(event) => onFileChange(slot, event)}
-                      />
-
-                      <Button
-                        type="button"
-                        onClick={() => {
-                          void replaceImage(slot);
-                        }}
-                        disabled={uploading[slot] || !selectedFiles[slot]}
-                      >
-                        {uploading[slot]
-                          ? "Uploading..."
-                          : "Upload and replace"}
-                      </Button>
-
-                      {uploadStatus[slot].message ? (
-                        <p
-                          className={
-                            uploadStatus[slot].type === "error"
-                              ? "text-xs text-red-600"
-                              : "text-xs text-green-600"
-                          }
-                        >
-                          {uploadStatus[slot].message}
-                        </p>
-                      ) : null}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-4">
                 <h2 className="text-lg font-semibold">Prices</h2>
 
                 <div className="overflow-x-auto rounded-md border">
@@ -453,11 +276,7 @@ export default function AdminPanel({
                               <Input
                                 value={content.prices[service][locale]}
                                 onChange={(event) =>
-                                  updatePrice(
-                                    service,
-                                    locale,
-                                    event.target.value,
-                                  )
+                                  updatePrice(service, locale, event.target.value)
                                 }
                                 required
                               />
