@@ -1,11 +1,18 @@
 "use client";
 
 import { type ChangeEvent, type FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  defaultSiteContent,
+  loginAdminAction,
+  logoutAdminAction,
+  replaceImageAction,
+  savePricesAction,
+} from "@/app/[locale]/admin/actions";
+import {
   IMAGE_KEYS,
   SERVICE_KEYS,
   SUPPORTED_LOCALES,
@@ -56,10 +63,22 @@ const defaultUploadStatus: Record<ImageKey, UploadStatus> = {
   footerBackground: { type: "idle", message: "" },
 };
 
-export default function AdminPanel() {
-  const [content, setContent] = useState<SiteContent>(defaultSiteContent);
-  const [token, setToken] = useState("");
-  const [loading, setLoading] = useState(true);
+type AdminPanelProps = {
+  initialContent: SiteContent;
+  initialAuthenticated: boolean;
+};
+
+export default function AdminPanel({
+  initialContent,
+  initialAuthenticated,
+}: AdminPanelProps) {
+  const router = useRouter();
+  const [content, setContent] = useState<SiteContent>(initialContent);
+  const [authenticated, setAuthenticated] = useState(initialAuthenticated);
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [authLoading, setAuthLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] =
     useState<Record<ImageKey, boolean>>(defaultUploadState);
@@ -74,31 +93,17 @@ export default function AdminPanel() {
   });
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        const response = await fetch("/api/admin/content", { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error("Cannot load current content");
-        }
+    setContent(initialContent);
+  }, [initialContent]);
 
-        const payload = (await response.json()) as SiteContent;
-        setContent(payload);
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : "Failed to load content";
-        setStatus({ type: "error", message });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    void load();
-  }, []);
+  useEffect(() => {
+    setAuthenticated(initialAuthenticated);
+  }, [initialAuthenticated]);
 
   const updatePrice = (
     service: ServiceKey,
     locale: SupportedLocale,
-    value: string
+    value: string,
   ) => {
     setContent((prev) => ({
       ...prev,
@@ -112,7 +117,10 @@ export default function AdminPanel() {
     }));
   };
 
-  const onFileChange = (slot: ImageKey, event: ChangeEvent<HTMLInputElement>) => {
+  const onFileChange = (
+    slot: ImageKey,
+    event: ChangeEvent<HTMLInputElement>,
+  ) => {
     const file = event.target.files?.[0];
     setSelectedFiles((prev) => ({
       ...prev,
@@ -124,12 +132,59 @@ export default function AdminPanel() {
     }));
   };
 
+  const loginAdmin = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setAuthLoading(true);
+    setStatus({ type: "idle", message: "" });
+
+    try {
+      const result = await loginAdminAction({ login, password });
+      if (!result.ok) {
+        throw new Error(result.error ?? "Sign in failed");
+      }
+
+      setAuthenticated(true);
+      setPassword("");
+      setStatus({ type: "success", message: "Signed in as admin" });
+      router.refresh();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Sign in failed";
+      setStatus({ type: "error", message });
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const logoutAdmin = async () => {
+    setAuthLoading(true);
+    setStatus({ type: "idle", message: "" });
+
+    try {
+      const result = await logoutAdminAction();
+      if (!result.ok) {
+        throw new Error(result.error ?? "Sign out failed");
+      }
+
+      setAuthenticated(false);
+      setPassword("");
+      setSelectedFiles({});
+      setStatus({ type: "success", message: "Signed out" });
+      router.refresh();
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "Sign out failed";
+      setStatus({ type: "error", message });
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
   const replaceImage = async (slot: ImageKey) => {
-    if (!token.trim()) {
-      setStatus({ type: "error", message: "Enter admin token first" });
+    if (!authenticated) {
+      setStatus({ type: "error", message: "Sign in as admin first" });
       setUploadStatus((prev) => ({
         ...prev,
-        [slot]: { type: "error", message: "Enter admin token first" },
+        [slot]: { type: "error", message: "Sign in as admin first" },
       }));
       return;
     }
@@ -148,25 +203,12 @@ export default function AdminPanel() {
     setStatus({ type: "idle", message: "" });
 
     try {
-      const formData = new FormData();
-      formData.set("slot", slot);
-      formData.set("file", file);
-
-      const response = await fetch("/api/admin/image", {
-        method: "POST",
-        headers: {
-          "x-admin-token": token.trim(),
-        },
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const body = (await response.json()) as { error?: string };
-        throw new Error(body.error ?? "Image upload failed");
+      const result = await replaceImageAction({ slot, file });
+      if (!result.ok || !result.data) {
+        throw new Error(result.error ?? "Image upload failed");
       }
 
-      const payload = (await response.json()) as SiteContent;
-      setContent(payload);
+      setContent(result.data);
       setSelectedFiles((prev) => {
         const next = { ...prev };
         delete next[slot];
@@ -186,6 +228,10 @@ export default function AdminPanel() {
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Image upload failed";
+      if (message === "Unauthorized") {
+        setAuthenticated(false);
+        router.refresh();
+      }
       setStatus({ type: "error", message });
       setUploadStatus((prev) => ({
         ...prev,
@@ -198,29 +244,29 @@ export default function AdminPanel() {
 
   const savePrices = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!authenticated) {
+      setStatus({ type: "error", message: "Sign in as admin first" });
+      return;
+    }
+
     setSaving(true);
     setStatus({ type: "idle", message: "" });
 
     try {
-      const response = await fetch("/api/admin/content", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "x-admin-token": token.trim(),
-        },
-        body: JSON.stringify(content),
-      });
-
-      if (!response.ok) {
-        const body = (await response.json()) as { error?: string };
-        throw new Error(body.error ?? "Save failed");
+      const result = await savePricesAction(content);
+      if (!result.ok || !result.data) {
+        throw new Error(result.error ?? "Save failed");
       }
 
-      const payload = (await response.json()) as SiteContent;
-      setContent(payload);
+      setContent(result.data);
       setStatus({ type: "success", message: "Prices saved successfully" });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Save failed";
+      if (message === "Unauthorized") {
+        setAuthenticated(false);
+        router.refresh();
+      }
       setStatus({ type: "error", message });
     } finally {
       setSaving(false);
@@ -244,28 +290,82 @@ export default function AdminPanel() {
         </CardHeader>
 
         <CardContent>
-          {loading ? (
-            <p className="text-sm text-muted-foreground">Loading...</p>
-          ) : (
-            <form onSubmit={savePrices} className="space-y-8">
+          {!authenticated ? (
+            <form onSubmit={loginAdmin} className="max-w-sm space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium" htmlFor="admin-token">
-                  Admin token
+                <label className="text-sm font-medium" htmlFor="admin-login">
+                  Admin login
                 </label>
                 <Input
-                  id="admin-token"
-                  type="password"
-                  autoComplete="off"
-                  value={token}
-                  onChange={(event) => setToken(event.target.value)}
-                  placeholder="ADMIN_TOKEN"
+                  id="admin-login"
+                  autoComplete="username"
+                  value={login}
+                  onChange={(event) => setLogin(event.target.value)}
+                  placeholder="ADMIN_LOGIN"
                   required
                 />
-                <p className="text-xs text-muted-foreground">
-                  {token.trim()
-                    ? "Token entered"
-                    : "Enter token to upload images and save prices"}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium" htmlFor="admin-password">
+                  Admin password
+                </label>
+                <div className="relative">
+                  <Input
+                    id="admin-password"
+                    type={showPassword ? "text" : "password"}
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="ADMIN_PASSWORD"
+                    className="pr-10"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
+                    title={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {status.message ? (
+                <p
+                  className={
+                    status.type === "error"
+                      ? "text-sm text-red-600"
+                      : "text-sm text-green-600"
+                  }
+                >
+                  {status.message}
                 </p>
+              ) : null}
+
+              <Button type="submit" disabled={authLoading}>
+                {authLoading ? "Signing in..." : "Sign in"}
+              </Button>
+            </form>
+          ) : (
+            <form onSubmit={savePrices} className="space-y-8">
+              <div className="flex justify-end">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => void logoutAdmin()}
+                  disabled={authLoading}
+                >
+                  {authLoading ? "Signing out..." : "Sign out"}
+                </Button>
               </div>
 
               <div className="space-y-4">
@@ -330,7 +430,7 @@ export default function AdminPanel() {
                 <h2 className="text-lg font-semibold">Prices</h2>
 
                 <div className="overflow-x-auto rounded-md border">
-                  <table className="w-full min-w-[640px] border-collapse text-sm">
+                  <table className="w-full min-w-160 border-collapse text-sm">
                     <thead>
                       <tr className="border-b">
                         <th className="p-3 text-left">Service</th>
@@ -344,13 +444,19 @@ export default function AdminPanel() {
                     <tbody>
                       {SERVICE_KEYS.map((service) => (
                         <tr key={service} className="border-b last:border-0">
-                          <td className="p-3 font-medium">{serviceLabels[service]}</td>
+                          <td className="p-3 font-medium">
+                            {serviceLabels[service]}
+                          </td>
                           {SUPPORTED_LOCALES.map((locale) => (
                             <td key={locale} className="p-3">
                               <Input
                                 value={content.prices[service][locale]}
                                 onChange={(event) =>
-                                  updatePrice(service, locale, event.target.value)
+                                  updatePrice(
+                                    service,
+                                    locale,
+                                    event.target.value,
+                                  )
                                 }
                                 required
                               />

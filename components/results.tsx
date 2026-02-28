@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 import SectionHeading from "./section-heading";
 import { CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -49,10 +50,12 @@ export default function Results() {
           >
             <div className="absolute inset-0 bg-primary/10 rounded-full -z-10 transform -translate-x-4 translate-y-4" />
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
-              <img
+              <Image
                 src={siteContent.images.results}
                 alt={t("imageAlt")}
-                className="object-cover w-full h-full"
+                fill
+                sizes="(min-width: 1024px) 32rem, 100vw"
+                className="object-cover"
               />
             </div>
           </motion.div>
@@ -70,7 +73,7 @@ export default function Results() {
                 variants={itemVariants}
                 className="flex items-start gap-3"
               >
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <CheckCircle className="h-6 w-6 text-primary shrink-0 mt-0.5" />
                 <span className="text-lg">{result}</span>
               </motion.li>
             ))}

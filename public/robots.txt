@@ -3,7 +3,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /trpc/
-Disallow: /_next/
 Disallow: /uk/admin
 Disallow: /en/admin
 Disallow: /it/admin

@@ -13,7 +13,6 @@ module.exports = {
         disallow: [
           "/api/",
           "/trpc/",
-          "/_next/",
           "/uk/admin",
           "/en/admin",
           "/it/admin",
@@ -31,63 +30,25 @@ module.exports = {
     "/**/admin",
   ],
 
-  additionalPaths: async (config) => {
+  additionalPaths: async () => {
     const dateLastMod = new Date().toISOString();
-    return [
-      {
-        loc: "/uk",
-        changefreq: "yearly",
-        priority: 1,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/it",
-        changefreq: "yearly",
-        priority: 1,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/en",
-        changefreq: "yearly",
-        priority: 1,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/en/terms",
-        changefreq: "yearly",
-        priority: 0.5,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/it/terms",
-        changefreq: "yearly",
-        priority: 0.5,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/uk/terms",
-        changefreq: "yearly",
-        priority: 0.5,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/uk/privacy",
-        changefreq: "yearly",
-        priority: 0.5,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/it/privacy",
-        changefreq: "yearly",
-        priority: 0.5,
-        lastmod: dateLastMod,
-      },
-      {
-        loc: "/en/privacy",
-        changefreq: "yearly",
-        priority: 0.5,
-        lastmod: dateLastMod,
-      },
+    const locales = ["uk", "it", "en"];
+    const pages = [
+      { path: "", priority: 1 },
+      { path: "terms", priority: 0.5 },
+      { path: "privacy", priority: 0.5 },
+      { path: "regression-hypnosis-online", priority: 0.8 },
+      { path: "regression-therapy-price", priority: 0.7 },
+      { path: "regression-therapy-safety", priority: 0.7 },
     ];
+
+    return locales.flatMap((locale) =>
+      pages.map((page) => ({
+        loc: page.path ? `/${locale}/${page.path}` : `/${locale}`,
+        changefreq: "yearly",
+        priority: page.priority,
+        lastmod: dateLastMod,
+      })),
+    );
   },
 };

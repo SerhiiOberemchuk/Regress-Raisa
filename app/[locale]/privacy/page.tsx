@@ -1,26 +1,37 @@
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import {
+  getLanguageAlternates,
+  getLocalizedPath,
+  type SupportedSeoLocale,
+} from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
-}) {
+  params: Promise<{ locale: SupportedSeoLocale }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacy.privacy" });
+  const canonicalPath = getLocalizedPath(locale, "privacy");
 
   return {
     title: t("title"),
     description: t("description"),
+    alternates: {
+      canonical: canonicalPath,
+      ...getLanguageAlternates("privacy"),
+    },
   };
 }
 
 export default async function PrivacyPolicyPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: SupportedSeoLocale }>;
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacy" });

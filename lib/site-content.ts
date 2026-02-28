@@ -63,9 +63,7 @@ const getFileExtension = (file: File): string | null => {
   }
 
   const normalized = extension === "jpeg" ? "jpg" : extension;
-  return ["jpg", "png", "webp", "gif"].includes(normalized)
-    ? normalized
-    : null;
+  return ["jpg", "png", "webp", "gif"].includes(normalized) ? normalized : null;
 };
 
 export async function readSiteContent(): Promise<SiteContent> {
@@ -85,14 +83,18 @@ export async function writeSiteContent(input: unknown): Promise<SiteContent> {
   };
 
   await fs.mkdir(path.dirname(dataFilePath), { recursive: true });
-  await fs.writeFile(dataFilePath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  await fs.writeFile(
+    dataFilePath,
+    `${JSON.stringify(payload, null, 2)}\n`,
+    "utf8",
+  );
 
   return payload;
 }
 
 export async function replaceSiteImage(
   slot: ImageKey,
-  file: File
+  file: File,
 ): Promise<SiteContent> {
   if (file.size <= 0) {
     throw new Error("File is empty");
