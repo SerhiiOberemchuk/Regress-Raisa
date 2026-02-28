@@ -9,11 +9,14 @@ import {
   type ImageKey,
   type SiteContent,
 } from "@/lib/site-content-schema";
+import { readPricesFromDb, writePricesToDb } from "@/lib/site-prices-db";
 
 const dataFilePath = path.join(process.cwd(), "data", "site-content.json");
 const publicDirPath = path.join(process.cwd(), "public");
 const uploadsDirPath = path.join(publicDirPath, "uploads");
 const resolvedPublicRoot = path.resolve(publicDirPath);
+
+type SiteContentFile = Pick<SiteContent, "updatedAt" | "images">;
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const MIME_TO_EXT: Record<string, string> = {
@@ -67,11 +70,33 @@ const getFileExtension = (file: File): string | null => {
 };
 
 export async function readSiteContent(): Promise<SiteContent> {
+  let baseContent: SiteContentFile = {
+    updatedAt: defaultSiteContent.updatedAt,
+    images: defaultSiteContent.images,
+  };
+
   try {
     const file = await fs.readFile(dataFilePath, "utf8");
-    return normalizeSiteContent(JSON.parse(file));
+    const normalized = normalizeSiteContent(JSON.parse(file));
+    baseContent = {
+      updatedAt: normalized.updatedAt,
+      images: normalized.images,
+    };
   } catch {
-    return defaultSiteContent;
+    // Keep defaults when file does not exist or is invalid.
+  }
+
+  try {
+    const dbPrices = await readPricesFromDb();
+    return {
+      ...baseContent,
+      prices: dbPrices,
+    };
+  } catch {
+    return {
+      ...baseContent,
+      prices: defaultSiteContent.prices,
+    };
   }
 }
 
@@ -82,10 +107,17 @@ export async function writeSiteContent(input: unknown): Promise<SiteContent> {
     updatedAt: new Date().toISOString(),
   };
 
+  await writePricesToDb(payload.prices);
+
+  const filePayload: SiteContentFile = {
+    updatedAt: payload.updatedAt,
+    images: payload.images,
+  };
+
   await fs.mkdir(path.dirname(dataFilePath), { recursive: true });
   await fs.writeFile(
     dataFilePath,
-    `${JSON.stringify(payload, null, 2)}\n`,
+    `${JSON.stringify(filePayload, null, 2)}\n`,
     "utf8",
   );
 

@@ -279,7 +279,8 @@ export default function AdminPanel({
         <CardHeader>
           <CardTitle>Admin: prices and photos</CardTitle>
           <p className="text-sm text-muted-foreground">
-            Data source: <code>data/site-content.json</code>
+            Prices source: <code>site_prices</code> (PostgreSQL), images source:{" "}
+            <code>data/site-content.json</code>
           </p>
           <p className="text-sm text-muted-foreground">
             Last update:{" "}
