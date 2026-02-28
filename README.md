@@ -1,30 +1,80 @@
-# Regression issue
+# RaisaRegress
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Мультимовний вебсайт для приватної практики регресивної терапії з адміністративною панеллю для керування цінами та зображеннями.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/serhii-oberemchuks-projects/v0-regression-issue)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/grEKyCCqril)
+## Про проєкт
 
-## Overview
+Сайт реалізований на Next.js (App Router) з локалізацією `uk/en/it`, SEO-оптимізацією та серверними діями для безпечного редагування контенту з адмінки.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Основні можливості
 
-## Deployment
+- Публічний лендинг для трьох мов: `uk`, `en`, `it`
+- Адмін-панель з авторизацією через `better-auth`
+- Оновлення цін через серверні дії
+- Збереження цін у PostgreSQL (Neon) через `drizzle-orm`
+- Збереження зображень у `public/uploads`
+- Кешування контенту через Next.js cache components (`use cache`, `cacheTag`, `updateTag`)
+- Генерація `sitemap.xml` та `robots.txt` через `next-sitemap`
 
-Your project is live at:
+## Технології
 
-**[https://vercel.com/serhii-oberemchuks-projects/v0-regression-issue](https://vercel.com/serhii-oberemchuks-projects/v0-regression-issue)**
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- next-intl
+- better-auth
+- drizzle-orm
+- @neondatabase/serverless
 
-## Build your app
+## Зберігання даних
 
-Continue building your app on:
+- `site_prices` (PostgreSQL): ціни послуг по мовах
+- `data/site-content.json`: тільки `updatedAt` та шляхи до зображень
+- `public/uploads`: завантажені файли з адмінки
 
-**[https://v0.dev/chat/projects/grEKyCCqril](https://v0.dev/chat/projects/grEKyCCqril)**
+## Змінні середовища
 
-## How It Works
+Для локального запуску потрібні змінні в `.env.local`:
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- `ADMIN_LOGIN`
+- `ADMIN_PASSWORD`
+- `BETTER_AUTH_SECRET`
+- `BETTER_AUTH_URL`
+- `DATABASE_URL`
+
+Додатково можуть бути присутні `POSTGRES_*` / `PG*` змінні від провайдера.
+
+## Локальний запуск
+
+```bash
+npm install
+npm run dev
+```
+
+Відкриття у браузері:
+
+- Публічний сайт: `http://localhost:3000/uk` (або `/en`, `/it`)
+- Адмінка: `http://localhost:3000/uk/admin`
+
+## Скрипти
+
+- `npm run dev` - локальний режим
+- `npm run build` - production build
+- `npm run start` - запуск production build
+- `npm run postbuild` - генерація sitemap/robots
+
+## SEO
+
+Реалізовано:
+
+- canonical + hreflang для локалей
+- metadata для ключових сторінок
+- structured data (JSON-LD) на головній
+- sitemap і robots
+
+## Розробник
+
+**Serhii Oberemchuk**
+
+- LinkedIn: https://www.linkedin.com/in/serhii-oberemchuk
