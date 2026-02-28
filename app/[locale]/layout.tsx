@@ -1,5 +1,6 @@
 import type React from "react";
 import "../globals.css";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@/components/analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
@@ -8,6 +9,7 @@ import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { metadataBaseUrl } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -69,6 +71,7 @@ export default async function RootLayout({
   );
 }
 
-export const metadata = {
-  generator: "v0.dev",
+export const metadata: Metadata = {
+  applicationName: "RaisaRegress",
+  metadataBase: metadataBaseUrl,
 };

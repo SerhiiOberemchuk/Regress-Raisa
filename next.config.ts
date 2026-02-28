@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
   output: "standalone",
   cacheComponents: true,
   reactCompiler: true,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "raisaregress.online" }],
+        destination: "https://www.raisaregress.online/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

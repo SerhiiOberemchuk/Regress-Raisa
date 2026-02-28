@@ -2,25 +2,36 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+import {
+  getLanguageAlternates,
+  getLocalizedPath,
+  type SupportedSeoLocale,
+} from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
-}) {
+  params: Promise<{ locale: SupportedSeoLocale }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "terms" });
+  const canonicalPath = getLocalizedPath(locale, "terms");
 
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+    alternates: {
+      canonical: canonicalPath,
+      ...getLanguageAlternates("terms"),
+    },
   };
 }
 
 export default async function TermsOfUsePage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: SupportedSeoLocale }>;
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "terms" });

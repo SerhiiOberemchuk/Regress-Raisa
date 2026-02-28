@@ -1,50 +1,58 @@
-import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import AboutMethod from "@/components/about-method";
+import Contact from "@/components/contact";
+import Examples from "@/components/examples";
+import Faq from "@/components/faq";
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
-import AboutMethod from "@/components/about-method";
-import Results from "@/components/results";
-import Examples from "@/components/examples";
 import Requirements from "@/components/requirements";
-import Faq from "@/components/faq";
-import Services from "@/components/services";
-import Contact from "@/components/contact";
-import Footer from "@/components/footer";
+import Results from "@/components/results";
 import ScrollToTop from "@/components/scroll-to-top";
+import Services from "@/components/services";
 import { SiteContentProvider } from "@/components/site-content-provider";
-import { readSiteContent } from "@/lib/site-content";
+import { getCachedSiteContent } from "@/lib/site-content-cache";
+import {
+  getAbsoluteUrl,
+  getLanguageAlternates,
+  getLocaleTag,
+  getLocalizedPath,
+  type SupportedSeoLocale,
+} from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: SupportedSeoLocale }>;
 }): Promise<Metadata> {
   "use cache";
+
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
-  const siteContent = await readSiteContent();
-  const heroImageUrl = siteContent.images.hero.startsWith("http")
-    ? siteContent.images.hero
-    : `https://raisaregress.online${siteContent.images.hero}`;
+  const siteContent = await getCachedSiteContent();
+  const heroImageUrl = getAbsoluteUrl(siteContent.images.hero);
+  const canonicalPath = getLocalizedPath(locale);
+  const canonicalUrl = getAbsoluteUrl(canonicalPath);
+  const localeTag = getLocaleTag(locale);
 
   return {
-    applicationName: "RaisaRegress",
     title: t("meta.title"),
     description: t("meta.description"),
     keywords: t("meta.keywords"),
     openGraph: {
       title: t("meta.openGraphTitle"),
       description: t("meta.openGraphDescription"),
-      url: "https://raisaregress.online",
+      url: canonicalUrl,
       siteName: "RaisaRegress",
-      locale: locale === "uk" ? "uk_UA" : locale === "en" ? "en_US" : "it_IT",
+      locale: localeTag.replace("-", "_"),
       type: "website",
       images: [
         {
           url: heroImageUrl,
           width: 1200,
           height: 630,
-          alt: "Раїса Оберемчук - Регресивний гіпноз онлайн",
+          alt: "Raisa Oberemchuk - Regression hypnosis online",
         },
       ],
     },
@@ -55,20 +63,66 @@ export async function generateMetadata({
       images: [heroImageUrl],
     },
     alternates: {
-      canonical: "https://raisaregress.online",
-      languages: {
-        "uk-UA": "/uk",
-        "en-US": "/en",
-        "it-IT": "/it",
-      },
+      canonical: canonicalPath,
+      ...getLanguageAlternates(),
     },
   };
 }
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: SupportedSeoLocale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  const siteContent = await getCachedSiteContent();
+  const canonicalPath = getLocalizedPath(locale);
+  const canonicalUrl = getAbsoluteUrl(canonicalPath);
+  const heroImageUrl = getAbsoluteUrl(siteContent.images.hero);
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "RaisaRegress",
+      url: getAbsoluteUrl("/"),
+      inLanguage: ["uk-UA", "en-US", "it-IT"],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Raisa Oberemchuk",
+      jobTitle: "Regression therapist",
+      url: canonicalUrl,
+      image: heroImageUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "RaisaRegress",
+      url: canonicalUrl,
+      image: heroImageUrl,
+      description: t("meta.description"),
+      serviceType: "Regression hypnosis sessions online",
+      telephone: "+380971768196",
+      email: "265840@gmail.com",
+      areaServed: "Worldwide",
+      availableLanguage: ["Ukrainian", "English", "Italian", "Russian"],
+      provider: {
+        "@type": "Person",
+        name: "Raisa Oberemchuk",
+      },
+    },
+  ];
+
   return (
     <main className="overflow-hidden">
-      <SiteContentProvider>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <SiteContentProvider initialContent={siteContent}>
         <Header />
         <Hero />
         <AboutMethod />

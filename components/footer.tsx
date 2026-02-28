@@ -87,6 +87,30 @@ export default function Footer() {
                 </NextLink>
               </li>
               <li>
+                <Link
+                  href="/regression-hypnosis-online"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {tlinks("hypnosisGuide")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/regression-therapy-price"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {tlinks("pricingGuide")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/regression-therapy-safety"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {tlinks("safetyGuide")}
+                </Link>
+              </li>
+              <li>
                 <NextLink
                   href="#contact"
                   className="text-muted-foreground hover:text-primary transition-colors"
