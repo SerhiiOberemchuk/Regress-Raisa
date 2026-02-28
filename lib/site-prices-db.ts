@@ -13,6 +13,7 @@ import {
 } from "@/lib/site-content-schema";
 
 type SitePrices = SiteContent["prices"];
+type SitePricesState = Pick<SiteContent, "prices" | "updatedAt">;
 
 let ensureTablePromise: Promise<void> | null = null;
 
@@ -24,29 +25,33 @@ const isSupportedLocale = (value: string): value is SupportedLocale => {
   return SUPPORTED_LOCALES.includes(value as SupportedLocale);
 };
 
-const normalizePriceValue = (value: unknown, fallback: string): string => {
-  if (typeof value !== "string") {
+const getLatestUpdatedAt = (
+  rows: Array<{ updatedAt: Date | string }>,
+  fallback: string,
+): string => {
+  const timestamps = rows
+    .map((row) =>
+      row.updatedAt instanceof Date
+        ? row.updatedAt.getTime()
+        : Date.parse(row.updatedAt),
+    )
+    .filter((value) => Number.isFinite(value));
+
+  if (timestamps.length === 0) {
     return fallback;
   }
 
-  const trimmed = value.trim();
-  return trimmed.length > 0 ? trimmed : fallback;
+  return new Date(Math.max(...timestamps)).toISOString();
 };
 
-const toRowId = (service: ServiceKey, locale: SupportedLocale): string => {
-  return `${service}:${locale}`;
-};
-
-const toRows = (prices: SitePrices) => {
-  const now = new Date();
-
+const toRows = (prices: SitePrices, updatedAt: Date) => {
   return SERVICE_KEYS.flatMap((service) =>
     SUPPORTED_LOCALES.map((locale) => ({
-      id: toRowId(service, locale),
+      id: `${service}:${locale}`,
       service,
       locale,
       value: prices[service][locale],
-      updatedAt: now,
+      updatedAt,
     })),
   );
 };
@@ -73,51 +78,50 @@ async function ensurePricesTable(): Promise<void> {
   await ensureTablePromise;
 }
 
-const mergeWithFallback = (rows: Array<{
-  service: string;
-  locale: string;
-  value: string;
-}>, fallback: SitePrices): SitePrices => {
-  const next: SitePrices = {
-    regression: { ...fallback.regression },
-    progression: { ...fallback.progression },
-    consciousness: { ...fallback.consciousness },
-    consultation: { ...fallback.consultation },
-  };
-
-  for (const row of rows) {
-    if (!isServiceKey(row.service) || !isSupportedLocale(row.locale)) {
-      continue;
+export async function readPricesFromDb(): Promise<SitePricesState> {
+  try {
+    const rows = await db.select().from(sitePricesTable);
+    if (rows.length === 0) {
+      return {
+        prices: defaultSiteContent.prices,
+        updatedAt: defaultSiteContent.updatedAt,
+      };
     }
 
-    next[row.service][row.locale] = normalizePriceValue(
-      row.value,
-      fallback[row.service][row.locale],
-    );
+    const prices: SitePrices = {
+      regression: { ...defaultSiteContent.prices.regression },
+      progression: { ...defaultSiteContent.prices.progression },
+      consciousness: { ...defaultSiteContent.prices.consciousness },
+      consultation: { ...defaultSiteContent.prices.consultation },
+    };
+
+    for (const row of rows) {
+      if (!isServiceKey(row.service) || !isSupportedLocale(row.locale)) {
+        continue;
+      }
+      prices[row.service][row.locale] = row.value;
+    }
+
+    return {
+      prices,
+      updatedAt: getLatestUpdatedAt(rows, defaultSiteContent.updatedAt),
+    };
+  } catch {
+    return {
+      prices: defaultSiteContent.prices,
+      updatedAt: defaultSiteContent.updatedAt,
+    };
   }
+}
 
-  return next;
-};
-
-export async function writePricesToDb(prices: SitePrices): Promise<void> {
+export async function writePricesToDb(prices: SitePrices): Promise<string> {
   await ensurePricesTable();
-  const rows = toRows(prices);
+
+  const updatedAt = new Date();
+  const rows = toRows(prices, updatedAt);
 
   await db.delete(sitePricesTable);
   await db.insert(sitePricesTable).values(rows);
-}
 
-export async function readPricesFromDb(): Promise<SitePrices> {
-  const fallback = defaultSiteContent.prices;
-  const rows = await db.select().from(sitePricesTable);
-  if (rows.length === 0) {
-    return fallback;
-  }
-
-  const normalized = mergeWithFallback(rows, fallback);
-  const validRowsCount = rows.filter(
-    (row) => isServiceKey(row.service) && isSupportedLocale(row.locale),
-  ).length;
-
-  return validRowsCount > 0 ? normalized : fallback;
+  return updatedAt.toISOString();
 }

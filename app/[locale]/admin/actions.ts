@@ -6,18 +6,9 @@ import {
   signInAdmin,
   signOutAdmin,
 } from "@/lib/admin-auth";
-import {
-  readSiteContent,
-  replaceSiteImage,
-  writeSiteContent,
-} from "@/lib/site-content";
+import { defaultSiteContent, type SiteContent } from "@/lib/site-content-schema";
+import { writePricesToDb } from "@/lib/site-prices-db";
 import { SITE_CONTENT_TAG } from "@/lib/site-content-cache";
-import {
-  IMAGE_KEYS,
-  normalizeSiteContent,
-  type ImageKey,
-  type SiteContent,
-} from "@/lib/site-content-schema";
 
 type ActionResult<T = undefined> = {
   ok: boolean;
@@ -48,48 +39,24 @@ export async function logoutAdminAction(): Promise<ActionResult> {
 }
 
 export async function savePricesAction(
-  payload: SiteContent
+  prices: SiteContent["prices"],
 ): Promise<ActionResult<SiteContent>> {
   if (!(await isAdminAuthenticated())) {
     return { ok: false, error: "Unauthorized" };
   }
 
   try {
-    const current = await readSiteContent();
-    const normalized = normalizeSiteContent(payload);
-    const saved = await writeSiteContent({
-      ...current,
-      prices: normalized.prices,
-      images: current.images,
-    });
+    const updatedAt = await writePricesToDb(prices);
+    const saved: SiteContent = {
+      updatedAt,
+      images: defaultSiteContent.images,
+      prices,
+    };
 
     updateTag(SITE_CONTENT_TAG);
     return { ok: true, data: saved };
   } catch (error) {
     const message = error instanceof Error ? error.message : "Save failed";
-    return { ok: false, error: message };
-  }
-}
-
-export async function replaceImageAction(input: {
-  slot: ImageKey;
-  file: File;
-}): Promise<ActionResult<SiteContent>> {
-  if (!(await isAdminAuthenticated())) {
-    return { ok: false, error: "Unauthorized" };
-  }
-
-  if (!IMAGE_KEYS.includes(input.slot)) {
-    return { ok: false, error: "Invalid image slot" };
-  }
-
-  try {
-    const saved = await replaceSiteImage(input.slot, input.file);
-    updateTag(SITE_CONTENT_TAG);
-    return { ok: true, data: saved };
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Image upload failed";
     return { ok: false, error: message };
   }
 }
