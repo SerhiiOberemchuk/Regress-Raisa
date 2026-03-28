@@ -6,6 +6,7 @@ import { getCachedSiteContent } from "@/lib/site-content-cache";
 import type { ServiceKey } from "@/lib/site-content-schema";
 import {
   getAbsoluteUrl,
+  getDefaultSocialImageUrl,
   getLanguageAlternates,
   getLocalizedPath,
   type SupportedSeoLocale,
@@ -117,6 +118,7 @@ export async function generateMetadata({
   const copy = content[locale];
   const canonicalPath = getLocalizedPath(locale, "regression-therapy-price");
   const canonicalUrl = getAbsoluteUrl(canonicalPath);
+  const socialImageUrl = getDefaultSocialImageUrl();
 
   return {
     title: copy.title,
@@ -127,6 +129,13 @@ export async function generateMetadata({
       description: copy.description,
       url: canonicalUrl,
       type: "article",
+      images: [{ url: socialImageUrl }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: copy.title,
+      description: copy.description,
+      images: [socialImageUrl],
     },
     alternates: {
       canonical: canonicalPath,
@@ -143,9 +152,23 @@ export default async function RegressionTherapyPricePage({
   const { locale } = await params;
   const copy = content[locale];
   const siteContent = await getCachedSiteContent();
+  const canonicalPath = getLocalizedPath(locale, "regression-therapy-price");
+  const canonicalUrl = getAbsoluteUrl(canonicalPath);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: copy.heading,
+    description: copy.description,
+    url: canonicalUrl,
+    inLanguage: locale,
+  };
 
   return (
-    <main className="container mx-auto px-4 py-12 md:py-16">
+    <main className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <article className="mx-auto max-w-4xl space-y-10">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/" className="flex items-center gap-2">

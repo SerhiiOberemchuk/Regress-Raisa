@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import SectionHeading from "./section-heading";
 import {
   Accordion,
@@ -16,10 +14,6 @@ type FaqItem = {
 };
 
 export default function Faq() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
   const t = useTranslations("faq");
   const faqs = Object.values(t.raw("questions")) as FaqItem[];
 
@@ -28,13 +22,7 @@ export default function Faq() {
       <div className="container mx-auto px-4">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto mt-12"
-        >
+        <div className="max-w-3xl mx-auto mt-12">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
@@ -45,18 +33,13 @@ export default function Faq() {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 text-center"
-        >
+        <div className="mt-12 text-center">
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t("contactNote")}
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

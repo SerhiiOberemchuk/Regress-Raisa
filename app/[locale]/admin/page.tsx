@@ -28,7 +28,7 @@ async function AdminPageContent() {
 
 export default function AdminPage() {
   return (
-    <main className="min-h-screen bg-muted/30">
+    <main className="min-h-screen bg-muted/30 pt-24">
       <Suspense fallback={<div className="p-6 text-sm">Loading admin...</div>}>
         <AdminPageContent />
       </Suspense>

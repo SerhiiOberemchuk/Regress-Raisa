@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
@@ -46,69 +45,50 @@ export default function LanguageSwitcher() {
         <span className="uppercase">{currentLanguage}</span>
       </button>
 
-      <AnimatedDropdown isOpen={isOpen}>
-        <div className="absolute right-0 top-full z-50 mt-1 flex min-w-[120px] flex-col overflow-hidden rounded-md bg-white shadow-md">
-          <Link
-            href={pathname}
-            locale="uk"
-            className={`w-full px-4 py-2 text-left text-sm ${
-              currentLanguage === "uk"
-                ? "bg-primary/10 font-medium text-primary"
-                : "hover:bg-muted/50"
-            }`}
-            onClick={closeDropdown}
-          >
-            Українська
-          </Link>
-          <Link
-            href={pathname}
-            locale="en"
-            className={`w-full px-4 py-2 text-left text-sm ${
-              currentLanguage === "en"
-                ? "bg-primary/10 font-medium text-primary"
-                : "hover:bg-muted/50"
-            }`}
-            onClick={closeDropdown}
-          >
-            English
-          </Link>
-          <Link
-            href={pathname}
-            locale="it"
-            className={`w-full px-4 py-2 text-left text-sm ${
-              currentLanguage === "it"
-                ? "bg-primary/10 font-medium text-primary"
-                : "hover:bg-muted/50"
-            }`}
-            onClick={closeDropdown}
-          >
-            Italiano
-          </Link>
-        </div>
-      </AnimatedDropdown>
+      <div
+        className={`absolute right-0 top-full z-50 mt-1 flex min-w-[120px] flex-col overflow-hidden rounded-md bg-white shadow-md transition-all duration-200 ${
+          isOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-1 pointer-events-none"
+        }`}
+      >
+        <Link
+          href={pathname}
+          locale="uk"
+          className={`w-full px-4 py-2 text-left text-sm ${
+            currentLanguage === "uk"
+              ? "bg-primary/10 font-medium text-primary"
+              : "hover:bg-muted/50"
+          }`}
+          onClick={closeDropdown}
+        >
+          Українська
+        </Link>
+        <Link
+          href={pathname}
+          locale="en"
+          className={`w-full px-4 py-2 text-left text-sm ${
+            currentLanguage === "en"
+              ? "bg-primary/10 font-medium text-primary"
+              : "hover:bg-muted/50"
+          }`}
+          onClick={closeDropdown}
+        >
+          English
+        </Link>
+        <Link
+          href={pathname}
+          locale="it"
+          className={`w-full px-4 py-2 text-left text-sm ${
+            currentLanguage === "it"
+              ? "bg-primary/10 font-medium text-primary"
+              : "hover:bg-muted/50"
+          }`}
+          onClick={closeDropdown}
+        >
+          Italiano
+        </Link>
+      </div>
     </div>
-  );
-}
-
-function AnimatedDropdown({
-  isOpen,
-  children,
-}: {
-  isOpen: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.div
-      initial={false}
-      animate={isOpen ? "open" : "closed"}
-      variants={{
-        open: { opacity: 1, height: "auto" },
-        closed: { opacity: 0, height: 0 },
-      }}
-      transition={{ duration: 0.2 }}
-      style={{ overflow: "hidden", pointerEvents: isOpen ? "auto" : "none" }}
-    >
-      {children}
-    </motion.div>
   );
 }

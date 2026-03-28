@@ -23,7 +23,7 @@ export const defaultSiteContent: SiteContent = {
   updatedAt: "2026-02-27T00:00:00.000Z",
   images: {
     hero: "/og-image.jpg",
-    results: "/serene-meditation.png",
+    results: "/serene-blue-meditation.png",
     footerBackground: "/footer-background.jpg",
   },
   prices: {

@@ -1,15 +1,16 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { useSiteContent } from "@/components/site-content-provider";
+import type { SupportedLocale } from "@/lib/site-content-schema";
 
-export default function Hero() {
-  const t = useTranslations("hero");
-  const siteContent = useSiteContent();
+type HeroProps = {
+  locale: SupportedLocale;
+  imageSrc: string;
+};
+
+export default async function Hero({ locale, imageSrc }: HeroProps) {
+  const t = await getTranslations({ locale, namespace: "hero" });
 
   return (
     <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
@@ -20,41 +21,33 @@ export default function Hero() {
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col space-y-6"
-          >
+          <div className="flex flex-col space-y-6">
             <h1 className="text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
               {t("title.part1")} <br />
               {t("title.part2")} <br />
               <span className="text-primary">{t("title.part3")}</span>
             </h1>
             <div className="space-y-2">
-              <h2 className="text-2xl font-semibold md:text-3xl">{t("heroname")}</h2>
+              <h2 className="text-2xl font-semibold md:text-3xl">
+                {t("heroname")}
+              </h2>
               <p className="text-lg font-medium text-primary">{t("position")}</p>
             </div>
             <p className="text-lg text-muted-foreground">{t("description")}</p>
             <div className="flex flex-col gap-4 pt-4 sm:flex-row">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                <Link href="#contact">{t("buttonsbs")}</Link>
+                <Link href="/#contact">{t("buttonsbs")}</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="#about">{t("btnmore")}</Link>
+                <Link href="/#about">{t("btnmore")}</Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative mx-auto aspect-square max-w-md">
               <Image
-                src={siteContent.images.hero}
+                src={imageSrc}
                 alt="Regression specialist portrait"
                 width={600}
                 height={600}
@@ -64,26 +57,16 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
             </div>
 
-            <motion.div
-              className="absolute -top-6 -right-6 z-10 rounded-lg bg-white p-4 shadow-lg"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-            >
+            <div className="absolute -top-6 -right-6 z-10 rounded-lg bg-white p-4 shadow-lg">
               <p className="font-medium">95% {t("clients")}</p>
               <p className="text-sm text-muted-foreground">{t("changes")}</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="absolute -bottom-6 -left-6 z-10 rounded-lg bg-white p-4 shadow-lg"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
+            <div className="absolute -bottom-6 -left-6 z-10 rounded-lg bg-white p-4 shadow-lg">
               <p className="font-medium">10+ {t("years")}</p>
               <p className="text-sm text-muted-foreground">{t("exsp")}</p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -4,14 +4,10 @@ import AboutMethod from "@/components/about-method";
 import Contact from "@/components/contact";
 import Examples from "@/components/examples";
 import Faq from "@/components/faq";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Requirements from "@/components/requirements";
 import Results from "@/components/results";
-import ScrollToTop from "@/components/scroll-to-top";
 import Services from "@/components/services";
-import { SiteContentProvider } from "@/components/site-content-provider";
 import { getCachedSiteContent } from "@/lib/site-content-cache";
 import {
   getAbsoluteUrl,
@@ -20,6 +16,7 @@ import {
   getLocalizedPath,
   type SupportedSeoLocale,
 } from "@/lib/seo";
+import type { SupportedLocale } from "@/lib/site-content-schema";
 
 export async function generateMetadata({
   params,
@@ -122,19 +119,14 @@ export default async function Home({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <SiteContentProvider initialContent={siteContent}>
-        <Header />
-        <Hero />
-        <AboutMethod />
-        <Results />
-        <Examples />
-        <Requirements />
-        <Faq />
-        <Services />
-        <Contact />
-        <Footer />
-        <ScrollToTop />
-      </SiteContentProvider>
+      <Hero locale={locale as SupportedLocale} imageSrc={siteContent.images.hero} />
+      <AboutMethod locale={locale as SupportedLocale} />
+      <Results locale={locale as SupportedLocale} imageSrc={siteContent.images.results} />
+      <Examples locale={locale as SupportedLocale} />
+      <Requirements locale={locale as SupportedLocale} />
+      <Faq />
+      <Services locale={locale as SupportedLocale} siteContent={siteContent} />
+      <Contact />
     </main>
   );
 }

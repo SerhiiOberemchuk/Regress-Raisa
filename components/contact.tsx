@@ -3,8 +3,6 @@
 import type React from "react";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import SectionHeading from "./section-heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,10 +12,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 export default function Contact() {
   const locale = useLocale();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
   const t = useTranslations("contact");
   const [formData, setFormData] = useState({
     name: "",
@@ -103,19 +97,10 @@ export default function Contact() {
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <div className="bg-white rounded-xl p-6 shadow-lg">
               {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex flex-col items-center justify-center py-8 text-center"
-                >
+                <div className="flex flex-col items-center justify-center py-8 text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +129,7 @@ export default function Contact() {
                   >
                     {t("submitAnother")}
                   </Button>
-                </motion.div>
+                </div>
               ) : (
                 <>
                   <h3 className="text-xl font-semibold mb-6">
@@ -230,15 +215,9 @@ export default function Contact() {
                 </>
               )}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col justify-between"
-          >
+          <div className="flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-semibold mb-6">
                 {t("contactInfoTitle")}
@@ -301,7 +280,7 @@ export default function Contact() {
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

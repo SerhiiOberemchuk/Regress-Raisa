@@ -11,6 +11,7 @@ export const siteUrl = normalizeSiteUrl(
 );
 
 export const metadataBaseUrl = new URL(siteUrl);
+export const defaultSocialImagePath = "/og-image.jpg";
 
 export type SupportedSeoLocale = "uk" | "en" | "it";
 
@@ -24,6 +25,10 @@ export function getLocalizedPath(
   locale: SupportedSeoLocale,
   path = "",
 ): string {
+  if (locale === "uk") {
+    return path ? `/${path}` : "/";
+  }
+
   if (!path) return `/${locale}`;
   return `/${locale}/${path}`;
 }
@@ -38,6 +43,10 @@ export function getAbsoluteUrl(path: string): string {
   }
 
   return `${siteUrl}/${path}`;
+}
+
+export function getDefaultSocialImageUrl(): string {
+  return getAbsoluteUrl(defaultSocialImagePath);
 }
 
 export function getLanguageAlternates(path = ""): Metadata["alternates"] {

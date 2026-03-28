@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import NextLink from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LanguageSwitcher from "./language-switcher";
@@ -41,8 +39,8 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: tlinks("about"), href: "#about" },
-    { name: tlinks("services"), href: "#services" },
+    { name: tlinks("about"), href: "/#about" },
+    { name: tlinks("services"), href: "/#services" },
   ];
   const nameButton = tlinks("signup");
 
@@ -60,17 +58,17 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <NextLink
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.name}
-              </NextLink>
+              </Link>
             ))}
             <LanguageSwitcher />
             <Button asChild className="bg-primary hover:bg-primary/90">
-              <NextLink href="#contact">{nameButton}</NextLink>
+              <Link href="/#contact">{nameButton}</Link>
             </Button>
           </nav>
 
@@ -84,41 +82,33 @@ export default function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white"
-            ref={mobileMenuRef}
-          >
-            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <NextLink
-                  key={link.name}
-                  href={link.href}
-                  className="text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </NextLink>
-              ))}
-              <div className="py-2">
-                <LanguageSwitcher />
-              </div>
-              <Button asChild className="bg-primary hover:bg-primary/90 w-full">
-                <NextLink
-                  href="#contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {nameButton}
-                </NextLink>
-              </Button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        className={`md:hidden bg-white transition-all duration-300 overflow-hidden ${
+          mobileMenuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
+        }`}
+        ref={mobileMenuRef}
+      >
+        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="py-2">
+            <LanguageSwitcher />
+          </div>
+          <Button asChild className="bg-primary hover:bg-primary/90 w-full">
+            <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
+              {nameButton}
+            </Link>
+          </Button>
+        </div>
+      </div>
     </header>
   );
 }

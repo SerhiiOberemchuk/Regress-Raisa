@@ -10,6 +10,11 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { metadataBaseUrl } from "@/lib/seo";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import ScrollToTop from "@/components/scroll-to-top";
+import { getCachedSiteContent } from "@/lib/site-content-cache";
+import type { SupportedLocale } from "@/lib/site-content-schema";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -30,9 +35,10 @@ export default async function RootLayout({
   }
 
   setRequestLocale(locale);
+  const siteContent = await getCachedSiteContent();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
@@ -61,7 +67,13 @@ export default async function RootLayout({
         className={`${inter.className} min-h-screen bg-background antialiased`}
       >
         <NextIntlClientProvider>
+          <Header />
           {children}
+          <Footer
+            locale={locale as SupportedLocale}
+            footerBackgroundImage={siteContent.images.footerBackground}
+          />
+          <ScrollToTop />
           <Analytics />
           <CookieConsent />
         </NextIntlClientProvider>

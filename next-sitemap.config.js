@@ -13,7 +13,7 @@ module.exports = {
         disallow: [
           "/api/",
           "/trpc/",
-          "/uk/admin",
+          "/admin",
           "/en/admin",
           "/it/admin",
         ],
@@ -44,7 +44,14 @@ module.exports = {
 
     return locales.flatMap((locale) =>
       pages.map((page) => ({
-        loc: page.path ? `/${locale}/${page.path}` : `/${locale}`,
+        loc:
+          locale === "uk"
+            ? page.path
+              ? `/${page.path}`
+              : "/"
+            : page.path
+              ? `/${locale}/${page.path}`
+              : `/${locale}`,
         changefreq: "yearly",
         priority: page.priority,
         lastmod: dateLastMod,

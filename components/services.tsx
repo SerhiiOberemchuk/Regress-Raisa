@@ -1,7 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import Link from "next/link";
+import { Check } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import SectionHeading from "./section-heading";
 import {
   Card,
@@ -11,16 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Check } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import {
   SERVICE_KEYS,
   SUPPORTED_LOCALES,
   type ServiceKey,
+  type SiteContent,
   type SupportedLocale,
 } from "@/lib/site-content-schema";
-import { useSiteContent } from "@/components/site-content-provider";
 
 type Service = {
   name: string;
@@ -28,19 +24,16 @@ type Service = {
   features: Record<string, string>;
 };
 
-export default function Services() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  const siteContent = useSiteContent();
-  const locale = useLocale();
-  const t = useTranslations("services");
+type ServicesProps = {
+  locale: SupportedLocale;
+  siteContent: SiteContent;
+};
+
+export default async function Services({ locale, siteContent }: ServicesProps) {
+  const t = await getTranslations({ locale, namespace: "services" });
   const serviceMap = t.raw("services") as Record<string, Service>;
-  const localeKey: SupportedLocale = SUPPORTED_LOCALES.includes(
-    locale as SupportedLocale
-  )
-    ? (locale as SupportedLocale)
+  const localeKey: SupportedLocale = SUPPORTED_LOCALES.includes(locale)
+    ? locale
     : "uk";
 
   const services = Object.entries(serviceMap).map(([key, service]) => {
@@ -57,39 +50,14 @@ export default function Services() {
     };
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
     <section id="services" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12"
-        >
-          {services.map((service) => (
-            <motion.div key={service.key} variants={itemVariants}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {services.map((service, index) => (
+            <div key={service.key}>
               <Card className="h-full flex flex-col border-none shadow-md hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl">{service.name}</CardTitle>
@@ -112,27 +80,20 @@ export default function Services() {
                 </CardContent>
                 <CardFooter>
                   <Button asChild className="w-full">
-                    <Link href="#contact">{t("button")}</Link>
+                    <Link href="/#contact">{t("button")}</Link>
                   </Button>
                 </CardFooter>
               </Card>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto text-center"
-        >
+        <div className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto text-center">
           <h3 className="text-xl font-semibold mb-4">
             {t("individualApproach.title")}
           </h3>
-          <p className="text-muted-foreground">
-            {t("individualApproach.text")}
-          </p>
-        </motion.div>
+          <p className="text-muted-foreground">{t("individualApproach.text")}</p>
+        </div>
       </div>
     </section>
   );

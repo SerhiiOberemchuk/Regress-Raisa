@@ -1,10 +1,12 @@
 import { Link } from "@/i18n/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import NotFoundRedirect from "@/components/not-found-redirect"
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 pt-24 text-center">
+      <NotFoundRedirect />
       <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
       <h2 className="text-2xl font-semibold mb-6">Сторінку не знайдено</h2>
       <p className="text-muted-foreground mb-8 max-w-md">

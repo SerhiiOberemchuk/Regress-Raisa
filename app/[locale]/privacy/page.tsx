@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import {
+  getAbsoluteUrl,
+  getDefaultSocialImageUrl,
   getLanguageAlternates,
   getLocalizedPath,
   type SupportedSeoLocale,
@@ -17,10 +19,25 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacy.privacy" });
   const canonicalPath = getLocalizedPath(locale, "privacy");
+  const canonicalUrl = getAbsoluteUrl(canonicalPath);
+  const socialImageUrl = getDefaultSocialImageUrl();
 
   return {
     title: t("title"),
     description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: canonicalUrl,
+      type: "website",
+      images: [{ url: socialImageUrl }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [socialImageUrl],
+    },
     alternates: {
       canonical: canonicalPath,
       ...getLanguageAlternates("privacy"),
@@ -35,6 +52,16 @@ export default async function PrivacyPolicyPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "privacy" });
+  const canonicalPath = getLocalizedPath(locale, "privacy");
+  const canonicalUrl = getAbsoluteUrl(canonicalPath);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: t("title"),
+    description: t("intro"),
+    url: canonicalUrl,
+    inLanguage: locale,
+  };
 
   const sections = [
     "collection",
@@ -49,7 +76,11 @@ export default async function PrivacyPolicyPage({
   ];
 
   return (
-    <main className="container mx-auto px-4 py-12 md:py-16">
+    <main className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <Button variant="ghost" size="sm" asChild className="mb-4">
