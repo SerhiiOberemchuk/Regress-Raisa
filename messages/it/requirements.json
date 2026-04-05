@@ -1,31 +1,32 @@
 {
-  "title": "Cosa serve per una sessione di regressione?",
-  "subtitle": "Per una sessione di terapia regressiva efficace è importante creare un ambiente confortevole e prepararsi adeguatamente.",
+  "title": "Di cosa hai bisogno per una sessione di regressione?",
+  "subtitle": "Per una sessione efficace e importante creare un ambiente confortevole e una preparazione adeguata.",
   "items": {
     "time": {
       "title": "Tempo",
-      "description": "Dedica 2–3 ore per una sessione completa. Questo ti permetterà di non avere fretta e approfondire il tuo tema."
+      "description": "Riserva da 2 a 3 ore per una sessione completa. Questo ti permette di lavorare con calma e in profondita sulla tua richiesta."
     },
     "headphones": {
       "title": "Cuffie",
-      "description": "Per le sessioni online prepara cuffie comode con microfono per una buona qualità del suono e comunicazione."
+      "description": "Per le sessioni online prepara cuffie comode con microfono per una buona qualita del suono e della comunicazione."
     },
     "place": {
       "title": "Spazio confortevole",
-      "description": "Trova un luogo tranquillo dove non sarai disturbato. Prepara una sedia comoda o un letto per rilassarti."
+      "description": "Trova un luogo tranquillo dove non sarai disturbato. Prepara una sedia comoda o un letto per il rilassamento."
     },
     "internet": {
-      "title": "Connessione stabile",
-      "description": "Per le sessioni online assicurati di avere una connessione internet stabile per evitare interruzioni."
+      "title": "Internet stabile",
+      "description": "Per le sessioni online assicurati di avere una connessione stabile per evitare interruzioni durante il lavoro."
     }
   },
   "additional": {
     "title": "Raccomandazioni aggiuntive",
     "list": {
-      "r1": "Evita alcol, caffeina e pasti pesanti nelle 2–3 ore precedenti la sessione",
-      "r2": "Indossa abiti comodi che non limitino il movimento o la respirazione",
-      "r3": "Formula in anticipo la domanda o il tema che vuoi esplorare",
+      "r1": "Evita alcol, caffeina e pasti pesanti da 2 a 3 ore prima della sessione",
+      "r2": "Indossa abiti comodi che non limitino movimento o respirazione",
+      "r3": "Formula in anticipo la domanda o il tema che desideri esplorare",
       "r4": "Sii aperto al processo e fidati della tua esperienza interiore"
     }
-  }
+  },
+  "panelLabel": "Prima della sessione"
 }

@@ -1,5 +1,7 @@
 {
   "about": "Sul Metodo",
   "services": "Servizi",
-  "book": "Prenota"
+  "book": "Prenota",
+  "openMenu": "Apri il menu",
+  "closeMenu": "Chiudi il menu"
 }

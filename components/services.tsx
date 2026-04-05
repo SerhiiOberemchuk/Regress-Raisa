@@ -3,13 +3,13 @@ import { Check } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import SectionHeading from "./section-heading";
 import {
+  Button,
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from "@/components/design-system";
 import {
   SERVICE_KEYS,
   SUPPORTED_LOCALES,
@@ -51,34 +51,47 @@ export default async function Services({ locale, siteContent }: ServicesProps) {
   });
 
   return (
-    <section id="services" className="py-16 md:py-24">
+    <section id="services" className="py-18 md:py-28">
       <div className="container mx-auto px-4">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          {services.map((service, index) => (
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {services.map((service) => (
             <div key={service.key}>
-              <Card className="h-full flex flex-col border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl">{service.name}</CardTitle>
-                  <div className="mt-2">
-                    <span className="text-3xl font-bold text-primary">
-                      {service.price}
-                    </span>
+              <Card className="group flex h-full flex-col overflow-hidden border-white/70 bg-[linear-gradient(160deg,rgba(255,252,248,0.92),rgba(245,236,226,0.78))] shadow-[0_34px_90px_-64px_rgba(54,36,25,0.55)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_44px_110px_-68px_rgba(54,36,25,0.62)]">
+                <CardHeader className="pb-4">
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-primary/65">
+                      {t("formatLabel")}
+                    </div>
+                    <div className="text-right">
+                      <span className="font-serif text-4xl font-semibold text-primary md:text-[2.8rem]">
+                        {service.price}
+                      </span>
+                    </div>
                   </div>
+                  <CardTitle className="max-w-[14ch] text-[2rem] leading-[1.02] md:text-[2.35rem]">
+                    {service.name}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <p className="mb-4 font-medium">{t("includes")}:</p>
+                  <div className="mb-5 h-px w-full bg-gradient-to-r from-primary/20 via-border/70 to-transparent" />
+                  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    {t("includes")}
+                  </p>
                   <ul className="space-y-3">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <li
+                        key={idx}
+                        className="flex items-start gap-3 rounded-[1.35rem] border border-white/60 bg-white/62 px-4 py-3 shadow-[0_12px_26px_-22px_rgba(54,36,25,0.42)]"
+                      >
+                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                         <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="pt-2">
                   <Button asChild className="w-full">
                     <Link href="/#contact">{t("button")}</Link>
                   </Button>
@@ -88,11 +101,13 @@ export default async function Services({ locale, siteContent }: ServicesProps) {
           ))}
         </div>
 
-        <div className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto text-center">
-          <h3 className="text-xl font-semibold mb-4">
+        <div className="mx-auto mt-16 max-w-4xl rounded-[2.2rem] border border-primary/15 bg-[linear-gradient(145deg,rgba(126,154,140,0.12),rgba(255,250,245,0.9))] p-8 text-center shadow-[0_30px_74px_-56px_rgba(54,36,25,0.42)] md:p-10">
+          <h3 className="mx-auto mb-4 max-w-[16ch] text-3xl leading-tight font-semibold md:text-[2.25rem]">
             {t("individualApproach.title")}
           </h3>
-          <p className="text-muted-foreground">{t("individualApproach.text")}</p>
+          <p className="mx-auto max-w-2xl text-muted-foreground">
+            {t("individualApproach.text")}
+          </p>
         </div>
       </div>
     </section>
