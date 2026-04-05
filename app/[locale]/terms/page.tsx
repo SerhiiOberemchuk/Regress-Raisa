@@ -140,7 +140,7 @@ export default async function TermsOfUsePage({
                       </a>
                     </li>
                     <li>
-                      Телефон:{" "}
+                      Phone:{" "}
                       <a
                         href={`tel:${section.phone}`}
                         className="text-primary hover:underline"

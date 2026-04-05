@@ -27,6 +27,8 @@ module.exports = {
     "/api/*",
     "/sitemap.xml",
     "/robots.txt",
+    "/uk",
+    "/uk/*",
     "/**/admin",
   ],
 
@@ -35,6 +37,9 @@ module.exports = {
     const locales = ["uk", "it", "en"];
     const pages = [
       { path: "", priority: 1 },
+      { path: "what-is-regressive-hypnosis", priority: 0.9 },
+      { path: "regression-session-online", priority: 0.9 },
+      { path: "regressologist-online", priority: 0.8 },
       { path: "terms", priority: 0.5 },
       { path: "privacy", priority: 0.5 },
       { path: "regression-hypnosis-online", priority: 0.8 },
@@ -52,7 +57,7 @@ module.exports = {
             : page.path
               ? `/${locale}/${page.path}`
               : `/${locale}`,
-        changefreq: "yearly",
+        changefreq: page.path ? "monthly" : "weekly",
         priority: page.priority,
         lastmod: dateLastMod,
       })),

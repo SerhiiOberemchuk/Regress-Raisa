@@ -93,6 +93,30 @@ export default async function Footer({
               </li>
               <li>
                 <Link
+                  href="/what-is-regressive-hypnosis"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {tlinks("whatIsHypnosisGuide")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/regression-session-online"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {tlinks("sessionGuide")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/regressologist-online"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {tlinks("regressologistGuide")}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/regression-hypnosis-online"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
