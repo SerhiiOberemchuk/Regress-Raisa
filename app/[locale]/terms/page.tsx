@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/design-system";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import {

@@ -4,10 +4,8 @@ import type React from "react";
 
 import { useState } from "react";
 import SectionHeading from "./section-heading";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, Clock } from "lucide-react";
+import { Button, Input, Textarea } from "@/components/design-system";
+import { Clock, Mail, Phone } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 export default function Contact() {
@@ -19,7 +17,6 @@ export default function Contact() {
     phone: "",
     message: "",
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -55,13 +52,7 @@ export default function Contact() {
       }
 
       setIsSubmitted(true);
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
       console.error("Помилка відправки форми:", error);
       setFormError(error instanceof Error ? error.message : t("errorDefault"));
@@ -92,16 +83,16 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-muted/30">
+    <section id="contact" className="py-18 md:py-28">
       <div className="container mx-auto px-4">
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          <div>
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="motion-safe:animate-soft-fade-up">
+            <div className="rounded-[2rem] border border-border/70 bg-[rgba(255,251,246,0.84)] p-6 shadow-[0_36px_90px_-58px_rgba(54,36,25,0.52)] md:p-8">
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-8 text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-8 w-8 text-green-600"
@@ -117,30 +108,20 @@ export default function Contact() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold text-green-600 mb-2">
+                  <h3 className="mb-2 text-3xl font-semibold text-green-700">
                     {t("successTitle")}
                   </h3>
-                  <p className="text-muted-foreground mb-6">
-                    {t("successText")}
-                  </p>
-                  <Button
-                    onClick={() => setIsSubmitted(false)}
-                    variant="outline"
-                  >
+                  <p className="mb-6 text-muted-foreground">{t("successText")}</p>
+                  <Button onClick={() => setIsSubmitted(false)} variant="outline">
                     {t("submitAnother")}
                   </Button>
                 </div>
               ) : (
                 <>
-                  <h3 className="text-xl font-semibold mb-6">
-                    {t("formTitle")}
-                  </h3>
+                  <h3 className="mb-6 text-3xl font-semibold">{t("formTitle")}</h3>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium mb-1"
-                      >
+                      <label htmlFor="name" className="mb-1 block text-sm font-medium">
                         {t("name")}
                       </label>
                       <Input
@@ -153,10 +134,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium mb-1"
-                      >
+                      <label htmlFor="email" className="mb-1 block text-sm font-medium">
                         Email *
                       </label>
                       <Input
@@ -170,10 +148,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium mb-1"
-                      >
+                      <label htmlFor="phone" className="mb-1 block text-sm font-medium">
                         {t("phone")}
                       </label>
                       <Input
@@ -186,10 +161,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium mb-1"
-                      >
+                      <label htmlFor="message" className="mb-1 block text-sm font-medium">
                         {t("message")}
                       </label>
                       <Textarea
@@ -201,14 +173,8 @@ export default function Contact() {
                         rows={4}
                       />
                     </div>
-                    {formError && (
-                      <p className="text-red-500 text-sm">{formError}</p>
-                    )}
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
+                    {formError && <p className="text-sm text-red-500">{formError}</p>}
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
                       {isSubmitting ? t("submitting") : t("submit")}
                     </Button>
                   </form>
@@ -217,15 +183,16 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between">
+          <div className="motion-safe:animate-soft-fade-up motion-safe:animation-delay-150 flex flex-col justify-between">
             <div>
-              <h3 className="text-xl font-semibold mb-6">
-                {t("contactInfoTitle")}
-              </h3>
+              <h3 className="mb-6 text-3xl font-semibold">{t("contactInfoTitle")}</h3>
               <div className="grid gap-6 sm:grid-cols-2">
                 {contactInfo.map((item, index) => (
-                  <div key={index} className="flex gap-3">
-                    <div className="p-2 rounded-full bg-primary/10 h-fit">
+                  <div
+                    key={index}
+                    className="group flex gap-4 rounded-[1.5rem] border border-border/70 bg-[rgba(255,251,246,0.76)] px-5 py-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_20px_40px_-32px_rgba(54,36,25,0.4)]"
+                  >
+                    <div className="h-fit rounded-2xl bg-primary/10 p-3 transition-transform duration-300 group-hover:scale-105">
                       {item.icon}
                     </div>
                     <div>
@@ -233,7 +200,7 @@ export default function Contact() {
                       {item.link ? (
                         <a
                           href={item.link}
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-muted-foreground transition-colors hover:text-primary"
                         >
                           {item.details}
                         </a>
@@ -246,12 +213,10 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-12 bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold mb-4">
-                {t("messengersTitle")}
-              </h3>
-              <div className="flex gap-4 mt-4">
-                <Button asChild variant="outline" className="flex-1">
+            <div className="mt-12 rounded-[2rem] border border-primary/15 bg-[linear-gradient(145deg,rgba(126,154,140,0.12),rgba(255,250,245,0.86))] p-6 md:p-7">
+              <h3 className="mb-4 text-3xl font-semibold">{t("messengersTitle")}</h3>
+              <div className="mt-4 grid gap-3 md:grid-cols-3">
+                <Button asChild variant="outline" className="w-full">
                   <a
                     href="https://t.me/raisa_orb"
                     target="_blank"
@@ -260,7 +225,7 @@ export default function Contact() {
                     Telegram
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="flex-1">
+                <Button asChild variant="outline" className="w-full">
                   <a
                     href="viber://add?number=380971768196"
                     target="_blank"
@@ -269,7 +234,7 @@ export default function Contact() {
                     Viber
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="flex-1">
+                <Button asChild variant="outline" className="w-full">
                   <a
                     href="https://wa.me/393515179190"
                     target="_blank"

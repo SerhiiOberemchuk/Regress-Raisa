@@ -23,8 +23,11 @@ export default function SeoPageNav({
   relatedLinks,
 }: SeoPageNavProps) {
   return (
-    <div className="space-y-6">
-      <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
+    <div className="space-y-8">
+      <nav
+        aria-label="Breadcrumb"
+        className="rounded-[1.5rem] border border-border/70 bg-[rgba(255,251,246,0.76)] px-5 py-4 text-sm text-muted-foreground"
+      >
         <ol className="flex flex-wrap items-center gap-2">
           {breadcrumbs.map((item, index) => {
             const isLast = index === breadcrumbs.length - 1;
@@ -49,13 +52,13 @@ export default function SeoPageNav({
       </nav>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">{relatedTitle}</h2>
+        <h2 className="text-3xl font-semibold">{relatedTitle}</h2>
         <div className="grid gap-3 md:grid-cols-3">
           {relatedLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-xl border p-4 text-sm text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+              className="rounded-[1.35rem] border border-border/70 bg-[rgba(255,251,246,0.72)] p-4 text-sm text-muted-foreground transition-colors hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
             >
               {item.label}
             </Link>

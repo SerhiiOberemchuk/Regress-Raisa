@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/design-system";
 import LanguageSwitcher from "./language-switcher";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -11,14 +11,13 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const tlinks = useTranslations("links");
+  const theader = useTranslations("header");
+  const tcommon = useTranslations("common");
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -42,40 +41,46 @@ export default function Header() {
     { name: tlinks("about"), href: "/#about" },
     { name: tlinks("services"), href: "/#services" },
   ];
-  const nameButton = tlinks("signup");
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+        isScrolled
+          ? "bg-[rgba(250,245,238,0.84)] shadow-[0_14px_44px_-34px_rgba(54,36,25,0.48)] backdrop-blur-xl"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-primary">
-            RaisaRegress
+      <div className="container mx-auto px-4 py-5">
+        <div className="flex items-center justify-between gap-6">
+          <Link href="/" className="flex flex-col leading-none text-primary">
+            <span className="font-serif text-[2rem] font-semibold tracking-[-0.03em]">
+              RaisaRegress
+            </span>
+            <span className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-primary/60">
+              {tcommon("practiceLabel")}
+            </span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden items-center space-x-6 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm font-semibold tracking-[0.08em] text-muted-foreground transition-colors hover:text-primary"
               >
                 {link.name}
               </Link>
             ))}
             <LanguageSwitcher />
-            <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="/#contact">{nameButton}</Link>
+            <Button asChild>
+              <Link href="/#contact">{tlinks("signup")}</Link>
             </Button>
           </nav>
 
           <button
-            className="md:hidden text-muted-foreground"
+            className="text-muted-foreground md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Закрити меню" : "Відкрити меню"}
+            aria-label={mobileMenuOpen ? theader("closeMenu") : theader("openMenu")}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -83,17 +88,19 @@ export default function Header() {
       </div>
 
       <div
-        className={`md:hidden bg-white transition-all duration-300 overflow-hidden ${
-          mobileMenuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
-        }`}
         ref={mobileMenuRef}
+        className={`overflow-hidden bg-[rgba(251,246,239,0.97)] backdrop-blur-xl transition-all duration-300 md:hidden ${
+          mobileMenuOpen
+            ? "translate-y-0 max-h-[28rem] opacity-100"
+            : "-translate-y-2 max-h-0 opacity-0"
+        }`}
       >
-        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <div className="container mx-auto flex flex-col space-y-4 px-4 py-4">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-base font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+              className="py-2 text-base font-semibold tracking-[0.06em] text-muted-foreground transition-all duration-200 hover:translate-x-1 hover:text-primary"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
@@ -102,9 +109,9 @@ export default function Header() {
           <div className="py-2">
             <LanguageSwitcher />
           </div>
-          <Button asChild className="bg-primary hover:bg-primary/90 w-full">
+          <Button asChild className="w-full">
             <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
-              {nameButton}
+              {tlinks("signup")}
             </Link>
           </Button>
         </div>

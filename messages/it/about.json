@@ -1,40 +1,43 @@
 {
-  "title": "Il metodo della terapia regressiva",
-  "subtitle": "La terapia regressiva è un approccio terapeutico che permette di tornare a eventi passati per guarire traumi psicologici e affrontare problemi attuali.",
-
-  "intro": "L’ipnosi regressiva è un metodo terapeutico che consente alla persona di entrare in uno stato profondo di rilassamento e percezione inconscia. In questo stato, il terapeuta aiuta il cliente a ricordare ed elaborare eventi del passato che possono influenzare il suo stato attuale o il suo comportamento. Questi eventi possono includere:",
+  "title": "Sulla Terapia Regressiva",
+  "subtitle": "La terapia regressiva e un approccio terapeutico che permette di tornare a eventi del passato per guarire traumi psicologici e risolvere problemi attuali.",
+  "intro": "L'ipnosi regressiva e un metodo terapeutico che permette al cliente di entrare in uno stato profondo di rilassamento e percezione subconscia. In questo stato, il regressologo aiuta la persona a ricordare ed elaborare eventi passati che possono influenzare la sua condizione o il suo comportamento attuale. Possono includere:",
   "list": {
-    "item1": "ricordi d’infanzia",
-    "item2": "eventi traumatici o momenti di vite precedenti (utilizzato universalmente per risolvere ogni tipo di richiesta)",
-    "item3": "vita tra le vite (si possono esplorare i contratti con anime affini, partner o anche nemici — spesso si trova una comprensione più profonda delle relazioni)",
-    "item4": "regni angelici (spazio di perdono totale, innalzamento delle vibrazioni e della consapevolezza)",
-    "item5": "spazio ancestrale (per richieste complesse, elaborazione di schemi familiari ereditati che influenzano negativamente)",
-    "item6": "incarnazioni extraterrestri (su quali pianeti e in quali epoche ha vissuto la tua anima prima di arrivare sulla Terra — spesso qui tutto diventa chiaro: scopo, compiti dell’anima e grandi domande interiori)",
-    "item7": "futuro — la prossima incarnazione della tua anima"
+    "item1": "ricordi dell'infanzia",
+    "item2": "eventi traumatici o persino momenti di vite passate (utilizzati per lavorare su molti tipi di richieste)",
+    "item3": "vita tra le vite (per esplorare contratti dell'anima con persone care o conflittuali e comprendere meglio le relazioni)",
+    "item4": "sfere angeliche (spazio di perdono completo, elevazione vibrazionale e consapevolezza)",
+    "item5": "spazio ancestrale (per questioni complesse e schemi ereditati che influiscono negativamente su di te)",
+    "item6": "incarnazioni extraterrestri (su quali pianeti e quando la tua anima ha vissuto prima di venire sulla Terra, spesso qui diventano chiari scopo e grandi domande)",
+    "item7": "il futuro, la tua prossima incarnazione"
   },
-  "deepWork": "L’obiettivo dell’ipnosi regressiva è identificare e risolvere blocchi psicologici nascosti che impediscono alla persona di vivere in armonia. Durante la sessione, il terapeuta aiuta il paziente non solo a rivivere gli eventi, ma anche a rielaborarli, portando a una guarigione emotiva e a una riduzione dello stress.",
-  "suitableFor": "Questo metodo è indicato per chi desidera comprendere meglio se stesso, liberarsi da esperienze negative e migliorare la qualità della propria vita. L’ipnosi regressiva è un processo sicuro e confortevole, in cui il cliente rimane sempre in contatto con il proprio corpo e le proprie sensazioni.",
-  "conclusion": "Se sei alla ricerca di una maggiore consapevolezza e guarigione emotiva, l’ipnosi regressiva può essere il primo passo verso una nuova qualità della vita.",
-
+  "deepWork": "L'obiettivo dell'ipnosi regressiva e identificare e risolvere blocchi psicologici nascosti che impediscono alla persona di raggiungere armonia nella vita. Durante la sessione, il terapeuta aiuta il cliente non solo a rivisitare questi eventi, ma anche a reinterpretarli, favorendo guarigione emotiva e alleggerimento dello stress.",
+  "suitableFor": "Questo metodo e adatto a chi desidera comprendere meglio se stesso, lasciare andare esperienze negative e migliorare la qualita della propria vita. L'ipnosi regressiva e un processo sicuro e confortevole in cui il cliente rimane in contatto con il proprio corpo e le proprie sensazioni.",
+  "conclusion": "Se cerchi maggiore consapevolezza di te e guarigione emotiva, l'ipnosi regressiva puo essere il primo passo verso una nuova qualita di vita.",
   "benefits": {
     "access": {
-      "title": "Accesso all’inconscio",
-      "description": "La terapia regressiva aiuta a ottenere accesso ai nostri ricordi e blocchi inconsci e a lavorarli."
+      "title": "Accesso al subconscio",
+      "description": "La terapia regressiva aiuta ad accedere a ricordi e blocchi inconsci e a lavorarci in profondita."
     },
     "healing": {
       "title": "Guarigione emotiva",
       "description": "Liberazione da traumi emotivi e trasformazione di schemi comportamentali negativi."
     },
     "awareness": {
-      "title": "Conoscenza di sé",
-      "description": "Comprensione profonda della propria personalità, motivazioni e schemi di vita."
+      "title": "Consapevolezza di se",
+      "description": "Comprensione profonda della tua personalita, delle motivazioni e dei modelli di vita."
     },
     "potential": {
-      "title": "Sviluppo del potenziale",
-      "description": "Scoperta e attivazione di talenti nascosti, capacità e risorse personali."
+      "title": "Sblocco del potenziale",
+      "description": "Scoprire e attivare talenti nascosti, abilita e risorse personali."
     }
   },
   "questionTitle": "Come funziona la terapia regressiva?",
-  "questionAnswer1": "Durante una sessione di terapia regressiva, entri in uno stato alterato di coscienza simile a un profondo rilassamento. In questo stato puoi accedere a ricordi e informazioni che normalmente non sono disponibili nello stato di coscienza ordinario.",
-  "questionAnswer2": "Il terapeuta ti accompagna in questo viaggio, aiutandoti a esplorare eventi significativi, comprenderne l'impatto sulla tua vita attuale e trasformare esperienze negative in risorse interiori."
+  "questionAnswer1": "Durante una sessione di terapia regressiva entri in uno stato alterato di coscienza simile al rilassamento profondo. In questo stato puoi accedere a ricordi e informazioni normalmente non disponibili nello stato ordinario di veglia.",
+  "questionAnswer2": "Il terapeuta ti guida in questo percorso, aiutandoti a esplorare eventi significativi, comprenderne l'impatto sulla tua vita attuale e trasformare le esperienze negative in preziose risorse interiori.",
+  "sectionLabels": {
+    "method": "Metodo e orientamento interiore",
+    "note": "Nota riflessiva",
+    "depth": "Profondita con struttura"
+  }
 }

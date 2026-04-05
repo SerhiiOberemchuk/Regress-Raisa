@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/design-system";
 import NotFoundRedirect from "@/components/not-found-redirect";
 
 export default function GlobalNotFound() {

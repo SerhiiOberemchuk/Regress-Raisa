@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/design-system";
 import {
   getAbsoluteUrl,
   getDefaultSocialImageUrl,
@@ -444,7 +444,7 @@ export default async function RegressionSessionOnlinePage({
           ]),
         }}
       />
-      <article className="mx-auto max-w-4xl space-y-10">
+      <article className="mx-auto max-w-4xl space-y-10 rounded-[2rem] border border-border/70 bg-[rgba(255,251,246,0.82)] p-6 shadow-[0_34px_90px_-60px_rgba(54,36,25,0.42)] md:p-10">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/" className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
@@ -452,14 +452,20 @@ export default async function RegressionSessionOnlinePage({
           </Link>
         </Button>
 
-        <header className="space-y-4">
-          <h1 className="text-3xl font-bold md:text-4xl">{copy.heading}</h1>
-          <p className="text-lg text-muted-foreground">{copy.intro}</p>
+        <header className="space-y-5">
+          <div className="text-[0.75rem] font-semibold uppercase tracking-[0.26em] text-primary/65">
+            Session guide
+          </div>
+          <h1 className="text-4xl font-semibold leading-[0.95] md:text-5xl">{copy.heading}</h1>
+          <p className="text-lg text-muted-foreground md:text-[1.08rem]">{copy.intro}</p>
         </header>
 
         {copy.sections.map((section: ContentSection) => (
-          <section key={section.title} className="space-y-4">
-            <h2 className="text-2xl font-semibold">{section.title}</h2>
+          <section
+            key={section.title}
+            className="space-y-4 rounded-[1.5rem] border border-border/60 bg-white/55 p-6"
+          >
+            <h2 className="text-3xl font-semibold">{section.title}</h2>
             <div className="space-y-4 text-muted-foreground">
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -469,9 +475,12 @@ export default async function RegressionSessionOnlinePage({
         ))}
 
         <section className="space-y-5">
-          <h2 className="text-2xl font-semibold">{copy.stepsTitle}</h2>
+          <h2 className="text-3xl font-semibold">{copy.stepsTitle}</h2>
           {copy.steps.map((step: SessionStep) => (
-            <div key={step.title} className="rounded-2xl border p-5">
+            <div
+              key={step.title}
+              className="rounded-[1.5rem] border border-border/60 bg-white/55 p-5"
+            >
               <h3 className="text-xl font-semibold">{step.title}</h3>
               <p className="mt-3 text-muted-foreground">{step.text}</p>
             </div>
@@ -479,10 +488,13 @@ export default async function RegressionSessionOnlinePage({
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold">{copy.faqTitle}</h2>
+          <h2 className="text-3xl font-semibold">{copy.faqTitle}</h2>
           <div className="space-y-4">
             {copy.faqs.map((item: FaqItem) => (
-              <div key={item.question} className="rounded-xl border p-5">
+              <div
+                key={item.question}
+                className="rounded-[1.5rem] border border-border/60 bg-white/55 p-5"
+              >
                 <h3 className="text-lg font-semibold">{item.question}</h3>
                 <p className="mt-3 text-muted-foreground">{item.answer}</p>
               </div>
@@ -490,16 +502,16 @@ export default async function RegressionSessionOnlinePage({
           </div>
         </section>
 
-        <section className="rounded-xl border p-6 md:p-8">
-          <h2 className="text-2xl font-semibold">{copy.serviceBoxTitle}</h2>
+        <section className="rounded-[1.75rem] border border-border/70 bg-white/60 p-6 md:p-8">
+          <h2 className="text-3xl font-semibold">{copy.serviceBoxTitle}</h2>
           <p className="mt-3 text-muted-foreground">{copy.serviceBoxText}</p>
           <Button asChild variant="outline" className="mt-5">
             <Link href="/regression-hypnosis-online">{copy.serviceBoxLink}</Link>
           </Button>
         </section>
 
-        <section className="rounded-xl border border-primary/20 bg-primary/5 p-6 md:p-8">
-          <h2 className="text-2xl font-semibold">{copy.ctaTitle}</h2>
+        <section className="rounded-[1.75rem] border border-primary/20 bg-[linear-gradient(145deg,rgba(126,154,140,0.10),rgba(255,250,245,0.82))] p-6 md:p-8">
+          <h2 className="text-3xl font-semibold">{copy.ctaTitle}</h2>
           <p className="mt-3 text-muted-foreground">{copy.ctaText}</p>
           <Button asChild className="mt-5">
             <Link href="/#contact">{copy.ctaButton}</Link>

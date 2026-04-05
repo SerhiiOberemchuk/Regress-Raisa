@@ -1,5 +1,7 @@
 {
   "about": "About Method",
   "services": "Services",
-  "book": "Book a Session"
+  "book": "Book a Session",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu"
 }

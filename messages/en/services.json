@@ -32,7 +32,7 @@
       "features": {
         "f1": "Three full sessions for in-depth work on key life themes, lasting from 1.5 to 3.5 hours each",
         "f2": "Individual planning and discussion of session themes based on your needs, including consultation and Q&A",
-        "f3": "Three months of support – one session per month + guidance between sessions",
+        "f3": "Three months of support, one session per month plus guidance between sessions",
         "f4": "In-depth work on three different requests",
         "f5": "Clearing blocks and entities",
         "f6": "Clearing the root issue",
@@ -53,6 +53,7 @@
     }
   },
   "button": "Book now",
+  "formatLabel": "Tailored session format",
   "individualApproach": {
     "title": "Individual Approach",
     "text": "Every client is unique, so I offer a personalized approach to working with your requests. If you need a custom program or have specific needs, feel free to contact me to discuss your individual options."

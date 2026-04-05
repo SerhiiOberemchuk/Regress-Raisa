@@ -4,7 +4,7 @@
   "items": {
     "time": {
       "title": "Time",
-      "description": "Set aside 2–3 hours for a full session. This allows you to take your time and deeply process your request."
+      "description": "Set aside 2 to 3 hours for a full session. This allows you to take your time and deeply process your request."
     },
     "headphones": {
       "title": "Headphones",
@@ -22,10 +22,11 @@
   "additional": {
     "title": "Additional recommendations",
     "list": {
-      "r1": "Avoid alcohol, caffeine, and heavy meals 2–3 hours before the session",
+      "r1": "Avoid alcohol, caffeine, and heavy meals 2 to 3 hours before the session",
       "r2": "Wear comfortable clothing that doesn't restrict movement or breathing",
       "r3": "Formulate your question or topic beforehand that you want to explore",
       "r4": "Be open to the process and trust your inner experience"
     }
-  }
+  },
+  "panelLabel": "Before the session"
 }

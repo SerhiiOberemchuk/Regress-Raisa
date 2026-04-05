@@ -10,6 +10,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   const [
     links,
+    header,
     hero,
     about,
     results,
@@ -27,6 +28,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     seoHub,
   ] = await Promise.all([
     import(`../messages/${locale}/links.json`).then((m) => m.default),
+    import(`../messages/${locale}/header.json`).then((m) => m.default),
     import(`../messages/${locale}/hero.json`).then((m) => m.default),
     import(`../messages/${locale}/about.json`).then((m) => m.default),
     import(`../messages/${locale}/results.json`).then((m) => m.default),
@@ -46,6 +48,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   const messages = {
     links,
+    header,
     hero,
     about,
     results,
