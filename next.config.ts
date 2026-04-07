@@ -2,6 +2,7 @@ import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   cacheComponents: true,
   reactCompiler: true,
   async redirects() {

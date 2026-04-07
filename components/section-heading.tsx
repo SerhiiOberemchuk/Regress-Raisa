@@ -1,7 +1,5 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
@@ -13,29 +11,14 @@ export default function SectionHeading({
   subtitle,
   centered = true,
 }: SectionHeadingProps) {
-  const tcommon = useTranslations("common");
-
   return (
     <div
-      className={`mb-14 max-w-3xl space-y-6 ${centered ? "mx-auto text-center" : ""}`}
+      className={`space-y-4 max-w-3xl ${centered ? "mx-auto text-center" : ""} mb-12`}
     >
-      <div className={`flex items-center gap-4 ${centered ? "justify-center" : ""}`}>
-        <span className="h-px w-12 bg-gradient-to-r from-transparent to-primary/45" />
-        <div
-          className={`text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-primary/70 ${centered ? "" : "pl-1"}`}
-        >
-          {tcommon("sectionEyebrow")}
-        </div>
-        <span className="h-px w-12 bg-gradient-to-l from-transparent to-primary/45" />
-      </div>
-      <h2 className="text-4xl font-semibold leading-[0.95] md:text-5xl">
+      <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">
         {title}
       </h2>
-      {subtitle && (
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-[1.1rem]">
-          {subtitle}
-        </p>
-      )}
+      {subtitle && <p className="text-lg text-muted-foreground">{subtitle}</p>}
     </div>
   );
 }
