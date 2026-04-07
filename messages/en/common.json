@@ -1,8 +1,6 @@
 {
   "language": "English",
   "languageCode": "en",
-  "practiceLabel": "Private online practice",
-  "sectionEyebrow": "Guided inner work",
   "form": {
     "fillAllFields": "Please fill in all required fields",
     "invalidEmail": "Please enter a valid email address",

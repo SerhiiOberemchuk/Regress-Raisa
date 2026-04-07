@@ -7,7 +7,6 @@ import Faq from "@/components/faq";
 import Hero from "@/components/hero";
 import Requirements from "@/components/requirements";
 import Results from "@/components/results";
-import SeoContentHub from "@/components/seo-content-hub";
 import Services from "@/components/services";
 import { getCachedSiteContent } from "@/lib/site-content-cache";
 import {
@@ -126,7 +125,6 @@ export default async function Home({
       <Examples locale={locale as SupportedLocale} />
       <Requirements locale={locale as SupportedLocale} />
       <Faq />
-      <SeoContentHub locale={locale as SupportedLocale} />
       <Services locale={locale as SupportedLocale} siteContent={siteContent} />
       <Contact />
     </main>

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/design-system";
+import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import {
@@ -140,7 +140,7 @@ export default async function TermsOfUsePage({
                       </a>
                     </li>
                     <li>
-                      Phone:{" "}
+                      Телефон:{" "}
                       <a
                         href={`tel:${section.phone}`}
                         className="text-primary hover:underline"

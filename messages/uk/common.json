@@ -1,8 +1,6 @@
 {
   "language": "Українська",
   "languageCode": "uk",
-  "practiceLabel": "Приватна онлайн практика",
-  "sectionEyebrow": "Дбайлива внутрішня робота",
   "form": {
     "fillAllFields": "Будь ласка, заповніть всі обов'язкові поля",
     "invalidEmail": "Будь ласка, введіть коректний email",

@@ -2,8 +2,6 @@
 @plugin "tailwindcss-animate";
 
 @theme inline {
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-display);
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -48,78 +46,6 @@
   }
 }
 
-@keyframes soft-fade-up {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 24px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes soft-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ambient-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(0, -14px, 0) scale(1.04);
-  }
-}
-
-@keyframes ambient-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-10px, 10px, 0);
-  }
-}
-
-@utility animate-soft-fade-up {
-  animation: soft-fade-up 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@utility animate-soft-fade-in {
-  animation: soft-fade-in 900ms ease both;
-}
-
-@utility animate-ambient-float {
-  animation: ambient-float 9s ease-in-out infinite;
-}
-
-@utility animate-ambient-drift {
-  animation: ambient-drift 12s ease-in-out infinite;
-}
-
-@utility animation-delay-150 {
-  animation-delay: 150ms;
-}
-
-@utility animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-@utility animation-delay-450 {
-  animation-delay: 450ms;
-}
-
-@utility animation-delay-600 {
-  animation-delay: 600ms;
-}
-
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -130,26 +56,26 @@
 }
 
 :root {
-  --background: 32 33% 96%;
-  --foreground: 25 25% 18%;
-  --card: 35 36% 98%;
-  --card-foreground: 25 25% 18%;
-  --popover: 35 36% 98%;
-  --popover-foreground: 25 25% 18%;
-  --primary: 18 36% 32%;
-  --primary-foreground: 36 40% 97%;
-  --secondary: 36 28% 89%;
-  --secondary-foreground: 22 24% 24%;
-  --muted: 34 22% 91%;
-  --muted-foreground: 25 13% 41%;
-  --accent: 145 17% 79%;
-  --accent-foreground: 150 24% 19%;
-  --destructive: 2 64% 50%;
-  --destructive-foreground: 36 40% 97%;
-  --border: 28 18% 82%;
-  --input: 28 18% 82%;
-  --ring: 18 36% 32%;
-  --radius: 1.25rem;
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 262.1 83.3% 57.8%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 262.1 83.3% 57.8%;
+  --radius: 0.5rem;
 }
 
 .dark {
@@ -180,58 +106,12 @@
 
 body {
   @apply bg-background text-foreground;
-  background-image:
-    radial-gradient(circle at top left, rgba(126, 154, 140, 0.14), transparent 34%),
-    radial-gradient(circle at top right, rgba(113, 74, 50, 0.12), transparent 28%),
-    linear-gradient(180deg, rgba(255, 252, 247, 0.92), rgba(246, 240, 232, 0.98));
-  min-height: 100vh;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-body::selection {
-  background: rgba(113, 74, 50, 0.2);
-}
-
-a,
-button {
-  transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
-}
-
-main section {
-  position: relative;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display), serif;
-  letter-spacing: -0.02em;
-}
-
-p {
-  line-height: 1.72;
-}
-
 section {
   scroll-margin-top: 80px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
-  }
 }

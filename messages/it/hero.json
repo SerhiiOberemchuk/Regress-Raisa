@@ -1,5 +1,4 @@
 {
-  "eyebrow": "Profondita gentile. Guida chiara. Spazio privato.",
   "title": {
     "part1": "Ipnosi",
     "part2": "regressiva",
@@ -7,16 +6,11 @@
   },
   "heroname": "Raisa Oberemchuk",
   "position": "PRATICANTE REGRESSOLOGA",
-  "description": "La tua guida alle profondita del subconscio. Ti aiuto a guarire il passato per una vita armoniosa oggi. Il mio obiettivo e aiutare una persona a trovare le cause profonde dei problemi e liberarsi dalla loro influenza.",
+  "description": "La tua guida alle profondità del subconscio. Ti aiuto a guarire il passato per una vita armoniosa oggi! Il mio obiettivo è aiutare una persona a trovare le cause profonde dei problemi e liberarsi dalla loro influenza",
   "buttonsbs": "Prenota una sessione",
-  "btnmore": "Scopri di piu",
+  "btnmore": "Scopri di più",
   "clients": "clienti",
   "changes": "notano cambiamenti positivi",
   "years": "anni",
-  "exsp": "di esperienza nella terapia regressiva",
-  "highlights": {
-    "format": "Formato online calmo e riservato",
-    "preparation": "Preparazione attenta prima delle sessioni",
-    "emotions": "Lavoro accurato con gli schemi emotivi"
-  }
+  "exsp": "di esperienza nella terapia regressiva"
 }
