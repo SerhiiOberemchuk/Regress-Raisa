@@ -1,5 +1,4 @@
 import { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -9,13 +8,42 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        has: [{ type: "host", value: "raisaregress.online" }],
-        destination: "https://www.raisaregress.online/:path*",
+        has: [{ type: "host", value: "raisaregres.online" }],
+        destination: "https://raisaregres.online/:path*",
+        permanent: true,
+      },
+      {
+        source: "/uk",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/uk/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
+        source: "/en",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/en/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
+        source: "/it",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/it/:path*",
+        destination: "/:path*",
         permanent: true,
       },
     ];
   },
 };
 
-const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(nextConfig);
+export default nextConfig;

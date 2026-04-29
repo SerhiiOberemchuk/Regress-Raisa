@@ -4,11 +4,9 @@ Allow: /
 Disallow: /api/
 Disallow: /trpc/
 Disallow: /admin
-Disallow: /en/admin
-Disallow: /it/admin
 
 # Host
-Host: https://www.raisaregress.online
+Host: https://raisaregres.online
 
 # Sitemaps
-Sitemap: https://www.raisaregress.online/sitemap.xml
+Sitemap: https://raisaregres.online/sitemap.xml

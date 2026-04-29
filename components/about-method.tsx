@@ -1,85 +1,107 @@
-import { Brain, Heart, Compass, Sparkles } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-import SectionHeading from "./section-heading";
+import { Brain, Compass, Heart, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import type { SupportedLocale } from "@/lib/site-content-schema";
+import SectionHeading from "./section-heading";
 
-type AboutMethodProps = {
-  locale: SupportedLocale;
-};
+const features = [
+  {
+    icon: <Brain className="h-10 w-10 text-primary" />,
+    title: "Доступ до підсвідомого",
+    description:
+      "Робота з глибокими спогадами, прихованими реакціями та внутрішніми причинами станів, які складно побачити лише раціонально.",
+  },
+  {
+    icon: <Heart className="h-10 w-10 text-primary" />,
+    title: "Емоційне зцілення",
+    description:
+      "М'яке пропрацювання переживань, образ, страхів і накопиченої напруги з поверненням відчуття внутрішнього спокою.",
+  },
+  {
+    icon: <Compass className="h-10 w-10 text-primary" />,
+    title: "Самопізнання",
+    description:
+      "Глибше розуміння власних реакцій, життєвих сценаріїв, моделей поведінки та того, як вони впливають на сьогодення.",
+  },
+  {
+    icon: <Sparkles className="h-10 w-10 text-primary" />,
+    title: "Розкриття ресурсу",
+    description:
+      "Відновлення контакту з внутрішньою опорою, ясністю, довірою до себе та відчуттям напрямку в житті.",
+  },
+] as const;
 
-export default async function AboutMethod({ locale }: AboutMethodProps) {
-  const t = await getTranslations({ locale, namespace: "about" });
+const explorationAreas = [
+  "дитячі спогади та ранні емоційні події",
+  "переломні епізоди, які досі впливають на теперішні рішення",
+  "повторювані сценарії у стосунках, кар'єрі та самосприйнятті",
+  "внутрішні образи, символи та глибинні асоціації підсвідомості",
+  "ресурсні стани, які допомагають знайти нову точку опори",
+];
 
-  const features = [
-    {
-      icon: <Brain className="h-10 w-10 text-primary" />,
-      title: t("benefits.access.title"),
-      description: t("benefits.access.description"),
-    },
-    {
-      icon: <Heart className="h-10 w-10 text-primary" />,
-      title: t("benefits.healing.title"),
-      description: t("benefits.healing.description"),
-    },
-    {
-      icon: <Compass className="h-10 w-10 text-primary" />,
-      title: t("benefits.awareness.title"),
-      description: t("benefits.awareness.description"),
-    },
-    {
-      icon: <Sparkles className="h-10 w-10 text-primary" />,
-      title: t("benefits.potential.title"),
-      description: t("benefits.potential.description"),
-    },
-  ];
-
-  const explorationAreas = Object.values(t.raw("list")) as string[];
-
+export default function AboutMethod() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-muted/30">
+    <section id="about" className="bg-muted/30 py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading title={t("title")} />
+        <SectionHeading title="Про метод регресивної терапії" />
 
-        <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-4xl mx-auto mb-12">
-          <p className="text-muted-foreground mb-4">{t("intro")}</p>
+        <div className="mx-auto mb-12 max-w-4xl rounded-[1.75rem] bg-white p-6 shadow-lg md:p-8">
+          <p className="mb-4 leading-relaxed text-muted-foreground">
+            Регресивна терапія допомагає зануритися в глибший контакт із собою,
+            побачити джерело повторюваних станів і дати психіці можливість завершити
+            те, що колись лишилося незавершеним.
+          </p>
 
-          <ul className="space-y-2 mb-6">
-            {explorationAreas.map((area, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <span className="text-primary font-bold">•</span>
+          <ul className="mb-6 space-y-2">
+            {explorationAreas.map((area) => (
+              <li key={area} className="flex items-start gap-2">
+                <span className="font-bold text-primary">•</span>
                 <span className="text-muted-foreground">{area}</span>
               </li>
             ))}
           </ul>
 
-          <p className="text-muted-foreground mb-4">{t("deepWork")}</p>
-          <p className="text-muted-foreground mb-4">{t("suitableFor")}</p>
-          <p className="text-muted-foreground font-medium">{t("conclusion")}</p>
+          <p className="mb-4 leading-relaxed text-muted-foreground">
+            У фокусі не просто спогад, а причина, через яку тривога, напруга,
+            невпевненість або внутрішній конфлікт продовжують проявлятися в житті.
+          </p>
+          <p className="mb-4 leading-relaxed text-muted-foreground">
+            Метод підходить людям, які хочуть глибше зрозуміти себе, вийти з
+            виснажливих сценаріїв та відчути більше внутрішньої свободи.
+          </p>
+          <p className="font-medium text-muted-foreground">
+            Це уважна, делікатна робота, спрямована не на драматизацію минулого, а
+            на більш цілісний і спокійний стан у теперішньому.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          {features.map((feature, index) => (
-            <div key={index}>
-              <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <div className="mb-4 p-3 rounded-full bg-primary/10">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            </div>
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => (
+            <Card
+              key={feature.title}
+              className="h-full border-none shadow-md transition-shadow hover:shadow-lg"
+            >
+              <CardContent className="flex flex-col items-center p-6 text-center">
+                <div className="mb-4 rounded-full bg-primary/10 p-3">{feature.icon}</div>
+                <h3 className="mb-2 font-display text-2xl font-semibold">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        <div className="mt-16 bg-white rounded-xl p-6 md:p-8 shadow-lg max-w-3xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-semibold mb-4">
-            {t("questionTitle")}
+        <div className="mx-auto mt-16 max-w-3xl rounded-[1.75rem] bg-white p-6 shadow-lg md:p-8">
+          <h3 className="mb-4 font-display text-3xl font-semibold">
+            Як проходить регресивна терапія?
           </h3>
-          <p className="text-muted-foreground mb-4">{t("questionAnswer1")}</p>
-          <p className="text-muted-foreground">{t("questionAnswer2")}</p>
+          <p className="mb-4 leading-relaxed text-muted-foreground">
+            Сеанс починається з уточнення запиту та створення безпечного простору для
+            роботи. Далі ви входите у глибоко розслаблений стан, у якому легше
+            спостерігати внутрішні образи, відчуття та спогади.
+          </p>
+          <p className="leading-relaxed text-muted-foreground">
+            Терапевт супроводжує процес, ставить точні запитання та допомагає пройти
+            через важливі епізоди так, щоб це привело не до повторної травматизації,
+            а до розуміння, розвантаження та інтеграції досвіду.
+          </p>
         </div>
       </div>
     </section>

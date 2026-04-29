@@ -1,24 +1,14 @@
-import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import { Link } from "@/i18n/navigation";
-import type { SupportedLocale } from "@/lib/site-content-schema";
+import Link from "next/link";
 import { FooterYear } from "@/components/footer-year";
 
 type FooterProps = {
-  locale: SupportedLocale;
   footerBackgroundImage: string;
 };
 
-export default async function Footer({
-  locale,
-  footerBackgroundImage,
-}: FooterProps) {
-  const tcontact = await getTranslations({ locale, namespace: "contact" });
-  const tlinks = await getTranslations({ locale, namespace: "links" });
-  const tfooter = await getTranslations({ locale, namespace: "footer" });
-
+export default function Footer({ footerBackgroundImage }: FooterProps) {
   return (
-    <footer className="relative py-12 overflow-hidden">
+    <footer className="relative overflow-hidden py-14">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -26,185 +16,130 @@ export default async function Footer({
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.15,
+          opacity: 0.12,
         }}
       />
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Link href="/" className="text-2xl font-bold text-primary">
+            <Link href="/" className="font-display text-3xl font-semibold text-primary">
               RaisaRegress
             </Link>
-            <p className="mt-4 text-muted-foreground max-w-md">
-              {tfooter("tagline")}
+            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
+              Професійні онлайн-сеанси регресивної терапії для глибшого самопізнання,
+              емоційного розвантаження та м'якої внутрішньої трансформації.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">{tfooter("navigation")}</h3>
+            <h3 className="mb-4 font-display text-2xl font-semibold">Навігація</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/#about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("about")}
+                <Link href="/#about" className="text-muted-foreground transition-colors hover:text-primary">
+                  Про метод
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#results"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("results")}
+                <Link href="/#results" className="text-muted-foreground transition-colors hover:text-primary">
+                  Результати
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#examples"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("examples")}
+                <Link href="/#examples" className="text-muted-foreground transition-colors hover:text-primary">
+                  Приклади запитів
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#requirements"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("requirements")}
+                <Link href="/#requirements" className="text-muted-foreground transition-colors hover:text-primary">
+                  Вимоги до сеансу
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#faq"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("faq")}
+                <Link href="/#faq" className="text-muted-foreground transition-colors hover:text-primary">
+                  Питання та відповіді
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#services"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("services")}
+                <Link href="/#services" className="text-muted-foreground transition-colors hover:text-primary">
+                  Послуги і ціни
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/regression-hypnosis-online"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("hypnosisGuide")}
+                <Link href="/regression-hypnosis-online" className="text-muted-foreground transition-colors hover:text-primary">
+                  Регресивний гіпноз онлайн
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/regression-therapy-price"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("pricingGuide")}
+                <Link href="/regression-therapy-price" className="text-muted-foreground transition-colors hover:text-primary">
+                  Ціни на терапію
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/regression-therapy-safety"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("safetyGuide")}
+                <Link href="/regression-therapy-safety" className="text-muted-foreground transition-colors hover:text-primary">
+                  Безпека і протипоказання
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {tlinks("contact")}
+                <Link href="/#contact" className="text-muted-foreground transition-colors hover:text-primary">
+                  Контакти
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">{tfooter("contact")}</h3>
+            <h3 className="mb-4 font-display text-2xl font-semibold">Контакти</h3>
             <ul className="space-y-2">
               <li className="text-muted-foreground">
-                <span className="font-medium text-foreground">
-                  {tcontact("phoneLabel")}:
-                </span>
+                <span className="font-medium text-foreground">Телефон:</span>
                 <br />
-                <a
-                  href="tel:+380971768196"
-                  className="hover:text-primary transition-colors"
-                >
+                <a href="tel:+380971768196" className="transition-colors hover:text-primary">
                   +380 97 176 81 96
                 </a>
               </li>
               <li className="text-muted-foreground">
                 <span className="font-medium text-foreground">Email:</span>
                 <br />
-                <a
-                  href="mailto:265840@gmail.com"
-                  className="hover:text-primary transition-colors"
-                >
+                <a href="mailto:265840@gmail.com" className="transition-colors hover:text-primary">
                   265840@gmail.com
                 </a>
               </li>
               <li className="text-muted-foreground">
-                <span className="font-medium text-foreground">
-                  {tcontact("workingHoursLabel")}:
-                </span>
+                <span className="font-medium text-foreground">Години роботи:</span>
                 <br />
-                {tcontact("workHoursText")}
+                Пн-Пт: 10:00 - 19:00
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-border mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 md:flex-row">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
             <p className="text-sm text-muted-foreground">
               &copy;{" "}
               <Suspense fallback={null}>
                 <FooterYear />
               </Suspense>{" "}
-              RaisaRegress. {tfooter("rights")}
+              RaisaRegress. Усі права захищені.
             </p>
             <div className="flex items-center gap-1">
-              <span className="text-sm text-muted-foreground">
-                {tfooter("createdBy")}:
-              </span>
+              <span className="text-sm text-muted-foreground">Сайт створено:</span>
               <a
                 href="https://www.linkedin.com/in/serhii-oberemchuk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-sm text-primary hover:underline"
+                className="text-sm text-primary hover:underline"
               >
                 Serhii Oberemchuk
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-4 w-4"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.4v1.56h.05c.47-.9 1.63-1.86 3.36-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3zM5.34 7.43a2.06 2.06 0 1 1 0-4.11 2.06 2.06 0 0 1 0 4.11zM7.12 20.45H3.56V9h3.56v11.45z" />
-                </svg>
               </a>
             </div>
           </div>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link
-              href="/privacy"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              {tfooter("privacyPolicy")}
+          <div className="flex gap-4">
+            <Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+              Політика конфіденційності
             </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              {tfooter("termsOfUse")}
+            <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+              Умови використання
             </Link>
           </div>
         </div>

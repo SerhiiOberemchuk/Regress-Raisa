@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://www.raisaregress.online",
+  siteUrl: "https://raisaregres.online",
   generateRobotsTxt: true,
   changefreq: "yearly",
   priority: 1,
@@ -10,13 +10,7 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/trpc/",
-          "/admin",
-          "/en/admin",
-          "/it/admin",
-        ],
+        disallow: ["/api/", "/trpc/", "/admin"],
       },
     ],
   },
@@ -24,15 +18,28 @@ module.exports = {
   exclude: [
     "/404",
     "/500",
+    "/admin",
     "/api/*",
     "/sitemap.xml",
     "/robots.txt",
     "/**/admin",
   ],
 
+  transform: async (config, path) => {
+    if (path === "/admin" || path.startsWith("/admin/")) {
+      return null;
+    }
+
+    return {
+      loc: path,
+      changefreq: config.changefreq,
+      priority: path === "/" ? 1 : 0.7,
+      lastmod: new Date().toISOString(),
+    };
+  },
+
   additionalPaths: async () => {
     const dateLastMod = new Date().toISOString();
-    const locales = ["uk", "it", "en"];
     const pages = [
       { path: "", priority: 1 },
       { path: "terms", priority: 0.5 },
@@ -42,20 +49,11 @@ module.exports = {
       { path: "regression-therapy-safety", priority: 0.7 },
     ];
 
-    return locales.flatMap((locale) =>
-      pages.map((page) => ({
-        loc:
-          locale === "uk"
-            ? page.path
-              ? `/${page.path}`
-              : "/"
-            : page.path
-              ? `/${locale}/${page.path}`
-              : `/${locale}`,
-        changefreq: "yearly",
-        priority: page.priority,
-        lastmod: dateLastMod,
-      })),
-    );
+    return pages.map((page) => ({
+      loc: page.path ? `/${page.path}` : "/",
+      changefreq: "yearly",
+      priority: page.priority,
+      lastmod: dateLastMod,
+    }));
   },
 };
