@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { routing } from "@/i18n/routing";
 
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,26 +21,20 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
-    const requestLocale = request.headers.get("x-locale");
-    const locale = hasLocale(routing.locales, requestLocale)
-      ? requestLocale
-      : routing.defaultLocale;
-    const t = await getTranslations({ locale, namespace: "common" });
-
     const data = await request.json();
     const { name, email, phone, message } = data;
 
     if (!name || !email || !phone) {
       return NextResponse.json(
-        { error: t("form.fillAllFields") },
-        { status: 400 }
+        { error: "Будь ласка, заповніть всі обов'язкові поля" },
+        { status: 400 },
       );
     }
 
     if (!isValidEmail(email)) {
       return NextResponse.json(
-        { error: t("form.invalidEmail") },
-        { status: 400 }
+        { error: "Будь ласка, введіть коректний email" },
+        { status: 400 },
       );
     }
 
@@ -54,40 +45,31 @@ export async function POST(request: Request) {
       (message && message.length > 1000)
     ) {
       return NextResponse.json(
-        { error: t("form.inputTooLong") },
-        { status: 400 }
+        { error: "Один або кілька введених параметрів перевищують допустиму довжину" },
+        { status: 400 },
       );
     }
 
-    const currentDate = new Date().toLocaleString(
-      locale === "uk" ? "uk-UA" : locale === "en" ? "en-US" : "it-IT",
-      {
-        timeZone: "Europe/Kyiv",
-      }
-    );
+    const currentDate = new Date().toLocaleString("uk-UA", {
+      timeZone: "Europe/Kyiv",
+    });
 
     await transporter.sendMail({
       from: `"RaisaRegress" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: t("form.userEmailSubject"),
+      subject: "Дякуємо за ваше звернення | RaisaRegress",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-          <h2 style="color: #7c3aed;">${t("form.userThankYou")}</h2>
-          <p>${t("form.userGreeting")} <strong>${name}</strong>,</p>
-          <p>${t("form.userThankYou")}</p>
-          <p>${t("form.userContacts")}</p>
+          <h2 style="color: #7c3aed;">Дякуємо за ваше звернення</h2>
+          <p>Шановний(а) <strong>${name}</strong>,</p>
+          <p>Ми отримали ваше повідомлення та зв'яжемося з вами найближчим часом.</p>
+          <p>Ваші контактні дані:</p>
           <ul>
-          <li>${t("form.phone")}: ${phone}</li>
-          <li>${t("form.email")}: ${email}</li>
+            <li>Телефон: ${phone}</li>
+            <li>Email: ${email}</li>
           </ul>
-          ${
-            message
-              ? `<p>${message}</p>`
-              : `<p>${t("form.noMessageProvided")}</p>`
-          }
-          <p>${t("form.userRespectfully")}</p>
-          <hr style="border: 1px solid #eee; margin: 20px 0;">
-          <p style="font-size: 12px; color: #777;">${t("form.autoMessage")}</p>
+          ${message ? `<p>${message}</p>` : "<p>Повідомлення не вказано</p>"}
+          <p>З повагою, команда RaisaRegress</p>
         </div>
       `,
     });
@@ -95,10 +77,10 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: `"Форма зворотного зв'язку" <${process.env.EMAIL_USER}>`,
       to: "265840@gmail.com",
-      subject: t("form.adminEmailSubject"),
+      subject: "Нове звернення з сайту RaisaRegress",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-          <h2 style="color: #7c3aed;">${t("form.adminEmailSubject")}</h2>
+          <h2 style="color: #7c3aed;">Нове звернення з сайту</h2>
           <p>Дата та час: ${currentDate}</p>
           <h3>Інформація про клієнта:</h3>
           <ul>
@@ -106,24 +88,20 @@ export async function POST(request: Request) {
             <li><strong>Email:</strong> ${email}</li>
             <li><strong>Телефон:</strong> ${phone}</li>
           </ul>
-          ${
-            message
-              ? `<h3>Повідомлення:</h3><p>${message}</p>`
-              : `<p>${t("form.noMessageProvided")}</p>`
-          }
+          ${message ? `<h3>Повідомлення:</h3><p>${message}</p>` : "<p>Повідомлення не вказано</p>"}
         </div>
       `,
     });
 
     return NextResponse.json({
       success: true,
-      message: t("form.sendSuccess"),
+      message: "Повідомлення успішно надіслано",
     });
   } catch (error) {
     console.error("Помилка відправки email:", error);
     return NextResponse.json(
       { error: "Виникла помилка при відправці повідомлення" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

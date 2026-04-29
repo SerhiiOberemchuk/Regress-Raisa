@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const DEFAULT_SITE_URL = "https://www.raisaregress.online";
+const DEFAULT_SITE_URL = "https://raisaregres.online";
 
 function normalizeSiteUrl(url: string): string {
   return url.endsWith("/") ? url.slice(0, -1) : url;
@@ -13,24 +13,17 @@ export const siteUrl = normalizeSiteUrl(
 export const metadataBaseUrl = new URL(siteUrl);
 export const defaultSocialImagePath = "/og-image.jpg";
 
-export type SupportedSeoLocale = "uk" | "en" | "it";
+export type SupportedSeoLocale = "uk";
 
 export function getLocaleTag(locale: SupportedSeoLocale): string {
-  if (locale === "uk") return "uk-UA";
-  if (locale === "en") return "en-US";
-  return "it-IT";
+  return "uk-UA";
 }
 
 export function getLocalizedPath(
   locale: SupportedSeoLocale,
   path = "",
 ): string {
-  if (locale === "uk") {
-    return path ? `/${path}` : "/";
-  }
-
-  if (!path) return `/${locale}`;
-  return `/${locale}/${path}`;
+  return path ? `/${path}` : "/";
 }
 
 export function getAbsoluteUrl(path: string): string {
@@ -55,8 +48,6 @@ export function getLanguageAlternates(path = ""): Metadata["alternates"] {
   return {
     languages: {
       "uk-UA": getLocalizedPath("uk", normalizedPath),
-      "en-US": getLocalizedPath("en", normalizedPath),
-      "it-IT": getLocalizedPath("it", normalizedPath),
       "x-default": getLocalizedPath("uk", normalizedPath),
     },
   };

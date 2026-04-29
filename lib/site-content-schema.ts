@@ -1,5 +1,4 @@
-export const SUPPORTED_LOCALES = ["uk", "en", "it"] as const;
-export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
+export type SupportedLocale = "uk";
 
 export const SERVICE_KEYS = [
   "regression",
@@ -16,7 +15,7 @@ export type SiteContent = {
     results: string;
     footerBackground: string;
   };
-  prices: Record<ServiceKey, Record<SupportedLocale, string>>;
+  prices: Record<ServiceKey, string>;
 };
 
 export const defaultSiteContent: SiteContent = {
@@ -27,25 +26,9 @@ export const defaultSiteContent: SiteContent = {
     footerBackground: "/footer-background.jpg",
   },
   prices: {
-    regression: {
-      uk: "3600 UAH",
-      en: "3600 UAH",
-      it: "3600 UAH",
-    },
-    progression: {
-      uk: "3600 UAH",
-      en: "3600 UAH",
-      it: "3600 UAH",
-    },
-    consciousness: {
-      uk: "9800 UAH",
-      en: "9800 UAH",
-      it: "9800 UAH",
-    },
-    consultation: {
-      uk: "800 UAH",
-      en: "800 UAH",
-      it: "800 UAH",
-    },
+    regression: "3600 UAH",
+    progression: "3600 UAH",
+    consciousness: "9800 UAH",
+    consultation: "800 UAH",
   },
 };

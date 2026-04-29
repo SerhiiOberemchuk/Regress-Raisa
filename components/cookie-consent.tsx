@@ -1,36 +1,32 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { X } from "lucide-react"
-import { useTranslations } from "next-intl"
-import { Link } from "@/i18n/navigation"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function CookieConsent() {
-  const [showConsent, setShowConsent] = useState(false)
-  const t = useTranslations("cookie")
+  const [showConsent, setShowConsent] = useState(false);
 
   useEffect(() => {
-    const hasConsented = localStorage.getItem("cookieConsent")
+    const hasConsented = localStorage.getItem("cookieConsent");
     if (!hasConsented) {
-      const timer = setTimeout(() => {
-        setShowConsent(true)
-      }, 1000)
-      return () => clearTimeout(timer)
+      const timer = setTimeout(() => setShowConsent(true), 1000);
+      return () => clearTimeout(timer);
     }
-  }, [])
+  }, []);
 
   const acceptCookies = () => {
-    localStorage.setItem("cookieConsent", "true")
-    localStorage.setItem("cookieConsentDate", new Date().toISOString())
-    setShowConsent(false)
-  }
+    localStorage.setItem("cookieConsent", "true");
+    localStorage.setItem("cookieConsentDate", new Date().toISOString());
+    setShowConsent(false);
+  };
 
   const declineCookies = () => {
-    localStorage.setItem("cookieConsent", "false")
-    localStorage.setItem("cookieConsentDate", new Date().toISOString())
-    setShowConsent(false)
-  }
+    localStorage.setItem("cookieConsent", "false");
+    localStorage.setItem("cookieConsentDate", new Date().toISOString());
+    setShowConsent(false);
+  };
 
   return (
     <div
@@ -45,33 +41,33 @@ export default function CookieConsent() {
           <button
             onClick={declineCookies}
             className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
-            aria-label={t("closeAriaLabel")}
+            aria-label="Закрити повідомлення про cookies"
           >
             <X size={20} />
           </button>
 
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
             <div className="flex-grow">
-              <h3 className="mb-2 text-lg font-semibold">{t("title")}</h3>
+              <h3 className="mb-2 text-lg font-semibold">Ми використовуємо cookies</h3>
               <p className="text-muted-foreground">
-                {t.rich("description", {
-                  privacy: (chunks) => (
-                    <Link href="/privacy" className="text-primary hover:underline">
-                      {chunks}
-                    </Link>
-                  ),
-                })}
+                Цей сайт використовує cookies для покращення вашого досвіду користування.
+                Натискаючи «Прийняти», ви погоджуєтесь з використанням cookies
+                відповідно до нашої{" "}
+                <Link href="/privacy" className="text-primary hover:underline">
+                  Політики конфіденційності
+                </Link>
+                .
               </p>
             </div>
             <div className="mt-2 flex flex-col gap-3 sm:flex-row md:mt-0">
               <Button variant="outline" onClick={declineCookies}>
-                {t("decline")}
+                Відхилити
               </Button>
-              <Button onClick={acceptCookies}>{t("accept")}</Button>
+              <Button onClick={acceptCookies}>Прийняти</Button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -5,11 +5,9 @@ import { db } from "@/lib/db";
 import { sitePricesTable } from "@/lib/db-schema";
 import {
   SERVICE_KEYS,
-  SUPPORTED_LOCALES,
   defaultSiteContent,
   type ServiceKey,
   type SiteContent,
-  type SupportedLocale,
 } from "@/lib/site-content-schema";
 
 type SitePrices = SiteContent["prices"];
@@ -19,10 +17,6 @@ let ensureTablePromise: Promise<void> | null = null;
 
 const isServiceKey = (value: string): value is ServiceKey => {
   return SERVICE_KEYS.includes(value as ServiceKey);
-};
-
-const isSupportedLocale = (value: string): value is SupportedLocale => {
-  return SUPPORTED_LOCALES.includes(value as SupportedLocale);
 };
 
 const getLatestUpdatedAt = (
@@ -45,15 +39,12 @@ const getLatestUpdatedAt = (
 };
 
 const toRows = (prices: SitePrices, updatedAt: Date) => {
-  return SERVICE_KEYS.flatMap((service) =>
-    SUPPORTED_LOCALES.map((locale) => ({
-      id: `${service}:${locale}`,
-      service,
-      locale,
-      value: prices[service][locale],
-      updatedAt,
-    })),
-  );
+  return SERVICE_KEYS.map((service) => ({
+    service,
+    locale: "uk",
+    value: prices[service],
+    updatedAt,
+  }));
 };
 
 async function ensurePricesTable(): Promise<void> {
@@ -61,9 +52,8 @@ async function ensurePricesTable(): Promise<void> {
     ensureTablePromise = db
       .execute(sql`
         create table if not exists site_prices (
-          id text primary key,
           service text not null,
-          locale text not null,
+          locale text,
           value text not null,
           updated_at timestamptz not null default now()
         )
@@ -88,18 +78,13 @@ export async function readPricesFromDb(): Promise<SitePricesState> {
       };
     }
 
-    const prices: SitePrices = {
-      regression: { ...defaultSiteContent.prices.regression },
-      progression: { ...defaultSiteContent.prices.progression },
-      consciousness: { ...defaultSiteContent.prices.consciousness },
-      consultation: { ...defaultSiteContent.prices.consultation },
-    };
+    const prices: SitePrices = { ...defaultSiteContent.prices };
 
     for (const row of rows) {
-      if (!isServiceKey(row.service) || !isSupportedLocale(row.locale)) {
+      if (!isServiceKey(row.service)) {
         continue;
       }
-      prices[row.service][row.locale] = row.value;
+      prices[row.service] = row.value;
     }
 
     return {

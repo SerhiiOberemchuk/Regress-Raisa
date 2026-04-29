@@ -10,13 +10,11 @@ import {
   loginAdminAction,
   logoutAdminAction,
   savePricesAction,
-} from "@/app/[locale]/admin/actions";
+} from "@/app/admin/actions";
 import {
   SERVICE_KEYS,
-  SUPPORTED_LOCALES,
   type ServiceKey,
   type SiteContent,
-  type SupportedLocale,
 } from "@/lib/site-content-schema";
 
 type Status = {
@@ -29,12 +27,6 @@ const serviceLabels: Record<ServiceKey, string> = {
   progression: "Progression",
   consciousness: "Consciousness therapy",
   consultation: "Consultation",
-};
-
-const localeLabels: Record<SupportedLocale, string> = {
-  uk: "UK",
-  en: "EN",
-  it: "IT",
 };
 
 type AdminPanelProps = {
@@ -66,17 +58,13 @@ export default function AdminPanel({
 
   const updatePrice = (
     service: ServiceKey,
-    locale: SupportedLocale,
     value: string,
   ) => {
     setContent((prev) => ({
       ...prev,
       prices: {
         ...prev.prices,
-        [service]: {
-          ...prev.prices[service],
-          [locale]: value,
-        },
+        [service]: value,
       },
     }));
   };
@@ -258,11 +246,7 @@ export default function AdminPanel({
                     <thead>
                       <tr className="border-b">
                         <th className="p-3 text-left">Service</th>
-                        {SUPPORTED_LOCALES.map((locale) => (
-                          <th key={locale} className="p-3 text-left">
-                            {localeLabels[locale]}
-                          </th>
-                        ))}
+                        <th className="p-3 text-left">Price</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -271,17 +255,15 @@ export default function AdminPanel({
                           <td className="p-3 font-medium">
                             {serviceLabels[service]}
                           </td>
-                          {SUPPORTED_LOCALES.map((locale) => (
-                            <td key={locale} className="p-3">
-                              <Input
-                                value={content.prices[service][locale]}
-                                onChange={(event) =>
-                                  updatePrice(service, locale, event.target.value)
-                                }
-                                required
-                              />
-                            </td>
-                          ))}
+                          <td className="p-3">
+                            <Input
+                              value={content.prices[service]}
+                              onChange={(event) =>
+                                updatePrice(service, event.target.value)
+                              }
+                              required
+                            />
+                          </td>
                         </tr>
                       ))}
                     </tbody>

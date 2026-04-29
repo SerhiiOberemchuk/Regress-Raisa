@@ -1,30 +1,38 @@
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
-import { getTranslations } from "next-intl/server";
 import SectionHeading from "./section-heading";
-import type { SupportedLocale } from "@/lib/site-content-schema";
 
 type ResultsProps = {
-  locale: SupportedLocale;
   imageSrc: string;
 };
 
-export default async function Results({ locale, imageSrc }: ResultsProps) {
-  const t = await getTranslations({ locale, namespace: "results" });
-  const results = Object.values(t.raw("benefits")) as string[];
+const results = [
+  "Зменшення тривоги, внутрішньої напруги та емоційного виснаження",
+  "Розуміння причин повторюваних життєвих сценаріїв",
+  "Послаблення глибинних страхів, внутрішніх заборон і блоків",
+  "Покращення стосунків із собою та з близькими людьми",
+  "Більше ясності у власних рішеннях і відчуття внутрішньої опори",
+  "Звільнення від обмежувальних переконань і старих ролей",
+  "Кращий контакт із власними потребами, межами та ресурсом",
+  "Відчуття цілісності та спокійнішого проживання теперішнього",
+];
 
+export default function Results({ imageSrc }: ResultsProps) {
   return (
     <section id="results" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading
+          title="Який результат ви можете відчути після сеансу?"
+          subtitle="Регресивна терапія працює не лише з симптомом, а з його глибинною причиною, тому зміни часто відчуваються і на емоційному, і на поведінковому рівні."
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
-          <div className="relative aspect-square max-w-md mx-auto lg:mx-0">
-            <div className="absolute inset-0 bg-primary/10 rounded-full -z-10 transform -translate-x-4 translate-y-4" />
-            <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
+        <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div className="relative mx-auto aspect-square max-w-md lg:mx-0">
+            <div className="absolute inset-0 -z-10 -translate-x-4 translate-y-4 rounded-full bg-primary/10" />
+            <div className="relative aspect-square overflow-hidden rounded-[2rem] shadow-xl">
               <Image
                 src={imageSrc}
-                alt={t("imageAlt")}
+                alt="Результати регресивної терапії"
                 fill
                 sizes="(min-width: 1024px) 32rem, 100vw"
                 className="object-cover"
@@ -33,21 +41,19 @@ export default async function Results({ locale, imageSrc }: ResultsProps) {
           </div>
 
           <ul className="space-y-4">
-            {results.map((result, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3"
-              >
-                <CheckCircle className="h-6 w-6 text-primary shrink-0 mt-0.5" />
-                <span className="text-lg">{result}</span>
+            {results.map((result) => (
+              <li key={result} className="flex items-start gap-3">
+                <CheckCircle className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
+                <span className="text-lg leading-relaxed">{result}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="mt-16 bg-primary/5 rounded-xl p-6 md:p-8 border border-primary/20 max-w-3xl mx-auto">
-          <p className="text-lg md:text-xl font-medium text-center italic">
-            {t("quote")}
+        <div className="mx-auto mt-16 max-w-3xl rounded-[1.75rem] border border-primary/20 bg-primary/5 p-6 md:p-8">
+          <p className="text-center font-display text-2xl font-medium italic md:text-3xl">
+            Регресивна терапія не повертає вас у минуле заради минулого. Вона
+            допомагає змінити те, як минуле продовжує впливати на ваше сьогодення.
           </p>
         </div>
       </div>
