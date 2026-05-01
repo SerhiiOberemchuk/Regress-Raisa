@@ -5,8 +5,5 @@ Disallow: /api/
 Disallow: /trpc/
 Disallow: /admin
 
-# Host
-Host: https://raisaregres.online
-
 # Sitemaps
 Sitemap: https://raisaregres.online/sitemap.xml
