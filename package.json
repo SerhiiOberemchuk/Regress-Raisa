@@ -10,16 +10,16 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
-    "@next/third-parties": "^16.2.4",
+    "@next/third-parties": "^16.2.6",
     "@radix-ui/react-accordion": "1.2.12",
     "@radix-ui/react-slot": "1.2.4",
     "@vercel/analytics": "^2.0.1",
-    "better-auth": "^1.6.9",
+    "better-auth": "^1.6.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.14.0",
-    "next": "16.2.4",
+    "next": "16.2.6",
     "nodemailer": "latest",
     "react": "^19",
     "react-dom": "^19",
@@ -27,14 +27,14 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.4",
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/node": "^25",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "latest",
-    "postcss": "^8.5.12",
-    "tailwindcss": "^4.2.4",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   }
 }

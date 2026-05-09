@@ -6,14 +6,16 @@ import { getAbsoluteUrl, getDefaultSocialImageUrl, getLanguageAlternates } from 
 
 export const metadata: Metadata = {
   title: "Безпека та протипоказання | RaisaRegress",
-  description: "Кому підходить регресивна терапія, а в яких випадках від сеансу варто утриматися.",
+  description:
+    "Безпека регресивної терапії: кому підходить метод, які є протипоказання та коли варто утриматися від онлайн-сеансу регресії.",
   alternates: {
     canonical: "/regression-therapy-safety",
     ...getLanguageAlternates("regression-therapy-safety"),
   },
   openGraph: {
     title: "Безпека та протипоказання | RaisaRegress",
-    description: "Кому підходить регресивна терапія, а в яких випадках від сеансу варто утриматися.",
+    description:
+      "Кому підходить регресивна терапія онлайн, базові правила безпеки та протипоказання до сеансу регресії.",
     url: getAbsoluteUrl("/regression-therapy-safety"),
     type: "article",
     images: [{ url: getDefaultSocialImageUrl() }],
@@ -21,8 +23,31 @@ export const metadata: Metadata = {
 };
 
 export default function RegressionTherapySafetyPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Головна",
+        item: getAbsoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Безпека та протипоказання",
+        item: getAbsoluteUrl("/regression-therapy-safety"),
+      },
+    ],
+  };
+
   return (
     <main className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <article className="mx-auto max-w-4xl space-y-10">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/" className="flex items-center gap-2">

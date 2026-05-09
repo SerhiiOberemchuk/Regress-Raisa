@@ -6,14 +6,16 @@ import { getAbsoluteUrl, getDefaultSocialImageUrl, getLanguageAlternates } from 
 
 export const metadata: Metadata = {
   title: "Регресивний гіпноз онлайн | RaisaRegress",
-  description: "Онлайн-сеанси регресивного гіпнозу з Раїсою Оберемчук у безпечному та комфортному форматі.",
+  description:
+    "Регресивний гіпноз онлайн з Раїсою Оберемчук: індивідуальний сеанс у безпечному форматі для роботи з тривогою, блоками та повторюваними сценаріями.",
   alternates: {
     canonical: "/regression-hypnosis-online",
     ...getLanguageAlternates("regression-hypnosis-online"),
   },
   openGraph: {
     title: "Регресивний гіпноз онлайн | RaisaRegress",
-    description: "Онлайн-сеанси регресивного гіпнозу з Раїсою Оберемчук у безпечному та комфортному форматі.",
+    description:
+      "Онлайн-сеанси регресивного гіпнозу з Раїсою Оберемчук для глибшого самопізнання, емоційного розвантаження та внутрішньої роботи.",
     url: getAbsoluteUrl("/regression-hypnosis-online"),
     type: "article",
     images: [{ url: getDefaultSocialImageUrl() }],
@@ -21,8 +23,47 @@ export const metadata: Metadata = {
 };
 
 export default function RegressionHypnosisOnlinePage() {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Регресивний гіпноз онлайн",
+      serviceType: "Регресивна терапія онлайн",
+      provider: {
+        "@type": "Person",
+        name: "Раїса Оберемчук",
+      },
+      areaServed: "Україна",
+      url: getAbsoluteUrl("/regression-hypnosis-online"),
+      description:
+        "Індивідуальний онлайн-сеанс регресивного гіпнозу у приватному та комфортному форматі.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Головна",
+          item: getAbsoluteUrl("/"),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Регресивний гіпноз онлайн",
+          item: getAbsoluteUrl("/regression-hypnosis-online"),
+        },
+      ],
+    },
+  ];
+
   return (
     <main className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <article className="mx-auto max-w-4xl space-y-10">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/" className="flex items-center gap-2">

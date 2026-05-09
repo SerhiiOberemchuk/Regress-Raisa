@@ -7,14 +7,16 @@ import { getAbsoluteUrl, getDefaultSocialImageUrl, getLanguageAlternates } from 
 
 export const metadata: Metadata = {
   title: "Ціни на регресивну терапію | RaisaRegress",
-  description: "Актуальні ціни на консультації та сеанси регресивної терапії RaisaRegress.",
+  description:
+    "Ціни на регресивну терапію онлайн: консультація, повноцінний сеанс регресії, прогресія та терапія свідомості з Раїсою Оберемчук.",
   alternates: {
     canonical: "/regression-therapy-price",
     ...getLanguageAlternates("regression-therapy-price"),
   },
   openGraph: {
     title: "Ціни на регресивну терапію | RaisaRegress",
-    description: "Актуальні ціни на консультації та сеанси регресивної терапії RaisaRegress.",
+    description:
+      "Актуальні ціни на онлайн-консультації, сеанси регресивного гіпнозу, прогресію та терапію свідомості RaisaRegress.",
     url: getAbsoluteUrl("/regression-therapy-price"),
     type: "article",
     images: [{ url: getDefaultSocialImageUrl() }],
@@ -29,9 +31,55 @@ export default async function RegressionTherapyPricePage() {
     ["Прогресія", siteContent.prices.progression],
     ["Терапія свідомості", siteContent.prices.consciousness],
   ] as const;
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "OfferCatalog",
+      name: "Ціни на регресивну терапію RaisaRegress",
+      url: getAbsoluteUrl("/regression-therapy-price"),
+      itemListElement: rows.map(([label, price]) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: label,
+          provider: {
+            "@type": "Person",
+            name: "Раїса Оберемчук",
+          },
+          serviceType: "Регресивна терапія онлайн",
+        },
+        price: price.replace(/\D/g, ""),
+        priceCurrency: "UAH",
+        availability: "https://schema.org/InStock",
+        url: getAbsoluteUrl("/regression-therapy-price"),
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Головна",
+          item: getAbsoluteUrl("/"),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Ціни на регресивну терапію",
+          item: getAbsoluteUrl("/regression-therapy-price"),
+        },
+      ],
+    },
+  ];
 
   return (
     <main className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <article className="mx-auto max-w-4xl space-y-10">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/" className="flex items-center gap-2">

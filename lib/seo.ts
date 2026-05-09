@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
 
-const DEFAULT_SITE_URL = "https://raisaregres.online";
-
-function normalizeSiteUrl(url: string): string {
-  return url.endsWith("/") ? url.slice(0, -1) : url;
-}
-
-export const siteUrl = normalizeSiteUrl(
-  process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL,
-);
+export const siteUrl = "https://raisaregres.online";
 
 export const metadataBaseUrl = new URL(siteUrl);
 export const defaultSocialImagePath = "/og-image.jpg";
+
+export const sitemapEntries = [
+  { path: "/", changeFrequency: "yearly", priority: 1 },
+  {
+    path: "/regression-hypnosis-online",
+    changeFrequency: "yearly",
+    priority: 0.8,
+  },
+  {
+    path: "/regression-therapy-price",
+    changeFrequency: "yearly",
+    priority: 0.7,
+  },
+  {
+    path: "/regression-therapy-safety",
+    changeFrequency: "yearly",
+    priority: 0.7,
+  },
+  { path: "/privacy", changeFrequency: "yearly", priority: 0.5 },
+  { path: "/terms", changeFrequency: "yearly", priority: 0.5 },
+] as const;
 
 export type SupportedSeoLocale = "uk";
 
