@@ -8,7 +8,14 @@ import Requirements from "@/components/requirements";
 import Results from "@/components/results";
 import Services from "@/components/services";
 import { getCachedSiteContent } from "@/lib/site-content-cache";
-import { getAbsoluteUrl, getLanguageAlternates, getLocaleTag } from "@/lib/seo";
+import {
+  contactEmail,
+  contactPhone,
+  getAbsoluteUrl,
+  getLanguageAlternates,
+  getLocaleTag,
+  socialLinks,
+} from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const canonicalUrl = getAbsoluteUrl("/");
@@ -91,6 +98,7 @@ export default async function HomePage() {
       jobTitle: "Регресолог, регресивний терапевт",
       url: getAbsoluteUrl("/"),
       image: getAbsoluteUrl(siteContent.images.hero),
+      ...(socialLinks.length ? { sameAs: socialLinks } : {}),
       worksFor: {
         "@type": "ProfessionalService",
         name: "RaisaRegress",
@@ -110,8 +118,9 @@ export default async function HomePage() {
         name: "Україна",
       },
       availableLanguage: ["uk"],
-      email: "265840@gmail.com",
-      telephone: "+380971768196",
+      email: contactEmail,
+      telephone: contactPhone,
+      ...(socialLinks.length ? { sameAs: socialLinks } : {}),
       founder: {
         "@type": "Person",
         name: "Раїса Оберемчук",

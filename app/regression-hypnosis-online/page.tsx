@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getAbsoluteUrl, getDefaultSocialImageUrl, getLanguageAlternates } from "@/lib/seo";
+import { getAbsoluteUrl, getDefaultSocialImage, getLanguageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Регресивний гіпноз онлайн | RaisaRegress",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       "Онлайн-сеанси регресивного гіпнозу з Раїсою Оберемчук для глибшого самопізнання, емоційного розвантаження та внутрішньої роботи.",
     url: getAbsoluteUrl("/regression-hypnosis-online"),
     type: "article",
-    images: [{ url: getDefaultSocialImageUrl() }],
+    images: [getDefaultSocialImage("Регресивний гіпноз онлайн — RaisaRegress")],
   },
 };
 

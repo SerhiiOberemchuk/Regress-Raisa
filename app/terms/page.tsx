@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   getAbsoluteUrl,
+  getDefaultSocialImage,
   getDefaultSocialImageUrl,
   getLanguageAlternates,
 } from "@/lib/seo";
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     description: "Умови використання сайту і послуг RaisaRegress.",
     url: getAbsoluteUrl("/terms"),
     type: "website",
-    images: [{ url: getDefaultSocialImageUrl() }],
+    images: [getDefaultSocialImage("Умови використання — RaisaRegress")],
   },
   twitter: {
     card: "summary_large_image",

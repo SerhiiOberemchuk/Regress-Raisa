@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCachedSiteContent } from "@/lib/site-content-cache";
-import { getAbsoluteUrl, getDefaultSocialImageUrl, getLanguageAlternates } from "@/lib/seo";
+import { getAbsoluteUrl, getDefaultSocialImage, getLanguageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Ціни на регресивну терапію | RaisaRegress",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       "Актуальні ціни на онлайн-консультації, сеанси регресивного гіпнозу, прогресію та терапію свідомості RaisaRegress.",
     url: getAbsoluteUrl("/regression-therapy-price"),
     type: "article",
-    images: [{ url: getDefaultSocialImageUrl() }],
+    images: [getDefaultSocialImage("Ціни на регресивну терапію — RaisaRegress")],
   },
 };
 

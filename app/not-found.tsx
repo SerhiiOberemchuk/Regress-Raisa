@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NotFoundRedirect from "@/components/not-found-redirect";
+
+export const metadata: Metadata = {
+  title: "Сторінку не знайдено | RaisaRegress",
+  robots: { index: false, follow: true },
+};
 
 export default function GlobalNotFound() {
   return (

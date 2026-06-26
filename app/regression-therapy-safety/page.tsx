@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getAbsoluteUrl, getDefaultSocialImageUrl, getLanguageAlternates } from "@/lib/seo";
+import { getAbsoluteUrl, getDefaultSocialImage, getLanguageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Безпека та протипоказання | RaisaRegress",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       "Кому підходить регресивна терапія онлайн, базові правила безпеки та протипоказання до сеансу регресії.",
     url: getAbsoluteUrl("/regression-therapy-safety"),
     type: "article",
-    images: [{ url: getDefaultSocialImageUrl() }],
+    images: [getDefaultSocialImage("Безпека та протипоказання — RaisaRegress")],
   },
 };
 
