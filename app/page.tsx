@@ -37,7 +37,7 @@ export function generateMetadata(): Metadata {
       type: "website",
       images: [
         {
-          url: getAbsoluteUrl("/og-image.jpg"),
+          url: getAbsoluteUrl("/og-image.jpeg"),
           width: 1200,
           height: 630,
           alt: "Раїса Оберемчук",
@@ -49,7 +49,7 @@ export function generateMetadata(): Metadata {
       title: "RaisaRegress | Регресивний гіпноз онлайн",
       description:
         "Регресивний гіпноз онлайн з Раїсою Оберемчук: консультації, сеанси регресії, прогресія та терапія свідомості.",
-      images: [getAbsoluteUrl("/og-image.jpg")],
+      images: [getAbsoluteUrl("/og-image.jpeg")],
     },
     alternates: {
       canonical: "/",

@@ -21,7 +21,7 @@ export type SiteContent = {
 export const defaultSiteContent: SiteContent = {
   updatedAt: "2026-02-27T00:00:00.000Z",
   images: {
-    hero: "/og-image.jpg",
+    hero: "/og-image.jpeg",
     results: "/serene-blue-meditation.png",
     footerBackground: "/footer-background.jpg",
   },

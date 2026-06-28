@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const siteUrl = "https://raisaregres.online";
 
 export const metadataBaseUrl = new URL(siteUrl);
-export const defaultSocialImagePath = "/og-image.jpg";
+export const defaultSocialImagePath = "/og-image.jpeg";
 
 export const siteName = "RaisaRegress";
 
@@ -16,8 +16,10 @@ export const contactEmail = "265840@gmail.com";
 export const contactPhone = "+380971768196";
 
 // Посилання на соцмережі / зовнішні профілі для sameAs у Schema.org.
-// TODO: додати реальні URL (Instagram, Facebook, Telegram, YouTube тощо).
-export const socialLinks: string[] = [];
+export const socialLinks: string[] = [
+  "https://www.facebook.com/share/18vDuTqWEf/",
+  "https://www.instagram.com/raisa.regres",
+];
 
 // Дата останнього змістовного оновлення сайту. Оновлюйте вручну при зміні контенту,
 // щоб lastmod у sitemap відображав реальні зміни, а не дату кожного білду.
